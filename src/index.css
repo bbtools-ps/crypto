@@ -7,3 +7,10 @@ html {
 *:after {
   box-sizing: inherit;
 }
+
+body,
+html,
+#root,
+.app {
+  height: 100%;
+}

@@ -1,9 +1,11 @@
+import ContentCopyIcon from "@mui/icons-material/ContentCopy";
 import { Button, Grid, TextField, Typography } from "@mui/material";
 import Box from "@mui/material/Box";
+import Card from "@mui/material/Card";
 import CircularProgress from "@mui/material/CircularProgress";
-import { useEffect, useState } from "react";
+import { grey } from "@mui/material/colors";
+import { useEffect, useRef, useState } from "react";
 import "./App.css";
-import Logo from "./common/components/Logo";
 import { emojiDecodeEncode } from "./common/functions/utils";
 import useFetch from "./common/hooks/useFetch";
 
@@ -11,6 +13,7 @@ export default function App() {
   const [value, setValue] = useState<string>("");
   const [translatedValue, setTranslatedValue] = useState<string>("");
   const [copyToClipboard, setCopyToClipboard] = useState<boolean>(false);
+  const outputRef = useRef<HTMLElement>();
   const { data, error, isLoading } = useFetch(
     "https://raw.githubusercontent.com/bbtools-ps/emoji-cipher/main/dict/dict.json"
   );
@@ -35,16 +38,14 @@ export default function App() {
         </Box>
       )}
       {!isLoading && data && (
-        <Grid direction="column" rowSpacing={3} container>
-          <Grid item>
-            <Typography variant="h3">Morse code translate</Typography>
-            <Logo size={50} />
-          </Grid>
-          <Grid item>
-            <Typography variant="caption">
-              Letters are separated by a single space " " and words by 3 spaces
-              " ".
-            </Typography>
+        <Grid
+          direction="column"
+          rowSpacing={3}
+          container
+          sx={{ height: "100%" }}
+        >
+          <Grid item marginBottom={3} alignSelf="center">
+            <Typography variant="h4">Emoji Cypher 🐸</Typography>
           </Grid>
           <Grid
             direction="column"
@@ -64,15 +65,43 @@ export default function App() {
                 setTranslatedValue(emojiDecodeEncode(e.target.value, data));
               }}
             />
-            <p dangerouslySetInnerHTML={{ __html: translatedValue }} />
-            <Button
-              onClick={() => {
-                setCopyToClipboard(true);
-                navigator.clipboard.writeText(translatedValue);
-              }}
-            >
-              {!copyToClipboard ? "Copy to clipboard" : "Copied!"}
-            </Button>
+            <Box sx={{ minWidth: 275, width: "100%" }}>
+              <Card variant="outlined" style={{ padding: "1rem" }}>
+                <Grid direction="column" container>
+                  <Typography
+                    sx={{ fontSize: 14 }}
+                    color="text.secondary"
+                    gutterBottom
+                  >
+                    Output
+                  </Typography>
+                  <Typography
+                    variant="body1"
+                    dangerouslySetInnerHTML={{ __html: translatedValue }}
+                    style={{
+                      minHeight: "3rem",
+                      backgroundColor: grey[100],
+                      padding: ".5rem",
+                    }}
+                    marginBottom={3}
+                    ref={outputRef}
+                  />
+                  <Grid item alignSelf={"center"} justifyContent="center">
+                    <Button
+                      onClick={() => {
+                        setCopyToClipboard(true);
+                        navigator.clipboard.writeText(
+                          outputRef.current.innerText
+                        );
+                      }}
+                    >
+                      <ContentCopyIcon />
+                      {!copyToClipboard ? "Copy to clipboard" : "Copied!"}
+                    </Button>
+                  </Grid>
+                </Grid>
+              </Card>
+            </Box>
           </Grid>
         </Grid>
       )}
