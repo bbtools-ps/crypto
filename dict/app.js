@@ -35,7 +35,7 @@ const { readFile, writeFile } = require("fs/promises");
       return {
         code: `${
           /^U[+]1F/.test(firstCodeItem)
-            ? "&#x" + firstCodeItem.replace("U+1F", "")
+            ? "&#x" + firstCodeItem.replace("U+", "")
             : "&#" + firstCodeItem.replace("U+", "")
         };`,
         emoji,
