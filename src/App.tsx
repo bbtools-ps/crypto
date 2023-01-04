@@ -54,7 +54,9 @@ export default function App() {
           sx={{ height: "100%" }}
         >
           <Grid item marginBottom={3} alignSelf="center">
-            <Typography variant="h4">Emoji Cypher 🐸</Typography>
+            <Typography variant="h4">
+              <strong>Emoji</strong> Cipher 🐸
+            </Typography>
           </Grid>
           <Grid
             direction="column"
