@@ -28,7 +28,7 @@ const { readFile, writeFile } = require("fs/promises");
 
   const emojis = newData
     .filter((item) => {
-      return item.code && item.emoji;
+      return item.code && item.code.split(" ").length === 1 && item.emoji;
     })
     .map(({ code, emoji }) => {
       const firstCodeItem = code.split(" ")[0];
