@@ -95,7 +95,7 @@ export default function App() {
                         );
                       }}
                     >
-                      <ContentCopyIcon />
+                      {!copyToClipboard && <ContentCopyIcon />}
                       {!copyToClipboard ? "Copy to clipboard" : "Copied!"}
                     </Button>
                   </Grid>
