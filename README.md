@@ -1,6 +1,6 @@
 # Emoji Cipher
 
-Encrypt/decript text using emojis.
+Encrypt/decrypt text using emojis.
 
 This project uses [React.js](https://reactjs.org/).
 
