@@ -33,11 +33,7 @@ const { readFile, writeFile } = require("fs/promises");
     .map(({ code, emoji }) => {
       const firstCodeItem = code.split(" ")[0];
       return {
-        code: `${
-          /^U[+]1F/.test(firstCodeItem)
-            ? "&#x" + firstCodeItem.replace("U+", "")
-            : "&#" + firstCodeItem.replace("U+", "")
-        };`,
+        code: `&#x${firstCodeItem.replace("U+", "")};`,
         emoji,
       };
     });
