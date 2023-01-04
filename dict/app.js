@@ -38,7 +38,8 @@ const { readFile, writeFile } = require("fs/promises");
       };
     });
 
-  const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz,.! ()";
+  const alphabet =
+    "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz,.!? ()0123456789";
   const randomEmojis = getRandomItems(emojis, alphabet.length * 5);
 
   const emojisAlphabet = chunkMaxLength([...randomEmojis], 5, alphabet.length)
