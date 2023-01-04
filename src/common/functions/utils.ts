@@ -1,38 +1,14 @@
-import { morseCodeAlphabet } from "../constants/constants";
-
-export const decodeMorse = (morseCode: string) => {
-  return morseCode
-    .split("   ")
-    .map((word) =>
-      word
-        .split(" ")
-        .map((letter) =>
-          Object.keys(morseCodeAlphabet).find(
-            (key) =>
-              morseCodeAlphabet[key as keyof typeof morseCodeAlphabet] ===
-              letter
-          )
-        )
-        .join("")
-    )
-    .join(" ")
-    .trim();
-};
-
-export const encodeMorse = (str: string) => {
+export const emojiDecodeEncode = (
+  str: string,
+  data: { [key: string]: { code: string; emoji: string }[] | string }
+) => {
   return str
-    .toUpperCase()
-    .replace(/\s+/g, " ")
-    .split(" ")
-    .map((word) =>
-      word
-        .split("")
-        .map(
-          (letter) =>
-            morseCodeAlphabet[letter as keyof typeof morseCodeAlphabet]
-        )
-        .join(" ")
+    .split("")
+    .map((letter) =>
+      Array.isArray(data[letter])
+        ? // @ts-ignore
+          data[letter][Math.floor(Math.random() * 5)].code
+        : data[letter] || letter
     )
-    .join("   ")
-    .trim();
+    .join("");
 };
