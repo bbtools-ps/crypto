@@ -1,6 +1,6 @@
-# Morse code
+# Emoji Cipher
 
-Translate to Morse code alphabet and vice versa.
+Encrypt/decript text using emojis.
 
 This project uses [React.js](https://reactjs.org/).
 
