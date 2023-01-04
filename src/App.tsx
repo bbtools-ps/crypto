@@ -33,7 +33,16 @@ export default function App() {
   return (
     <div className="app">
       {isLoading && !data && (
-        <Box sx={{ display: "flex" }}>
+        <Box
+          sx={{
+            display: "flex",
+            width: "100%",
+            height: "100%",
+            alignContent: "center",
+            alignItems: "center",
+            justifyContent: "center",
+          }}
+        >
           <CircularProgress />
         </Box>
       )}
