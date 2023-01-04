@@ -60,11 +60,11 @@ export default function App() {
               value={value}
               fullWidth
               onChange={(e) => {
-                setValue(e.target.value.toUpperCase());
+                setValue(e.target.value);
                 setTranslatedValue(emojiDecodeEncode(e.target.value, data));
               }}
             />
-            <p>{translatedValue}</p>
+            <p dangerouslySetInnerHTML={{ __html: translatedValue }} />
             <Button
               onClick={() => {
                 setCopyToClipboard(true);
