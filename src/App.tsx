@@ -80,7 +80,7 @@ export default function App() {
                 setValue(e.target.value);
                 setTranslatedValue(emojiDecryptEncrypt(e.target.value, data));
               }}
-              sx={{ flex: 1 }}
+              sx={isDesktop ? { flex: 1 } : undefined}
             />
             <Box sx={{ flex: 1, width: !isDesktop ? "100%" : undefined }}>
               <Card variant="outlined" style={{ padding: "1rem" }}>
