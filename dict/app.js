@@ -1,4 +1,8 @@
 const { readFile, writeFile } = require("fs/promises");
+import {
+  Alphabet,
+  LetterCombinationsAmount,
+} from "../src/common/constants/constants";
 
 /**NodeJS app for generating new dictionary
  * Steps:
@@ -38,24 +42,34 @@ const { readFile, writeFile } = require("fs/promises");
       };
     });
 
-  const alphabet =
-    "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz,.!? ()0123456789";
-  const randomEmojis = getRandomItems(emojis, alphabet.length * 5);
+  const randomEmojis = getRandomItems(
+    emojis,
+    Alp.length * LetterCombinationsAmount
+  );
 
-  const emojisAlphabet = chunkMaxLength([...randomEmojis], 5, alphabet.length)
+  const emojisAlphabet = chunkMaxLength(
+    [...randomEmojis],
+    LetterCombinationsAmount,
+    Alphabet.length
+  )
     .filter((item) => item.length)
     .map((item, index) =>
-      item.map((item) => ({ ...item, value: alphabet[index] }))
+      item.map((item) => ({ ...item, value: Alphabet[index] }))
     );
 
   // Check if both arrays (emojis + alphabet) have the same length before continuing
-  if (alphabet.length !== emojisAlphabet.length) {
+  if (Alphabet.length !== emojisAlphabet.length) {
     console.log("Array lengths (emojis + alphabet) must be the same!");
     return;
   }
 
-  const alphabetEmojisArr = [...alphabet].map((item, index) => ({
-    [item]: [...[...randomEmojis].splice(index * 5, 5)],
+  const alphabetEmojisArr = [...Alphabet].map((item, index) => ({
+    [item]: [
+      ...[...randomEmojis].splice(
+        index * LetterCombinationsAmount,
+        LetterCombinationsAmount
+      ),
+    ],
   }));
   const emojisAlphabetArr = emojisAlphabet
     .flat(99)

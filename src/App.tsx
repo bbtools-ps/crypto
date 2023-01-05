@@ -6,7 +6,7 @@ import CircularProgress from "@mui/material/CircularProgress";
 import { grey } from "@mui/material/colors";
 import { useEffect, useRef, useState } from "react";
 import "./App.css";
-import { emojiDecodeEncode } from "./common/functions/utils";
+import { emojiDecryptEncrypt } from "./common/functions/utils";
 import useFetch from "./common/hooks/useFetch";
 
 export default function App() {
@@ -73,7 +73,7 @@ export default function App() {
               fullWidth
               onChange={(e) => {
                 setValue(e.target.value);
-                setTranslatedValue(emojiDecodeEncode(e.target.value, data));
+                setTranslatedValue(emojiDecryptEncrypt(e.target.value, data));
               }}
             />
             <Box sx={{ minWidth: 275, width: "100%" }}>
