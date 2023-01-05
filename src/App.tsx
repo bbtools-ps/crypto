@@ -4,8 +4,8 @@ import Box from "@mui/material/Box";
 import Card from "@mui/material/Card";
 import CircularProgress from "@mui/material/CircularProgress";
 import { grey } from "@mui/material/colors";
+import useMediaQuery from "@mui/material/useMediaQuery";
 import { useEffect, useRef, useState } from "react";
-import "./App.css";
 import { emojiDecryptEncrypt } from "./common/functions/utils";
 import useFetch from "./common/hooks/useFetch";
 
@@ -17,6 +17,7 @@ export default function App() {
   const { data, error, isLoading } = useFetch(
     "https://raw.githubusercontent.com/bbtools-ps/emoji-cipher/main/dict/dict.json"
   );
+  const isDesktop = useMediaQuery("(min-width:600px)");
 
   useEffect(() => {
     const timeout = setTimeout(() => {
@@ -57,12 +58,16 @@ export default function App() {
             <Typography variant="h4">
               <strong>Emoji</strong> Cipher 🐸
             </Typography>
+            <Typography variant="body1" marginTop={2}>
+              Encrypt/decrypt text using emojis.
+            </Typography>
           </Grid>
           <Grid
-            direction="column"
+            direction={isDesktop ? "row" : "column"}
             justifyContent="center"
             alignItems="center"
             rowGap={1}
+            columnGap={1}
             container
           >
             <TextField
@@ -70,13 +75,14 @@ export default function App() {
               multiline
               minRows={5}
               value={value}
-              fullWidth
+              fullWidth={!isDesktop}
               onChange={(e) => {
                 setValue(e.target.value);
                 setTranslatedValue(emojiDecryptEncrypt(e.target.value, data));
               }}
+              sx={{ flexGrow: 1 }}
             />
-            <Box sx={{ minWidth: 275, width: "100%" }}>
+            <Box sx={{ flexGrow: 1, width: !isDesktop ? "100%" : undefined }}>
               <Card variant="outlined" style={{ padding: "1rem" }}>
                 <Grid direction="column" container>
                   <Typography
@@ -97,7 +103,7 @@ export default function App() {
                     marginBottom={3}
                     ref={outputRef}
                   />
-                  <Grid item alignSelf={"center"} justifyContent="center">
+                  <Grid item alignSelf="center">
                     <Button
                       onClick={() => {
                         setCopyToClipboard(true);
@@ -106,7 +112,9 @@ export default function App() {
                         );
                       }}
                     >
-                      {!copyToClipboard && <ContentCopyIcon />}
+                      {!copyToClipboard && (
+                        <ContentCopyIcon sx={{ marginRight: 1 }} />
+                      )}
                       {!copyToClipboard ? "Copy to clipboard" : "Copied!"}
                     </Button>
                   </Grid>
