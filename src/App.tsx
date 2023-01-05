@@ -80,9 +80,9 @@ export default function App() {
                 setValue(e.target.value);
                 setTranslatedValue(emojiDecryptEncrypt(e.target.value, data));
               }}
-              sx={{ flexGrow: 1 }}
+              sx={{ flex: 1 }}
             />
-            <Box sx={{ flexGrow: 1, width: !isDesktop ? "100%" : undefined }}>
+            <Box sx={{ flex: 1, width: !isDesktop ? "100%" : undefined }}>
               <Card variant="outlined" style={{ padding: "1rem" }}>
                 <Grid direction="column" container>
                   <Typography
