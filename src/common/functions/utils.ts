@@ -1,6 +1,6 @@
 import { LetterCombinationsAmount } from "../constants/constants";
 
-export const emojiDecryptEncrypt = (
+export const emojiEncryptDecrypt = (
   str: string,
   data: { [key: string]: { code: string; emoji: string }[] }
 ) => {

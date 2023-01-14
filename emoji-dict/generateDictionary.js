@@ -1,8 +1,8 @@
-const { readFile, writeFile } = require("fs/promises");
 import {
   Alphabet,
   LetterCombinationsAmount,
 } from "../src/common/constants/constants";
+const { readFile, writeFile } = require("fs/promises");
 
 /**NodeJS app for generating new dictionary
  * Steps:
@@ -44,7 +44,7 @@ import {
 
   const randomEmojis = getRandomItems(
     emojis,
-    Alp.length * LetterCombinationsAmount
+    Alphabet.length * LetterCombinationsAmount
   );
 
   const emojisAlphabet = chunkMaxLength(
