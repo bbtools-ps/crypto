@@ -12,6 +12,7 @@ This project uses:
 
 - [React.js](https://reactjs.org/)
 - [Typescript](https://www.typescriptlang.org/)
+- [Node.js](https://nodejs.org/en/)
 
 ## Project setup
 
@@ -28,6 +29,10 @@ To run the project in development mode type:
 To make the build type:
 
 `npm run build`
+
+## Emoji cipher
+
+To generate a new dictionary go to **emoji-dict** folder and run the "generateDictionary" file using Node.
 
 ## Live demo
 
