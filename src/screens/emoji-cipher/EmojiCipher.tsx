@@ -1,28 +1,22 @@
 import { Alert } from "@mui/material";
 import Box from "@mui/material/Box";
 import CircularProgress from "@mui/material/CircularProgress";
-import { useState } from "react";
 import Layout from "../../common/components/Layout";
+import { Pages } from "../../common/constants/constants";
 import { emojiEncryptDecrypt } from "../../common/functions/utils";
 import useFetch from "../../common/hooks/useFetch";
+import useInput from "../../common/hooks/useInput";
 
 const EmojiCipher = () => {
-  const [value, setValue] = useState<string>("");
-  const [translatedValue, setTranslatedValue] = useState<string>("");
-
-  const handleInputChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
-    setValue(e.target.value);
-    setTranslatedValue(emojiEncryptDecrypt(e.target.value, data));
-  };
-
   const { data, error, isLoading } = useFetch(
     "https://raw.githubusercontent.com/bbtools-ps/emoji-cipher/main/emoji-dict/dict.json"
   );
+  const { value, translatedValue, handleChange, handleReset } = useInput({
+    encryptDecrypt: (value) => emojiEncryptDecrypt(value, data),
+  });
 
   return (
-    <div className="app">
+    <>
       {isLoading && !data && (
         <Box
           sx={{
@@ -39,17 +33,19 @@ const EmojiCipher = () => {
       )}
       {!isLoading && data && (
         <Layout
-          title="Emoji"
+          title={Pages.Ciphers[2].name}
           description="Encrypt/decrypt text using emojis."
+          icon={Pages.Ciphers[2].icon}
           inputValue={value}
-          onInputChange={handleInputChange}
           outputValue={translatedValue}
+          onInputChange={handleChange}
+          onReset={handleReset}
         />
       )}
       {!isLoading && error && (
         <Alert severity="error">Error! Can't fetch data.</Alert>
       )}
-    </div>
+    </>
   );
 };
 

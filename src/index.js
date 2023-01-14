@@ -1,3 +1,4 @@
+import { StyledEngineProvider } from "@mui/material/styles";
 import React from "react";
 import ReactDOM from "react-dom";
 import { HashRouter } from "react-router-dom";
@@ -6,9 +7,11 @@ import "./index.css";
 import reportWebVitals from "./reportWebVitals";
 
 ReactDOM.render(
-  <HashRouter>
-    <App />
-  </HashRouter>,
+  <StyledEngineProvider injectFirst>
+    <HashRouter>
+      <App />
+    </HashRouter>
+  </StyledEngineProvider>,
   document.getElementById("root")
 );
 

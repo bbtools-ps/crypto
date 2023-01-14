@@ -1,5 +1,5 @@
 import {
-  Alphabet,
+  ExtendedAlphabet,
   LetterCombinationsAmount,
 } from "../src/common/constants/constants";
 const { readFile, writeFile } = require("fs/promises");
@@ -44,26 +44,26 @@ const { readFile, writeFile } = require("fs/promises");
 
   const randomEmojis = getRandomItems(
     emojis,
-    Alphabet.length * LetterCombinationsAmount
+    ExtendedAlphabet.length * LetterCombinationsAmount
   );
 
   const emojisAlphabet = chunkMaxLength(
     [...randomEmojis],
     LetterCombinationsAmount,
-    Alphabet.length
+    ExtendedAlphabet.length
   )
     .filter((item) => item.length)
     .map((item, index) =>
-      item.map((item) => ({ ...item, value: Alphabet[index] }))
+      item.map((item) => ({ ...item, value: ExtendedAlphabet[index] }))
     );
 
   // Check if both arrays (emojis + alphabet) have the same length before continuing
-  if (Alphabet.length !== emojisAlphabet.length) {
+  if (ExtendedAlphabet.length !== emojisAlphabet.length) {
     console.log("Array lengths (emojis + alphabet) must be the same!");
     return;
   }
 
-  const alphabetEmojisArr = [...Alphabet].map((item, index) => ({
+  const alphabetEmojisArr = [...ExtendedAlphabet].map((item, index) => ({
     [item]: [
       ...[...randomEmojis].splice(
         index * LetterCombinationsAmount,
