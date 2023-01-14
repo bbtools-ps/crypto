@@ -1,6 +1,7 @@
 # Crypto
 
-"Crypto" is a collection of ciphers. "Emoji cipher" is a personal invention and I'm so proud of it :) rest of the ciphers already existed and they are just implemented using JavaScript.
+"Crypto" is a collection of ciphers. "Emoji cipher" is a personal invention and I'm so proud of it :)
+Rest of the ciphers were already invented so they are just implemented using modern JavaScript syntax.
 
 Ciphers:
 
