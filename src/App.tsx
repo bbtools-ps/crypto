@@ -9,17 +9,22 @@ import CaesarCipher from "./screens/caesar-cipher/CaesarCipher";
 import EmojiCipher from "./screens/emoji-cipher/EmojiCipher";
 import VigenereCipher from "./screens/vigenere-cipher/VigenereCipher";
 
+type ColorMode = "light" | "dark";
+
 export const ColorModeContext = createContext({ toggleColorMode: () => {} });
 
 const App = () => {
-  const [mode, setMode] = useState<"light" | "dark">("light");
+  const [mode, setMode] = useState<ColorMode>(
+    (localStorage.getItem("theme") as ColorMode) || "light"
+  );
   const colorMode = useMemo(
     () => ({
       toggleColorMode: () => {
+        localStorage.setItem("theme", mode === "light" ? "dark" : "light");
         setMode((prevMode) => (prevMode === "light" ? "dark" : "light"));
       },
     }),
-    []
+    [mode]
   );
 
   const theme = useMemo(
