@@ -1,9 +1,10 @@
 import Box from "@mui/material/Box";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
-import { createContext, useMemo, useState } from "react";
+import { createContext, useEffect, useMemo, useState } from "react";
 import { Route } from "react-router";
 import { Routes } from "react-router-dom";
 import MainMenu from "./common/components/MainMenu";
+import useBrowserTheme from "./common/hooks/useBrowserTheme";
 import About from "./screens/about/About";
 import CaesarCipher from "./screens/caesar-cipher/CaesarCipher";
 import EmojiCipher from "./screens/emoji-cipher/EmojiCipher";
@@ -26,7 +27,6 @@ const App = () => {
     }),
     [mode]
   );
-
   const theme = useMemo(
     () =>
       createTheme({
@@ -36,6 +36,19 @@ const App = () => {
       }),
     [mode]
   );
+  const isDarkTheme = useBrowserTheme();
+
+  // Set the default color theme based on browser's color theme
+  useEffect(() => {
+    // If the user has already picked the color theme return
+    if (localStorage.getItem("theme")) return;
+
+    if (isDarkTheme) {
+      setMode("dark");
+    } else {
+      setMode("light");
+    }
+  }, [isDarkTheme]);
 
   return (
     <ColorModeContext.Provider value={colorMode}>
