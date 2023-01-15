@@ -11,7 +11,7 @@ const VigenereCipher = () => {
   const [cryptoMode, setCryptoMode] = useState<string>(CryptoModes[0].value);
   const [secretKey, setSecretKey] = useState<string>("");
   const {
-    value,
+    value: inputValue,
     translatedValue,
     handleChange,
     handleSetTranslatedValue,
@@ -29,7 +29,7 @@ const VigenereCipher = () => {
       title={Pages.Ciphers[1].name}
       description="The Vigenère cipher is a method of encrypting alphabetic text by using a series of interwoven Caesar ciphers, based on the letters of a keyword."
       icon={Pages.Ciphers[1].icon}
-      inputValue={value}
+      inputValue={inputValue}
       outputValue={translatedValue}
       onInputChange={handleChange}
       onReset={() => {
@@ -38,7 +38,17 @@ const VigenereCipher = () => {
         handleReset();
       }}
     >
-      <CryptoMode value={cryptoMode} onChange={setCryptoMode} />
+      <CryptoMode
+        value={cryptoMode}
+        onChange={(value) => {
+          handleSetTranslatedValue(
+            value === "encrypt"
+              ? vigenereEncrypt({ key: secretKey, str: inputValue })
+              : vigenereDecrypt({ key: secretKey, str: inputValue })
+          );
+          setCryptoMode(value);
+        }}
+      />
       <TextField
         label="Secret key"
         variant="outlined"
@@ -48,8 +58,8 @@ const VigenereCipher = () => {
         onChange={(e) => {
           handleSetTranslatedValue(
             cryptoMode === "encrypt"
-              ? vigenereEncrypt({ key: e.currentTarget.value, str: value })
-              : vigenereDecrypt({ key: e.currentTarget.value, str: value })
+              ? vigenereEncrypt({ key: e.currentTarget.value, str: inputValue })
+              : vigenereDecrypt({ key: e.currentTarget.value, str: inputValue })
           );
           setSecretKey(e.currentTarget.value);
         }}
