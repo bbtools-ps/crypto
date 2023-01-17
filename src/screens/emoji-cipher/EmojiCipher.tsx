@@ -1,7 +1,7 @@
-import { Alert } from "@mui/material";
-import Box from "@mui/material/Box";
-import CircularProgress from "@mui/material/CircularProgress";
+import { Alert, Box, CircularProgress } from "@mui/material";
+import InputOutput from "../../common/components/InputOutput";
 import Layout from "../../common/components/Layout";
+import PageDescription from "../../common/components/PageDescription";
 import { Pages } from "../../common/constants/constants";
 import { emojiEncryptDecrypt } from "../../common/functions/utils";
 import useFetch from "../../common/hooks/useFetch";
@@ -32,15 +32,19 @@ const EmojiCipher = () => {
         </Box>
       )}
       {!isLoading && data && (
-        <Layout
-          title={Pages.Ciphers[2].name}
-          description="Encrypt/decrypt text using emojis."
-          icon={Pages.Ciphers[2].icon}
-          inputValue={value}
-          outputValue={translatedValue}
-          onInputChange={handleChange}
-          onReset={handleReset}
-        />
+        <Layout>
+          <PageDescription
+            title={Pages.Ciphers[2].name}
+            description="Encrypt/decrypt text using emojis."
+            icon={Pages.Ciphers[2].icon}
+          />
+          <InputOutput
+            inputValue={value}
+            outputValue={translatedValue}
+            onInputChange={handleChange}
+            onReset={handleReset}
+          />
+        </Layout>
       )}
       {!isLoading && error && (
         <Alert severity="error">Error! Can't fetch data.</Alert>
