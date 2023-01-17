@@ -1,13 +1,15 @@
-import MenuIcon from "@mui/icons-material/Menu";
-import VpnKeyIcon from "@mui/icons-material/VpnKey";
-import { AppBar, Toolbar } from "@mui/material";
-import Box from "@mui/material/Box";
-import Button from "@mui/material/Button";
-import IconButton from "@mui/material/IconButton";
-import Menu from "@mui/material/Menu";
-import MenuItem from "@mui/material/MenuItem";
-import Typography from "@mui/material/Typography";
-import { Container } from "@mui/system";
+import { Menu as MenuIcon, VpnKey as VpnKeyIcon } from "@mui/icons-material/";
+import {
+  AppBar,
+  Box,
+  Button,
+  Container,
+  IconButton,
+  Menu,
+  MenuItem,
+  Toolbar,
+  Typography,
+} from "@mui/material";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Pages } from "../constants/constants";
