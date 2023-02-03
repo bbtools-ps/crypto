@@ -3,7 +3,7 @@ import { useState } from "react";
 interface UseNumericInputProps {
   minValue?: number;
   maxValue?: number;
-  value?: number;
+  value: number;
   step?: number;
 }
 
@@ -79,8 +79,12 @@ const useNumericInput = ({
   const handleBlur = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
-    if (e.currentTarget.value === "" || e.currentTarget.value === "-")
-      setValue(minValue);
+    const value =
+      e.currentTarget.value === "" || e.currentTarget.value === "-"
+        ? minValue
+        : Number(e.currentTarget.value);
+    setValue(value);
+    return value;
   };
 
   const handleReset = (value?: number) => {

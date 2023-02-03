@@ -38,17 +38,10 @@ const CaesarCipher = () => {
         <TextField
           value={shiftValue}
           type={"text"}
-          onChange={(e) => {
-            shiftValueChangeHandler(e);
-            handleSetTranslatedValue(
-              caesarEncryptDecrypt(shiftValue, inputValue)
-            );
-          }}
+          onChange={shiftValueChangeHandler}
           onBlur={(e) => {
-            shiftValueBlurHandler(e);
-            handleSetTranslatedValue(
-              caesarEncryptDecrypt(shiftValue, inputValue)
-            );
+            const value = shiftValueBlurHandler(e);
+            handleSetTranslatedValue(caesarEncryptDecrypt(value, inputValue));
           }}
           inputProps={{
             onKeyDown: (e) => shiftValueKeyDownHandler(e),
