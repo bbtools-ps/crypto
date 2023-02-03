@@ -53,9 +53,9 @@ const CaesarCipher = () => {
           inputProps={{
             onKeyDown: (e) => shiftValueKeyDownHandler(e),
             onWheel: (e) => shiftValueWheelHandler(e),
+            inputMode: "numeric",
           }}
           fullWidth={!isDesktop}
-          inputMode="numeric"
           label="Shift value"
         />
       </Box>
