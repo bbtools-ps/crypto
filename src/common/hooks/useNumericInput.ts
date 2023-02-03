@@ -3,22 +3,31 @@ import { useState } from "react";
 interface UseNumericInputProps {
   minValue?: number;
   maxValue?: number;
-  defaultValue?: number;
+  value?: number;
   step?: number;
 }
 
 const useNumericInput = ({
   minValue = 0,
   maxValue = 100,
-  defaultValue = 1,
+  value: initialValue,
   step = 1,
 }: UseNumericInputProps) => {
-  const [value, setValue] = useState<string | number>(defaultValue);
+  const [value, setValue] = useState<string | number>(initialValue);
 
-  const keepInRange = (value: string, step?: number, direction?: string) => {
-    let currentValue = Number(value.replace(/[^\d]+/g, "")) || "";
+  const keepInRange = (
+    value: string,
+    step?: number,
+    direction?: "UP" | "DOWN"
+  ) => {
+    let currentValue = Number(value) ?? value;
 
-    if (typeof currentValue !== "number") return currentValue;
+    if (
+      typeof currentValue !== "number" ||
+      !Number.isFinite(currentValue) ||
+      value === ""
+    )
+      return value;
 
     if (step && direction) {
       switch (direction) {
@@ -33,11 +42,8 @@ const useNumericInput = ({
       }
     }
 
-    if (currentValue > maxValue) {
-      currentValue = maxValue;
-    } else if (currentValue < minValue) {
-      currentValue = minValue;
-    }
+    if (currentValue > maxValue) currentValue = maxValue;
+    if (currentValue < minValue) currentValue = minValue;
 
     return currentValue;
   };
@@ -45,15 +51,16 @@ const useNumericInput = ({
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
-    setValue(keepInRange(e.currentTarget.value));
+    if (/^-?\d*$/.test(e.currentTarget.value))
+      setValue(keepInRange(e.currentTarget.value));
   };
 
   const handleWheel = (
     e: React.WheelEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
-    e.deltaY < 0
-      ? setValue(keepInRange(e.currentTarget.value, step, "UP"))
-      : setValue(keepInRange(e.currentTarget.value, step, "DOWN"));
+    setValue(
+      keepInRange(e.currentTarget.value, step, e.deltaY < 0 ? "UP" : "DOWN")
+    );
   };
 
   const handleKeyDown = (
@@ -72,11 +79,12 @@ const useNumericInput = ({
   const handleBlur = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
-    setValue(keepInRange(e.currentTarget.value));
+    if (e.currentTarget.value === "" || e.currentTarget.value === "-")
+      setValue(minValue);
   };
 
   const handleReset = (value?: number) => {
-    setValue(value ?? "");
+    setValue(initialValue ?? value);
   };
 
   return {

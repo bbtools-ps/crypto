@@ -13,7 +13,9 @@ const CaesarCipher = () => {
     handleChange: shiftValueChangeHandler,
     handleBlur: shiftValueBlurHandler,
     handleReset: shiftValueResetHandler,
-  } = useNumericInput({ defaultValue: 13, maxValue: 26 });
+    handleKeyDown: shiftValueKeyDownHandler,
+    handleWheel: shiftValueWheelHandler,
+  } = useNumericInput({ value: 13, maxValue: 26, minValue: 0 });
   const {
     value: inputValue,
     translatedValue,
@@ -48,6 +50,10 @@ const CaesarCipher = () => {
               caesarEncryptDecrypt(shiftValue, inputValue)
             );
           }}
+          inputProps={{
+            onKeyDown: (e) => shiftValueKeyDownHandler(e),
+            onWheel: (e) => shiftValueWheelHandler(e),
+          }}
           fullWidth={!isDesktop}
           inputMode="numeric"
           label="Shift value"
@@ -59,7 +65,7 @@ const CaesarCipher = () => {
         onInputChange={inputValueChangeHandler}
         onReset={() => {
           inputValueResetHandler();
-          shiftValueResetHandler(13);
+          shiftValueResetHandler();
         }}
       />
     </Layout>
