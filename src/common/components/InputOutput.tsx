@@ -78,12 +78,16 @@ const InputOutput: React.FC<InputOutputProps> = ({
                   bgcolor: "action.hover",
                 }}
                 marginBottom={3}
+                className="outputText"
               />
               <Grid item alignSelf="center">
                 <Button
                   onClick={() => {
+                    const outputText =
+                      document.querySelector(".outputText")?.textContent;
+                    if (!outputText) return;
                     setCopyToClipboard(true);
-                    navigator.clipboard.writeText(outputValue);
+                    navigator.clipboard.writeText(outputText);
                   }}
                 >
                   {!copyToClipboard && (
