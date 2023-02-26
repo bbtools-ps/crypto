@@ -8,7 +8,7 @@ import {
   Typography,
   useMediaQuery,
 } from "@mui/material";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 
 interface InputOutputProps {
   inputValue: string;
@@ -26,7 +26,6 @@ const InputOutput: React.FC<InputOutputProps> = ({
   onReset,
 }) => {
   const [copyToClipboard, setCopyToClipboard] = useState<boolean>(false);
-  const outputRef = useRef<HTMLElement>();
   const isDesktop = useMediaQuery("(min-width:600px)");
 
   useEffect(() => {
@@ -79,13 +78,12 @@ const InputOutput: React.FC<InputOutputProps> = ({
                   bgcolor: "action.hover",
                 }}
                 marginBottom={3}
-                ref={outputRef}
               />
               <Grid item alignSelf="center">
                 <Button
                   onClick={() => {
                     setCopyToClipboard(true);
-                    navigator.clipboard.writeText(outputRef.current.innerText);
+                    navigator.clipboard.writeText(outputValue);
                   }}
                 >
                   {!copyToClipboard && (

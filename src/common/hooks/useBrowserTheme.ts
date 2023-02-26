@@ -6,7 +6,7 @@ const useBrowserTheme = () => {
   );
 
   useEffect(() => {
-    const handleThemeChange = (e: MediaQueryListEvent) => {
+    const handleThemeChange = (e: any) => {
       setIsDarkTheme(e.matches);
     };
     window
