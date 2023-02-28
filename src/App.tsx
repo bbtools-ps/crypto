@@ -78,7 +78,14 @@ const App = () => {
         >
           <MainMenu />
           <Routes>
-            <Route path="/" element={<EmojiCipher />} />
+            <Route
+              path="/"
+              element={
+                <Suspense fallback={<Loading />}>
+                  <EmojiCipher />
+                </Suspense>
+              }
+            />
             <Route
               path="/caesar-cipher"
               element={
