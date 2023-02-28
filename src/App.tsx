@@ -1,14 +1,25 @@
 import Box from "@mui/material/Box";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
-import { createContext, useEffect, useMemo, useState } from "react";
+import {
+  createContext,
+  lazy,
+  Suspense,
+  useEffect,
+  useMemo,
+  useState,
+} from "react";
 import { Route } from "react-router";
 import { Routes } from "react-router-dom";
+import Loading from "./common/components/Loading";
 import MainMenu from "./common/components/MainMenu";
 import useBrowserTheme from "./common/hooks/useBrowserTheme";
-import About from "./screens/about/About";
-import CaesarCipher from "./screens/caesar-cipher/CaesarCipher";
 import EmojiCipher from "./screens/emoji-cipher/EmojiCipher";
-import VigenereCipher from "./screens/vigenere-cipher/VigenereCipher";
+
+const About = lazy(() => import("./screens/about/About"));
+const CaesarCipher = lazy(() => import("./screens/caesar-cipher/CaesarCipher"));
+const VigenereCipher = lazy(
+  () => import("./screens/vigenere-cipher/VigenereCipher")
+);
 
 type ColorMode = "light" | "dark";
 
@@ -68,10 +79,38 @@ const App = () => {
           <MainMenu />
           <Routes>
             <Route path="/" element={<EmojiCipher />} />
-            <Route path="/caesar-cipher" element={<CaesarCipher />} />
-            <Route path="/vigenere-cipher" element={<VigenereCipher />} />
-            <Route path="/emoji-cipher" element={<EmojiCipher />} />
-            <Route path="/about" element={<About />} />
+            <Route
+              path="/caesar-cipher"
+              element={
+                <Suspense fallback={<Loading />}>
+                  <CaesarCipher />
+                </Suspense>
+              }
+            />
+            <Route
+              path="/vigenere-cipher"
+              element={
+                <Suspense fallback={<Loading />}>
+                  <VigenereCipher />
+                </Suspense>
+              }
+            />
+            <Route
+              path="/emoji-cipher"
+              element={
+                <Suspense fallback={<Loading />}>
+                  <EmojiCipher />
+                </Suspense>
+              }
+            />
+            <Route
+              path="/about"
+              element={
+                <Suspense fallback={<Loading />}>
+                  <About />
+                </Suspense>
+              }
+            />
           </Routes>
         </Box>
       </ThemeProvider>

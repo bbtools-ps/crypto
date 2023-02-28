@@ -1,6 +1,7 @@
-import { Alert, Box, CircularProgress } from "@mui/material";
+import Alert from "../../common/components/Alert";
 import InputOutput from "../../common/components/InputOutput";
 import Layout from "../../common/components/Layout";
+import Loading from "../../common/components/Loading";
 import PageDescription from "../../common/components/PageDescription";
 import { Pages } from "../../common/constants/constants";
 import { emojiEncryptDecrypt } from "../../common/functions/utils";
@@ -17,20 +18,9 @@ const EmojiCipher = () => {
 
   return (
     <>
-      {isLoading && !data && (
-        <Box
-          sx={{
-            display: "flex",
-            width: "100%",
-            height: "100%",
-            alignContent: "center",
-            alignItems: "center",
-            justifyContent: "center",
-          }}
-        >
-          <CircularProgress />
-        </Box>
-      )}
+      {/* Status: Pending */}
+      {isLoading && !data && <Loading />}
+      {/* Status: Fulfilled */}
       {!isLoading && data && (
         <Layout>
           <PageDescription
@@ -46,9 +36,8 @@ const EmojiCipher = () => {
           />
         </Layout>
       )}
-      {!isLoading && error && (
-        <Alert severity="error">Error! Can't fetch data.</Alert>
-      )}
+      {/* Status: Rejected */}
+      {!isLoading && error && <Alert message={error} />}
     </>
   );
 };
