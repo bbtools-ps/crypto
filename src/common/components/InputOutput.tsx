@@ -1,4 +1,3 @@
-import { ContentCopy as ContentCopyIcon } from "@mui/icons-material";
 import {
   Box,
   Button,
@@ -8,7 +7,7 @@ import {
   Typography,
   useMediaQuery,
 } from "@mui/material";
-import { useEffect, useState } from "react";
+import CopyButton from "./CopyButton";
 
 interface InputOutputProps {
   inputValue: string;
@@ -25,20 +24,7 @@ const InputOutput: React.FC<InputOutputProps> = ({
   onInputChange,
   onReset,
 }) => {
-  const [copyToClipboard, setCopyToClipboard] = useState<boolean>(false);
   const isDesktop = useMediaQuery("(min-width:600px)");
-
-  useEffect(() => {
-    const timeout = setTimeout(() => {
-      if (copyToClipboard) {
-        setCopyToClipboard(false);
-      }
-    }, 2000);
-
-    return () => {
-      clearTimeout(timeout);
-    };
-  }, [copyToClipboard]);
 
   return (
     <>
@@ -81,20 +67,14 @@ const InputOutput: React.FC<InputOutputProps> = ({
                 className="outputText"
               />
               <Grid item alignSelf="center">
-                <Button
+                <CopyButton
                   onClick={() => {
                     const outputText =
                       document.querySelector(".outputText")?.textContent;
                     if (!outputText) return;
-                    setCopyToClipboard(true);
                     navigator.clipboard.writeText(outputText);
                   }}
-                >
-                  {!copyToClipboard && (
-                    <ContentCopyIcon sx={{ marginRight: 1 }} />
-                  )}
-                  {!copyToClipboard ? "Copy to clipboard" : "Copied!"}
-                </Button>
+                />
               </Grid>
             </Grid>
           </Card>
