@@ -1,9 +1,9 @@
 import { Box, TextField, useMediaQuery } from "@mui/material";
 import { useState } from "react";
-import CryptoMode from "../../common/components/CryptoMode";
-import InputOutput from "../../common/components/InputOutput";
-import Layout from "../../common/components/Layout";
-import PageDescription from "../../common/components/PageDescription";
+import CryptoMode from "../../common/components/CryptoMode/CryptoMode";
+import InputOutput from "../../common/components/InputOutput/InputOutput";
+import Layout from "../../common/components/Layout/Layout";
+import PageDescription from "../../common/components/PageDescription/PageDescription";
 import { CryptoModes, Pages } from "../../common/constants/constants";
 import { vigenereDecrypt, vigenereEncrypt } from "../../common/functions/utils";
 import useInput from "../../common/hooks/useInput";

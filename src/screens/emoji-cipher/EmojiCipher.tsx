@@ -1,8 +1,8 @@
-import Alert from "../../common/components/Alert";
-import InputOutput from "../../common/components/InputOutput";
-import Layout from "../../common/components/Layout";
-import Loading from "../../common/components/Loading";
-import PageDescription from "../../common/components/PageDescription";
+import Alert from "../../common/components/Alert/Alert";
+import InputOutput from "../../common/components/InputOutput/InputOutput";
+import Layout from "../../common/components/Layout/Layout";
+import Loading from "../../common/components/Loading/Loading";
+import PageDescription from "../../common/components/PageDescription/PageDescription";
 import { Pages } from "../../common/constants/constants";
 import { emojiEncryptDecrypt } from "../../common/functions/utils";
 import useFetch from "../../common/hooks/useFetch";

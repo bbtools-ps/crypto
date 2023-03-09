@@ -1,5 +1,5 @@
 import { Typography } from "@mui/material";
-import Layout from "../../common/components/Layout";
+import Layout from "../../common/components/Layout/Layout";
 
 const About = () => {
   return (

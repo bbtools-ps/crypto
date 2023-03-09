@@ -7,7 +7,7 @@ import {
   Typography,
   useMediaQuery,
 } from "@mui/material";
-import CopyButton from "./CopyButton";
+import CopyButton from "../CopyButton/CopyButton";
 
 interface InputOutputProps {
   inputValue: string;

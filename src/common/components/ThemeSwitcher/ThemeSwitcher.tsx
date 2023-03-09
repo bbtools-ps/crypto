@@ -4,7 +4,7 @@ import {
 } from "@mui/icons-material";
 import { IconButton, useTheme } from "@mui/material";
 import { useContext } from "react";
-import { ColorModeContext } from "../../App";
+import { ColorModeContext } from "../../../App";
 
 const ThemeSwither = () => {
   const theme = useTheme();

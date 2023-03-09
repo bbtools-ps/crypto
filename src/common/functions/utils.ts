@@ -68,3 +68,8 @@ export const emojiEncryptDecrypt = (
     )
     .join("");
 };
+
+export const getCurrentYear = () => {
+  const date = new Date();
+  return date.getFullYear();
+};

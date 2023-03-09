@@ -12,8 +12,8 @@ import {
 } from "@mui/material";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Pages } from "../constants/constants";
-import ThemeSwither from "./ThemeSwitcher";
+import { Pages } from "../../constants/constants";
+import ThemeSwither from "../ThemeSwitcher/ThemeSwitcher";
 
 const MainMenu = () => {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);

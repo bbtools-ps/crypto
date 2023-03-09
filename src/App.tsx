@@ -10,8 +10,9 @@ import {
 } from "react";
 import { Route } from "react-router";
 import { Routes } from "react-router-dom";
-import Loading from "./common/components/Loading";
-import MainMenu from "./common/components/MainMenu";
+import Footer from "./common/components/Footer/Footer";
+import Loading from "./common/components/Loading/Loading";
+import MainMenu from "./common/components/MainMenu/MainMenu";
 import useBrowserTheme from "./common/hooks/useBrowserTheme";
 import EmojiCipher from "./screens/emoji-cipher/EmojiCipher";
 
@@ -68,12 +69,12 @@ const App = () => {
           sx={{
             display: "flex",
             width: "100%",
-            minHeight: "100%",
             flexDirection: "column",
             alignItems: "center",
             justifyContent: "flex-start",
             bgcolor: "background.default",
             color: "text.primary",
+            flex: 1,
           }}
         >
           <MainMenu />
@@ -120,6 +121,7 @@ const App = () => {
             />
           </Routes>
         </Box>
+        <Footer copyrightLabel="Bogdan Bogdanovic" />
       </ThemeProvider>
     </ColorModeContext.Provider>
   );
