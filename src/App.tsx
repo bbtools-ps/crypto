@@ -120,8 +120,8 @@ const App = () => {
               }
             />
           </Routes>
+          <Footer copyrightLabel="Bogdan Bogdanovic" />
         </Box>
-        <Footer copyrightLabel="Bogdan Bogdanovic" />
       </ThemeProvider>
     </ColorModeContext.Provider>
   );

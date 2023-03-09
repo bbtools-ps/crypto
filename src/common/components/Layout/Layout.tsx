@@ -1,4 +1,4 @@
-import { Grid } from "@mui/material";
+import { Box } from "@mui/material";
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -6,14 +6,19 @@ interface LayoutProps {
 
 const Layout: React.FC<LayoutProps> = ({ children }) => {
   return (
-    <Grid
-      direction="column"
-      rowSpacing={3}
-      container
-      sx={{ marginTop: 10, p: 3 }}
+    <Box
+      sx={{
+        marginTop: 10,
+        p: 3,
+        display: "flex",
+        flexDirection: "column",
+        gap: 3,
+        flex: 1,
+        width: "100%",
+      }}
     >
       {children}
-    </Grid>
+    </Box>
   );
 };
 
