@@ -18,8 +18,6 @@ This project uses:
 
 ## Project setup
 
-Recommended IDE is [VS Code](https://code.visualstudio.com/).
-
 To install all dependencies type following inside Terminal:
 
 `npm install`
@@ -38,4 +36,4 @@ To generate a new dictionary go to **emoji-dict** folder and run the "generateDi
 
 ## Live demo
 
-[Click here for the live demo](https://bbtools-ps.github.io/crypto/)
+[Click here for the live demo](https://bbtools-crypto.netlify.app/)
