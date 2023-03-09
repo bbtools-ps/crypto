@@ -80,7 +80,7 @@ const InputOutput: React.FC<InputOutputProps> = ({
           </Card>
         </Box>
       </Grid>
-      <Box justifyContent={"center"} display={"flex"} marginTop={2}>
+      <Box justifyContent="center" display="flex" marginTop={2}>
         <Button variant="outlined" onClick={onReset}>
           Reset
         </Button>
