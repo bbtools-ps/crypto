@@ -5,7 +5,7 @@ import {
   Radio,
   RadioGroup,
 } from "@mui/material";
-import { CryptoModes } from "../constants/constants";
+import { CryptoModes } from "../../constants/constants";
 
 interface CryptoModeProps {
   value: string;
