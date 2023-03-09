@@ -10,7 +10,9 @@ const Footer: React.FC<FooterProps> = ({ copyrightLabel }) => {
     <footer>
       <Typography sx={{ textAlign: "center", mb: 3, mt: 1.5 }}>
         © {getCurrentYear()}.
-        <Link href="https://bogdan-bogdanovic.com/">{copyrightLabel}</Link>
+        <Link href="https://bogdan-bogdanovic.com/" sx={{ ml: 1 }}>
+          {copyrightLabel}
+        </Link>
       </Typography>
     </footer>
   );
