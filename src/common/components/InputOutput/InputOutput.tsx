@@ -52,12 +52,19 @@ const InputOutput: React.FC<InputOutputProps> = ({
                 sx={{ fontSize: 14 }}
                 color="text.secondary"
                 gutterBottom
+                id="outputValue"
               >
                 Output
               </Typography>
               <Typography
                 variant="body1"
-                dangerouslySetInnerHTML={{ __html: outputValue }}
+                dangerouslySetInnerHTML={{
+                  __html: `<span
+                aria-labelledby="outputValue"
+                role="textbox"
+                aria-readonly
+              >${outputValue}</span>`,
+                }}
                 sx={{
                   minHeight: "3rem",
                   padding: ".5rem",
