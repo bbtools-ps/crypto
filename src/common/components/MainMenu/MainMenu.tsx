@@ -109,6 +109,7 @@ const MainMenu = () => {
               color="inherit"
               sx={{ display: "flex", gap: 1 }}
               onClick={() => navigate("/")}
+              aria-label="Logo"
             >
               <VpnKeyIcon />
               <Typography variant="h6">
