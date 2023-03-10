@@ -18,17 +18,21 @@ This project uses:
 
 ## Project setup
 
-To install all dependencies type following inside Terminal:
+To install all dependencies:
 
 `npm install`
 
-To run the project in development mode type:
+To start the project in the local development mode:
 
 `npm start`
 
-To make the build type:
+To make the build:
 
 `npm run build`
+
+To start the tests:
+
+`npm run test`
 
 ## Emoji cipher
 
