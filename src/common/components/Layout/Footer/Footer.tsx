@@ -1,5 +1,5 @@
 import { Link, Typography } from "@mui/material";
-import { getCurrentYear } from "../../../common/functions/utils";
+import { getCurrentYear } from "../../../functions/utils";
 
 interface FooterProps {
   copyrightLabel: string;

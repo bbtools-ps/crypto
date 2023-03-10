@@ -2,10 +2,11 @@ import { Box, ThemeProvider } from "@mui/material";
 import { lazy, Suspense } from "react";
 import { Route } from "react-router";
 import { Routes } from "react-router-dom";
-import Footer from "./common/components/Footer/Footer";
+import Footer from "./common/components/Layout/Footer/Footer";
 import Loading from "./common/components/Loading/Loading";
 import MainMenu from "./common/components/MainMenu/MainMenu";
 import useColorTheme, { ColorModeContext } from "./common/hooks/useColorTheme";
+import PageNotFound from "./screens/404/PageNotFound";
 import EmojiCipher from "./screens/emoji-cipher/EmojiCipher";
 
 const About = lazy(() => import("./screens/about/About"));
@@ -71,6 +72,14 @@ const App = () => {
               element={
                 <Suspense fallback={<Loading />}>
                   <About />
+                </Suspense>
+              }
+            />
+            <Route
+              path="*"
+              element={
+                <Suspense fallback={<Loading />}>
+                  <PageNotFound />
                 </Suspense>
               }
             />
