@@ -1,19 +1,11 @@
-import Box from "@mui/material/Box";
-import { createTheme, ThemeProvider } from "@mui/material/styles";
-import {
-  createContext,
-  lazy,
-  Suspense,
-  useEffect,
-  useMemo,
-  useState,
-} from "react";
+import { Box, ThemeProvider } from "@mui/material";
+import { lazy, Suspense } from "react";
 import { Route } from "react-router";
 import { Routes } from "react-router-dom";
 import Footer from "./common/components/Footer/Footer";
 import Loading from "./common/components/Loading/Loading";
 import MainMenu from "./common/components/MainMenu/MainMenu";
-import useBrowserTheme from "./common/hooks/useBrowserTheme";
+import useColorTheme, { ColorModeContext } from "./common/hooks/useColorTheme";
 import EmojiCipher from "./screens/emoji-cipher/EmojiCipher";
 
 const About = lazy(() => import("./screens/about/About"));
@@ -22,45 +14,8 @@ const VigenereCipher = lazy(
   () => import("./screens/vigenere-cipher/VigenereCipher")
 );
 
-type ColorMode = "light" | "dark";
-
-export const ColorModeContext = createContext({ toggleColorMode: () => {} });
-
 const App = () => {
-  const [mode, setMode] = useState<ColorMode>(
-    (localStorage.getItem("theme") as ColorMode) || "light"
-  );
-  const colorMode = useMemo(
-    () => ({
-      toggleColorMode: () => {
-        localStorage.setItem("theme", mode === "light" ? "dark" : "light");
-        setMode((prevMode) => (prevMode === "light" ? "dark" : "light"));
-      },
-    }),
-    [mode]
-  );
-  const theme = useMemo(
-    () =>
-      createTheme({
-        palette: {
-          mode,
-        },
-      }),
-    [mode]
-  );
-  const isDarkTheme = useBrowserTheme();
-
-  // Set the default color theme based on browser's color theme
-  useEffect(() => {
-    // If the user has already picked the color theme return
-    if (localStorage.getItem("theme")) return;
-
-    if (isDarkTheme) {
-      setMode("dark");
-    } else {
-      setMode("light");
-    }
-  }, [isDarkTheme]);
+  const { colorMode, theme } = useColorTheme();
 
   return (
     <ColorModeContext.Provider value={colorMode}>
