@@ -24,8 +24,8 @@ const EmojiCipher = () => {
       {!isLoading && data && (
         <Layout>
           <PageDescription
-            title={Pages.Ciphers[2].name}
-            description="Encrypt/decrypt text using emojis."
+            title={Pages.Ciphers[2].title}
+            description={Pages.Ciphers[2].description}
             icon={Pages.Ciphers[2].icon}
           />
           <InputOutput

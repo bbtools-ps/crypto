@@ -30,8 +30,8 @@ const VigenereCipher = () => {
   return (
     <Layout>
       <PageDescription
-        title={Pages.Ciphers[1].name}
-        description="The Vigenère cipher is a method of encrypting alphabetic text by using a series of interwoven Caesar ciphers, based on the letters of a keyword."
+        title={Pages.Ciphers[1].title}
+        description={Pages.Ciphers[1].description}
         icon={Pages.Ciphers[1].icon}
       />
       <Box sx={{ marginBottom: 2 }}>

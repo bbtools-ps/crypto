@@ -24,12 +24,12 @@ const CryptoMode: React.FC<CryptoModeProps> = ({ value, onChange }) => {
         }
         name="radio-buttons-group"
       >
-        {CryptoModes.map((item) => (
+        {CryptoModes.map((item, index) => (
           <FormControlLabel
-            key={item.name}
+            key={index}
             value={item.value}
             control={<Radio />}
-            label={item.name}
+            label={item.label}
           />
         ))}
       </RadioGroup>
