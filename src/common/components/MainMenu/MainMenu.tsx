@@ -18,7 +18,6 @@ import ThemeSwither from "../ThemeSwitcher/ThemeSwitcher";
 const MainMenu = () => {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const [anchorElNav, setAnchorElNav] = useState<null | HTMLElement>(null);
-  const open = Boolean(anchorEl);
   const navigate = useNavigate();
 
   const handleOpenDropdownMenu = (
@@ -46,7 +45,7 @@ const MainMenu = () => {
           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
             <IconButton
               size="large"
-              aria-label="account of current user"
+              aria-label="Main menu"
               aria-controls="menu-appbar"
               aria-haspopup="true"
               onClick={handleOpenNavMenu}
@@ -66,7 +65,7 @@ const MainMenu = () => {
                 vertical: "top",
                 horizontal: "left",
               }}
-              open={Boolean(anchorElNav)}
+              open={!!anchorElNav}
               onClose={handleCloseNavMenu}
               sx={{
                 display: { xs: "block", md: "none" },
@@ -74,13 +73,13 @@ const MainMenu = () => {
             >
               {Pages.Ciphers.map((item) => (
                 <MenuItem
-                  key={item.name}
+                  key={item.title}
                   onClick={() => {
                     navigate(item.path);
                     handleCloseNavMenu();
                   }}
                 >
-                  <Typography textAlign="center">{item.name}</Typography>
+                  <Typography textAlign="center">{item.title}</Typography>
                 </MenuItem>
               ))}
               {Object.keys(Pages)
@@ -121,9 +120,9 @@ const MainMenu = () => {
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
             <Button
               id="basic-button"
-              aria-controls={open ? "basic-menu" : undefined}
+              aria-controls={!!anchorEl ? "basic-menu" : undefined}
               aria-haspopup="true"
-              aria-expanded={open ? "true" : undefined}
+              aria-expanded={!!anchorEl ? "true" : undefined}
               onClick={handleOpenDropdownMenu}
               color="inherit"
             >
@@ -132,7 +131,7 @@ const MainMenu = () => {
             <Menu
               id="basic-menu"
               anchorEl={anchorEl}
-              open={open}
+              open={!!anchorEl}
               onClose={handleCloseDropdownMenu}
               MenuListProps={{
                 "aria-labelledby": "basic-button",
@@ -140,14 +139,14 @@ const MainMenu = () => {
             >
               {Pages.Ciphers.map((item) => (
                 <MenuItem
-                  key={item.name}
+                  key={item.title}
                   onClick={() => {
                     navigate(item.path);
                     handleCloseDropdownMenu();
                   }}
                   sx={{ display: "block" }}
                 >
-                  {item.name}
+                  {item.title}
                 </MenuItem>
               ))}
             </Menu>
