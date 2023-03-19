@@ -12,7 +12,7 @@ Ciphers:
 This project uses:
 
 - [React.js](https://reactjs.org/)
-- [Typescript](https://www.typescriptlang.org/)
+- [TypeScript](https://www.typescriptlang.org/)
 - [Node.js](https://nodejs.org/en/)
 - [MUI](https://mui.com/)
 
