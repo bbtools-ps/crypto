@@ -9,7 +9,9 @@ import { vigenereDecrypt, vigenereEncrypt } from "../../common/functions/utils";
 import useInput from "../../common/hooks/useInput";
 
 const VigenereCipher = () => {
-  const [cryptoMode, setCryptoMode] = useState<string>(CryptoModes[0].value);
+  const [cryptoMode, setCryptoMode] = useState<"encrypt" | "decrypt">(
+    CryptoModes[0].value
+  );
   const [secretKey, setSecretKey] = useState<string>("");
   const {
     value: inputValue,
@@ -20,8 +22,8 @@ const VigenereCipher = () => {
   } = useInput({
     encryptDecrypt: (value) =>
       cryptoMode === "encrypt"
-        ? vigenereEncrypt({ key: secretKey, str: value })
-        : vigenereDecrypt({ key: secretKey, str: value }),
+        ? vigenereEncrypt(secretKey, value)
+        : vigenereDecrypt(secretKey, value),
   });
   const isDesktop = useMediaQuery("(min-width:600px)");
 
@@ -38,8 +40,8 @@ const VigenereCipher = () => {
           onChange={(value) => {
             handleSetTranslatedValue(
               value === "encrypt"
-                ? vigenereEncrypt({ key: secretKey, str: inputValue })
-                : vigenereDecrypt({ key: secretKey, str: inputValue })
+                ? vigenereEncrypt(secretKey, inputValue)
+                : vigenereDecrypt(secretKey, inputValue)
             );
             setCryptoMode(value);
           }}
@@ -53,14 +55,8 @@ const VigenereCipher = () => {
           onChange={(e) => {
             handleSetTranslatedValue(
               cryptoMode === "encrypt"
-                ? vigenereEncrypt({
-                    key: e.currentTarget.value,
-                    str: inputValue,
-                  })
-                : vigenereDecrypt({
-                    key: e.currentTarget.value,
-                    str: inputValue,
-                  })
+                ? vigenereEncrypt(e.currentTarget.value, inputValue)
+                : vigenereDecrypt(e.currentTarget.value, inputValue)
             );
             setSecretKey(e.currentTarget.value);
           }}

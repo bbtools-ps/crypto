@@ -1,10 +1,5 @@
 import { Alphabet, LetterCombinationsAmount } from "../constants/constants";
 
-type VigenereProps = {
-  key: string;
-  str: string;
-};
-
 const generateVigenereDictionary = (key: string, str: string) => {
   if (!key) return Alphabet;
   const wholeKey = key
@@ -20,7 +15,7 @@ const generateVigenereDictionary = (key: string, str: string) => {
   return dictionary;
 };
 
-export const vigenereEncrypt = ({ key, str }: VigenereProps) => {
+export const vigenereEncrypt = (key: string, str: string) => {
   const dictionary = generateVigenereDictionary(key, str);
   let result = [];
   for (let i = 0; i < str.length; i++) {
@@ -29,7 +24,7 @@ export const vigenereEncrypt = ({ key, str }: VigenereProps) => {
   return result.join("");
 };
 
-export const vigenereDecrypt = ({ key, str }: VigenereProps) => {
+export const vigenereDecrypt = (key: string, str: string) => {
   const dictionary = generateVigenereDictionary(key, str);
   let result = [];
   for (let i = 0; i < str.length; i++) {
@@ -38,17 +33,13 @@ export const vigenereDecrypt = ({ key, str }: VigenereProps) => {
   return result.join("");
 };
 
-export const caesarEncryptDecrypt = (
-  shiftValue: string | number,
-  str: string
-) => {
-  const currentShifValue = typeof shiftValue === "string" ? 0 : shiftValue;
+export const caesarEncryptDecrypt = (shiftValue: number, str: string) => {
   const input = Alphabet;
   const output =
-    Alphabet.slice(currentShifValue, 26) +
-    Alphabet.slice(0, currentShifValue) +
-    Alphabet.slice(26 + currentShifValue, 52) +
-    Alphabet.slice(26, 52 - currentShifValue);
+    Alphabet.slice(shiftValue, 26) +
+    Alphabet.slice(0, shiftValue) +
+    Alphabet.slice(26 + shiftValue, 52) +
+    Alphabet.slice(26, 52 - shiftValue);
 
   return Array.from(str)
     .map((letter) => output[input.indexOf(letter)] || letter)

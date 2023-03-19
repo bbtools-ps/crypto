@@ -13,4 +13,4 @@ export const Pages = {
 export const CryptoModes = [
   { name: "Encrypt", value: "encrypt" },
   { name: "Decrypt", value: "decrypt" },
-];
+] as const;

@@ -23,7 +23,7 @@ const CaesarCipher = () => {
     handleSetTranslatedValue,
     handleReset: inputValueResetHandler,
   } = useInput({
-    encryptDecrypt: (value) => caesarEncryptDecrypt(shiftValue, value),
+    encryptDecrypt: (value) => caesarEncryptDecrypt(Number(shiftValue), value),
   });
   const isDesktop = useMediaQuery("(min-width:600px)");
 

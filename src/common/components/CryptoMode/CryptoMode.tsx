@@ -8,8 +8,8 @@ import {
 import { CryptoModes } from "../../constants/constants";
 
 interface CryptoModeProps {
-  value: string;
-  onChange: (payload: string) => void;
+  value: typeof CryptoModes[number]["value"];
+  onChange: (payload: typeof CryptoModes[number]["value"]) => void;
 }
 
 const CryptoMode: React.FC<CryptoModeProps> = ({ value, onChange }) => {
@@ -19,7 +19,9 @@ const CryptoMode: React.FC<CryptoModeProps> = ({ value, onChange }) => {
       <RadioGroup
         aria-labelledby="demo-radio-buttons-group-label"
         value={value}
-        onChange={(e) => onChange(e.currentTarget.value)}
+        onChange={(e) =>
+          onChange(e.currentTarget.value as typeof CryptoModes[number]["value"])
+        }
         name="radio-buttons-group"
       >
         {CryptoModes.map((item) => (
