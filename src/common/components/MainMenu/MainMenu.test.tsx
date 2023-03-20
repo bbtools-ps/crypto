@@ -5,6 +5,11 @@ import { describe, it } from "vitest";
 import MainMenu from "./MainMenu";
 
 describe("<MainMenu/>", () => {
+  afterEach(() => {
+    global.innerWidth = 1024;
+    global.dispatchEvent(new Event("resize"));
+  });
+
   it("should render the main menu with the Logo, Ciphers, About and the Theme switcher button", () => {
     render(<MainMenu />, { wrapper: BrowserRouter });
     const btnLogo = screen.getByRole("button", { name: /logo/i });
@@ -48,7 +53,8 @@ describe("<MainMenu/>", () => {
   });
 
   it("should open the appropriate options when clicking on the hamburger menu on smaller screens", async () => {
-    window.innerWidth = 375;
+    global.innerWidth = 375;
+    global.dispatchEvent(new Event("resize"));
     render(<MainMenu />, { wrapper: BrowserRouter });
 
     await userEvent.click(screen.getByRole("button", { name: /menu/i }));
@@ -68,7 +74,8 @@ describe("<MainMenu/>", () => {
   });
 
   it("should close the hamburger menu when user clicks on option", async () => {
-    window.innerWidth = 375;
+    global.innerWidth = 375;
+    global.dispatchEvent(new Event("resize"));
     render(<MainMenu />, { wrapper: BrowserRouter });
 
     await userEvent.click(screen.getByRole("button", { name: /menu/i }));
