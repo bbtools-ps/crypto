@@ -1,12 +1,12 @@
 import { Box, Typography } from "@mui/material";
 
-interface PageDescriptionProps {
+interface IPageDescriptionProps {
   title: string;
   description: string;
   icon: string;
 }
 
-const PageDescription: React.FC<PageDescriptionProps> = ({
+const PageDescription: React.FC<IPageDescriptionProps> = ({
   title,
   description,
   icon,

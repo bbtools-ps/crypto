@@ -9,7 +9,7 @@ import {
 } from "@mui/material";
 import CopyButton from "../CopyButton/CopyButton";
 
-interface InputOutputProps {
+interface IInputOutputProps {
   inputValue: string;
   outputValue: string;
   onInputChange: (
@@ -18,7 +18,7 @@ interface InputOutputProps {
   onReset: () => void;
 }
 
-const InputOutput: React.FC<InputOutputProps> = ({
+const InputOutput: React.FC<IInputOutputProps> = ({
   inputValue,
   outputValue,
   onInputChange,

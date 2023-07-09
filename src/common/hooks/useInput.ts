@@ -1,10 +1,10 @@
 import { useState } from "react";
 
-interface UseInputProps {
+interface IUseInput {
   encryptDecrypt: (payload: string) => string;
 }
 
-const useInput = ({ encryptDecrypt }: UseInputProps) => {
+const useInput = ({ encryptDecrypt }: IUseInput) => {
   const [value, setValue] = useState<string>("");
   const [translatedValue, setTranslatedValue] = useState<string>("");
 

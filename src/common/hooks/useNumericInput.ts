@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-interface UseNumericInputProps {
+interface IUseNumericInput {
   minValue?: number;
   maxValue?: number;
   value: number;
@@ -12,7 +12,7 @@ const useNumericInput = ({
   maxValue = 100,
   value: initialValue,
   step = 1,
-}: UseNumericInputProps) => {
+}: IUseNumericInput) => {
   const [value, setValue] = useState<string | number>(initialValue);
 
   const keepInRange = (

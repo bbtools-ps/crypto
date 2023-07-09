@@ -1,10 +1,10 @@
 import { Alert as AlertBox, Box } from "@mui/material";
 
-interface AlertProps {
+interface IAlertProps {
   message: string;
 }
 
-const Alert: React.FC<AlertProps> = ({ message }) => {
+const Alert: React.FC<IAlertProps> = ({ message }) => {
   return (
     <Box
       sx={{

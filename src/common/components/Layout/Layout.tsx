@@ -1,10 +1,10 @@
 import { Box } from "@mui/material";
 
-interface LayoutProps {
+interface ILayoutProps {
   children: React.ReactNode;
 }
 
-const Layout: React.FC<LayoutProps> = ({ children }) => {
+const Layout: React.FC<ILayoutProps> = ({ children }) => {
   return (
     <Box
       sx={{
