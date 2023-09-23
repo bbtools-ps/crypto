@@ -1,6 +1,5 @@
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import { describe, it } from "vitest";
 import { vigenereEncrypt } from "../../common/functions/utils";
 import VigenereCipher from "./VigenereCipher";
 
