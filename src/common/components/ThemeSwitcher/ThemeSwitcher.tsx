@@ -15,6 +15,7 @@ const ThemeSwither = () => {
       onClick={colorMode.toggleColorMode}
       color="inherit"
       aria-label="Theme switch"
+      data-cy="theme-switch-btn"
     >
       {theme.palette.mode === "dark" ? (
         <Brightness7Icon />

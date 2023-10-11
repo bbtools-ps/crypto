@@ -109,6 +109,7 @@ const MainMenu = () => {
               sx={{ display: "flex", gap: 1 }}
               onClick={() => navigate("/")}
               aria-label="Logo"
+              data-cy="home-btn"
             >
               <VpnKeyIcon />
               <Typography variant="h6">
@@ -125,6 +126,7 @@ const MainMenu = () => {
               aria-expanded={!!anchorEl ? "true" : undefined}
               onClick={handleOpenDropdownMenu}
               color="inherit"
+              data-cy="ciphers-dropdown-menu"
             >
               {Object.keys(Pages)[0]}
             </Button>
@@ -145,12 +147,17 @@ const MainMenu = () => {
                     handleCloseDropdownMenu();
                   }}
                   sx={{ display: "block" }}
+                  data-cy={`${item.title.toLowerCase()}-btn`}
                 >
                   {item.title}
                 </MenuItem>
               ))}
             </Menu>
-            <Button onClick={() => navigate("/about")} color="inherit">
+            <Button
+              onClick={() => navigate("/about")}
+              color="inherit"
+              data-cy="about-btn"
+            >
               {Object.keys(Pages)[1]}
             </Button>
           </Box>

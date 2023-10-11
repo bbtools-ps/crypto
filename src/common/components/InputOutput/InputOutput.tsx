@@ -7,6 +7,8 @@ import {
   Typography,
   useMediaQuery,
 } from "@mui/material";
+import { useRef } from "react";
+import useCopyText from "../../hooks/useCopyText";
 import CopyButton from "../CopyButton/CopyButton";
 
 interface IInputOutputProps {
@@ -25,6 +27,8 @@ const InputOutput: React.FC<IInputOutputProps> = ({
   onReset,
 }) => {
   const isDesktop = useMediaQuery("(min-width:600px)");
+  const ref = useRef<HTMLInputElement>(null);
+  const { handleCopy, isCopied, isError } = useCopyText({ elementRef: ref });
 
   return (
     <>
@@ -72,15 +76,13 @@ const InputOutput: React.FC<IInputOutputProps> = ({
                 }}
                 marginBottom={3}
                 className="outputText"
+                ref={ref}
               />
               <Grid item alignSelf="center">
                 <CopyButton
-                  onClick={() => {
-                    const outputText =
-                      document.querySelector(".outputText")?.textContent;
-                    if (!outputText) return;
-                    navigator.clipboard.writeText(outputText);
-                  }}
+                  onClick={handleCopy}
+                  isCopied={isCopied}
+                  isError={isError}
                 />
               </Grid>
             </Grid>
