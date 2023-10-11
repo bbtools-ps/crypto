@@ -28,7 +28,7 @@ const InputOutput: React.FC<IInputOutputProps> = ({
 }) => {
   const isDesktop = useMediaQuery("(min-width:600px)");
   const ref = useRef<HTMLInputElement>(null);
-  const { handleCopy, isCopied, isError } = useCopyText({ elementRef: ref });
+  const { handleCopy, isCopied } = useCopyText({ elementRef: ref });
 
   return (
     <>
@@ -79,11 +79,7 @@ const InputOutput: React.FC<IInputOutputProps> = ({
                 ref={ref}
               />
               <Grid item alignSelf="center">
-                <CopyButton
-                  onClick={handleCopy}
-                  isCopied={isCopied}
-                  isError={isError}
-                />
+                <CopyButton onClick={handleCopy} isCopied={isCopied} />
               </Grid>
             </Grid>
           </Card>
