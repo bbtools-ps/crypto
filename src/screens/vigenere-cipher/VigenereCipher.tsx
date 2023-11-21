@@ -2,7 +2,6 @@ import { Box, TextField, useMediaQuery } from "@mui/material";
 import { useState } from "react";
 import CryptoMode from "../../common/components/CryptoMode/CryptoMode";
 import InputOutput from "../../common/components/InputOutput/InputOutput";
-import Layout from "../../common/components/Layout/Layout";
 import PageDescription from "../../common/components/PageDescription/PageDescription";
 import { CryptoModes, Pages } from "../../common/constants/constants";
 import { vigenereDecrypt, vigenereEncrypt } from "../../common/functions/utils";
@@ -28,7 +27,7 @@ const VigenereCipher = () => {
   const isDesktop = useMediaQuery("(min-width:600px)");
 
   return (
-    <Layout>
+    <>
       <PageDescription
         title={Pages.Ciphers[1].title}
         description={Pages.Ciphers[1].description}
@@ -72,7 +71,7 @@ const VigenereCipher = () => {
           handleReset();
         }}
       />
-    </Layout>
+    </>
   );
 };
 

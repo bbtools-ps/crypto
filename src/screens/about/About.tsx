@@ -1,9 +1,8 @@
 import { Typography } from "@mui/material";
-import Layout from "../../common/components/Layout/Layout";
 
 const About = () => {
   return (
-    <Layout>
+    <>
       <Typography variant="h4" textAlign="center">
         <strong>About</strong>
       </Typography>
@@ -13,7 +12,7 @@ const About = () => {
         already invented so they are just implemented using modern JavaScript
         syntax.
       </Typography>
-    </Layout>
+    </>
   );
 };
 

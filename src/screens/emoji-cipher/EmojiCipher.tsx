@@ -1,6 +1,5 @@
 import Alert from "../../common/components/Alert/Alert";
 import InputOutput from "../../common/components/InputOutput/InputOutput";
-import Layout from "../../common/components/Layout/Layout";
 import Loading from "../../common/components/Loading/Loading";
 import PageDescription from "../../common/components/PageDescription/PageDescription";
 import { Pages } from "../../common/constants/constants";
@@ -22,7 +21,7 @@ const EmojiCipher = () => {
       {isLoading && !data && <Loading />}
       {/* Status: Fulfilled */}
       {!isLoading && data && (
-        <Layout>
+        <>
           <PageDescription
             title={Pages.Ciphers[2].title}
             description={Pages.Ciphers[2].description}
@@ -34,7 +33,7 @@ const EmojiCipher = () => {
             onInputChange={handleChange}
             onReset={handleReset}
           />
-        </Layout>
+        </>
       )}
       {/* Status: Rejected */}
       {!isLoading && error && <Alert message={error} />}

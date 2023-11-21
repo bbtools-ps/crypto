@@ -1,16 +1,16 @@
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { BrowserRouter } from "react-router-dom";
-import MainMenu from "./MainMenu";
+import HeaderNav from "./HeaderNav";
 
-describe("<MainMenu/>", () => {
+describe("<HeaderNav/>", () => {
   afterEach(() => {
     global.innerWidth = 1024;
     global.dispatchEvent(new Event("resize"));
   });
 
   it("should render the main menu with the Logo, Ciphers, About and the Theme switcher button", () => {
-    render(<MainMenu />, { wrapper: BrowserRouter });
+    render(<HeaderNav />, { wrapper: BrowserRouter });
     const btnLogo = screen.getByRole("button", { name: /logo/i });
     const btnCiphers = screen.getByRole("button", { name: /ciphers/i });
     const btnAbout = screen.getByRole("button", { name: /about/i });
@@ -26,7 +26,7 @@ describe("<MainMenu/>", () => {
   });
 
   it("should open the menu with options for picking the cipher when user clicks on 'Ciphers' button", async () => {
-    render(<MainMenu />, { wrapper: BrowserRouter });
+    render(<HeaderNav />, { wrapper: BrowserRouter });
 
     await userEvent.click(screen.getByRole("button", { name: /ciphers/i }));
 
@@ -43,7 +43,7 @@ describe("<MainMenu/>", () => {
   });
 
   it("should close the sub-menu when user clicks on option", async () => {
-    render(<MainMenu />, { wrapper: BrowserRouter });
+    render(<HeaderNav />, { wrapper: BrowserRouter });
 
     await userEvent.click(screen.getByRole("button", { name: /ciphers/i }));
     await userEvent.click(screen.getByRole("menuitem", { name: /caesar/i }));
@@ -54,7 +54,7 @@ describe("<MainMenu/>", () => {
   it("should open the appropriate options when clicking on the hamburger menu on smaller screens", async () => {
     global.innerWidth = 375;
     global.dispatchEvent(new Event("resize"));
-    render(<MainMenu />, { wrapper: BrowserRouter });
+    render(<HeaderNav />, { wrapper: BrowserRouter });
 
     await userEvent.click(screen.getByRole("button", { name: /menu/i }));
 
@@ -75,7 +75,7 @@ describe("<MainMenu/>", () => {
   it("should close the hamburger menu when user clicks on option", async () => {
     global.innerWidth = 375;
     global.dispatchEvent(new Event("resize"));
-    render(<MainMenu />, { wrapper: BrowserRouter });
+    render(<HeaderNav />, { wrapper: BrowserRouter });
 
     await userEvent.click(screen.getByRole("button", { name: /menu/i }));
     await userEvent.click(screen.getByRole("menuitem", { name: /caesar/i }));

@@ -7,14 +7,12 @@ interface IFooterProps {
 
 const Footer: React.FC<IFooterProps> = ({ copyrightLabel }) => {
   return (
-    <footer>
-      <Typography sx={{ textAlign: "center", mb: 3, mt: 1.5 }}>
-        © {getCurrentYear()}.
-        <Link href="https://bogdan-bogdanovic.com/" sx={{ ml: 1 }}>
-          {copyrightLabel}
-        </Link>
-      </Typography>
-    </footer>
+    <Typography>
+      © {getCurrentYear()}.
+      <Link href="https://bogdan-bogdanovic.com/" sx={{ ml: 1 }}>
+        {copyrightLabel}
+      </Link>
+    </Typography>
   );
 };
 

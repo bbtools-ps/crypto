@@ -1,6 +1,5 @@
 import { Box, TextField, useMediaQuery } from "@mui/material";
 import InputOutput from "../../common/components/InputOutput/InputOutput";
-import Layout from "../../common/components/Layout/Layout";
 import PageDescription from "../../common/components/PageDescription/PageDescription";
 import { Pages } from "../../common/constants/constants";
 import { caesarEncryptDecrypt } from "../../common/functions/utils";
@@ -28,7 +27,7 @@ const CaesarCipher = () => {
   const isDesktop = useMediaQuery("(min-width:600px)");
 
   return (
-    <Layout>
+    <>
       <PageDescription
         title={Pages.Ciphers[0].title}
         description={Pages.Ciphers[0].description}
@@ -61,7 +60,7 @@ const CaesarCipher = () => {
           shiftValueResetHandler();
         }}
       />
-    </Layout>
+    </>
   );
 };
 

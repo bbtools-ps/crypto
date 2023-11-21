@@ -1,7 +1,8 @@
 import { Box } from "@mui/material";
 import { Outlet } from "react-router-dom";
+import HeaderNav from "../common/components/HeaderNav/HeaderNav";
 import Footer from "../common/components/Layout/Footer/Footer";
-import MainMenu from "../common/components/MainMenu/MainMenu";
+import classes from "./RootLayot.module.css";
 
 const RootLayout = () => {
   return (
@@ -17,9 +18,13 @@ const RootLayout = () => {
         flex: 1,
       }}
     >
-      <MainMenu />
-      <Outlet />
-      <Footer copyrightLabel="Bogdan Bogdanovic" />
+      <HeaderNav />
+      <main className={classes["main-content"]}>
+        <Outlet />
+      </main>
+      <footer className={classes.footer}>
+        <Footer copyrightLabel="Bogdan Bogdanovic" />
+      </footer>
     </Box>
   );
 };

@@ -15,7 +15,7 @@ import { useNavigate } from "react-router-dom";
 import { Pages } from "../../constants/constants";
 import ThemeSwither from "../ThemeSwitcher/ThemeSwitcher";
 
-const MainMenu = () => {
+const HeaderNav = () => {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const [anchorElNav, setAnchorElNav] = useState<null | HTMLElement>(null);
   const navigate = useNavigate();
@@ -170,4 +170,4 @@ const MainMenu = () => {
   );
 };
 
-export default MainMenu;
+export default HeaderNav;
