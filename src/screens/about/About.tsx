@@ -1,6 +1,6 @@
 import { Typography } from "@mui/material";
 
-const About = () => {
+export function Component() {
   return (
     <>
       <Typography variant="h4" textAlign="center">
@@ -14,6 +14,6 @@ const About = () => {
       </Typography>
     </>
   );
-};
+}
 
-export default About;
+Component.displayName = "AboutPage";

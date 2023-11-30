@@ -7,7 +7,7 @@ import { CryptoModes, Pages } from "../../common/constants/constants";
 import { vigenereDecrypt, vigenereEncrypt } from "../../common/functions/utils";
 import useInput from "../../common/hooks/useInput";
 
-const VigenereCipher = () => {
+export function Component() {
   const [cryptoMode, setCryptoMode] = useState<"encrypt" | "decrypt">(
     CryptoModes[0].value
   );
@@ -73,6 +73,6 @@ const VigenereCipher = () => {
       />
     </>
   );
-};
+}
 
-export default VigenereCipher;
+Component.displayName = "VigenereCipherPage";

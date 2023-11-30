@@ -1,17 +1,8 @@
 import { ThemeProvider } from "@mui/material";
-import { Suspense, lazy } from "react";
 import { RouterProvider, createHashRouter } from "react-router-dom";
-import Loading from "./common/components/Loading/Loading";
 import useColorTheme, { ColorModeContext } from "./common/hooks/useColorTheme";
-import PageNotFound from "./screens/404/PageNotFound";
 import RootLayout from "./screens/RootLayout";
-import EmojiCipher from "./screens/emoji-cipher/EmojiCipher";
-
-const About = lazy(() => import("./screens/about/About"));
-const CaesarCipher = lazy(() => import("./screens/caesar-cipher/CaesarCipher"));
-const VigenereCipher = lazy(
-  () => import("./screens/vigenere-cipher/VigenereCipher")
-);
+import PageNotFound from "./screens/error-page";
 
 const router = createHashRouter([
   {
@@ -21,43 +12,23 @@ const router = createHashRouter([
     children: [
       {
         index: true,
-        element: (
-          <Suspense fallback={<Loading />}>
-            <EmojiCipher />
-          </Suspense>
-        ),
+        lazy: () => import("./screens/emoji-cipher/EmojiCipher"),
       },
       {
         path: "caesar-cipher",
-        element: (
-          <Suspense fallback={<Loading />}>
-            <CaesarCipher />
-          </Suspense>
-        ),
+        lazy: () => import("./screens/caesar-cipher/CaesarCipher"),
       },
       {
         path: "emoji-cipher",
-        element: (
-          <Suspense fallback={<Loading />}>
-            <EmojiCipher />
-          </Suspense>
-        ),
+        lazy: () => import("./screens/emoji-cipher/EmojiCipher"),
       },
       {
         path: "vigenere-cipher",
-        element: (
-          <Suspense fallback={<Loading />}>
-            <VigenereCipher />
-          </Suspense>
-        ),
+        lazy: () => import("./screens/vigenere-cipher/VigenereCipher"),
       },
       {
         path: "about",
-        element: (
-          <Suspense fallback={<Loading />}>
-            <About />
-          </Suspense>
-        ),
+        lazy: () => import("./screens/about/About"),
       },
     ],
   },

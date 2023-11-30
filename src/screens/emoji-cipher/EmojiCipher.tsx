@@ -7,7 +7,7 @@ import { emojiEncryptDecrypt } from "../../common/functions/utils";
 import useFetch from "../../common/hooks/useFetch";
 import useInput from "../../common/hooks/useInput";
 
-const EmojiCipher = () => {
+export function Component() {
   const { data, error, isLoading } = useFetch(
     "https://raw.githubusercontent.com/bbtools-ps/emoji-cipher/main/emoji-dict/dict.json"
   );
@@ -39,6 +39,6 @@ const EmojiCipher = () => {
       {!isLoading && error && <Alert message={error} />}
     </>
   );
-};
+}
 
-export default EmojiCipher;
+Component.displayName = "EmojiCipherPage";

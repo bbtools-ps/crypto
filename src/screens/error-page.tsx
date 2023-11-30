@@ -1,6 +1,9 @@
 import { Box, Link, Typography } from "@mui/material";
+import { isRouteErrorResponse, useRouteError } from "react-router-dom";
 
-const PageNotFound = () => {
+const ErrorPage = () => {
+  const error = useRouteError();
+
   return (
     <Box
       sx={{
@@ -17,7 +20,10 @@ const PageNotFound = () => {
           gap: 3,
         }}
       >
-        <Typography variant="h1">Page not found</Typography>
+        <Typography variant="h1">Error</Typography>
+        {isRouteErrorResponse(error) && (
+          <Typography>{`${error.status} - ${error.statusText}`}</Typography>
+        )}
         <Link href="/" fontSize="1.2rem">
           Go back home
         </Link>
@@ -26,4 +32,4 @@ const PageNotFound = () => {
   );
 };
 
-export default PageNotFound;
+export default ErrorPage;

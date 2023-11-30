@@ -6,7 +6,7 @@ import { caesarEncryptDecrypt } from "../../common/functions/utils";
 import useInput from "../../common/hooks/useInput";
 import useNumericInput from "../../common/hooks/useNumericInput";
 
-const CaesarCipher = () => {
+export function Component() {
   const {
     value: shiftValue,
     handleChange: shiftValueChangeHandler,
@@ -62,6 +62,6 @@ const CaesarCipher = () => {
       />
     </>
   );
-};
+}
 
-export default CaesarCipher;
+Component.displayName = "CaesarCipherPage";
