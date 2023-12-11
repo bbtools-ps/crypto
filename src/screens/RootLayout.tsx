@@ -1,7 +1,7 @@
+import HeaderNav from "@/common/components/HeaderNav/HeaderNav";
+import Footer from "@/common/components/Layout/Footer/Footer";
 import { Box } from "@mui/material";
 import { Outlet } from "react-router-dom";
-import HeaderNav from "../common/components/HeaderNav/HeaderNav";
-import Footer from "../common/components/Layout/Footer/Footer";
 import classes from "./RootLayot.module.css";
 
 const RootLayout = () => {

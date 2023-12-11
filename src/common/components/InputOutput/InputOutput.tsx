@@ -1,3 +1,4 @@
+import useCopyText from "@/common/hooks/useCopyText";
 import {
   Box,
   Button,
@@ -8,7 +9,6 @@ import {
   useMediaQuery,
 } from "@mui/material";
 import { useRef } from "react";
-import useCopyText from "../../hooks/useCopyText";
 import CopyButton from "../CopyButton/CopyButton";
 
 interface IInputOutputProps {

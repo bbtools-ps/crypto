@@ -1,3 +1,4 @@
+import { CryptoModes } from "@/common/constants/constants";
 import {
   FormControl,
   FormControlLabel,
@@ -5,7 +6,6 @@ import {
   Radio,
   RadioGroup,
 } from "@mui/material";
-import { CryptoModes } from "../../constants/constants";
 
 interface ICryptoModeProps {
   value: (typeof CryptoModes)[number]["value"];

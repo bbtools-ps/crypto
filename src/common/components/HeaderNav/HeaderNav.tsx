@@ -1,3 +1,4 @@
+import { Pages } from "@/common/constants/constants";
 import { Menu as MenuIcon, VpnKey as VpnKeyIcon } from "@mui/icons-material/";
 import {
   AppBar,
@@ -12,7 +13,6 @@ import {
 } from "@mui/material";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Pages } from "../../constants/constants";
 import ThemeSwither from "../ThemeSwitcher/ThemeSwitcher";
 
 const HeaderNav = () => {

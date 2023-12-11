@@ -2,13 +2,13 @@ import { ThemeProvider } from "@mui/material";
 import { RouterProvider, createHashRouter } from "react-router-dom";
 import useColorTheme, { ColorModeContext } from "./common/hooks/useColorTheme";
 import RootLayout from "./screens/RootLayout";
-import PageNotFound from "./screens/error-page";
+import ErrorPage from "./screens/error-page";
 
 const router = createHashRouter([
   {
     path: "/",
     element: <RootLayout />,
-    errorElement: <PageNotFound />,
+    errorElement: <ErrorPage />,
     children: [
       {
         index: true,

@@ -1,11 +1,11 @@
-import Alert from "../../common/components/Alert/Alert";
-import InputOutput from "../../common/components/InputOutput/InputOutput";
-import Loading from "../../common/components/Loading/Loading";
-import PageDescription from "../../common/components/PageDescription/PageDescription";
-import { Pages } from "../../common/constants/constants";
-import { emojiEncryptDecrypt } from "../../common/functions/utils";
-import useFetch from "../../common/hooks/useFetch";
-import useInput from "../../common/hooks/useInput";
+import Alert from "@/common/components/Alert/Alert";
+import InputOutput from "@/common/components/InputOutput/InputOutput";
+import Loading from "@/common/components/Loading/Loading";
+import PageDescription from "@/common/components/PageDescription/PageDescription";
+import { Pages } from "@/common/constants/constants";
+import { emojiEncryptDecrypt } from "@/common/functions/utils";
+import useFetch from "@/common/hooks/useFetch";
+import useInput from "@/common/hooks/useInput";
 
 export function Component() {
   const { data, error, isLoading } = useFetch(

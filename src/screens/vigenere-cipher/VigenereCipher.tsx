@@ -1,11 +1,11 @@
+import CryptoMode from "@/common/components/CryptoMode/CryptoMode";
+import InputOutput from "@/common/components/InputOutput/InputOutput";
+import PageDescription from "@/common/components/PageDescription/PageDescription";
+import { CryptoModes, Pages } from "@/common/constants/constants";
+import { vigenereDecrypt, vigenereEncrypt } from "@/common/functions/utils";
+import useInput from "@/common/hooks/useInput";
 import { Box, TextField, useMediaQuery } from "@mui/material";
 import { useState } from "react";
-import CryptoMode from "../../common/components/CryptoMode/CryptoMode";
-import InputOutput from "../../common/components/InputOutput/InputOutput";
-import PageDescription from "../../common/components/PageDescription/PageDescription";
-import { CryptoModes, Pages } from "../../common/constants/constants";
-import { vigenereDecrypt, vigenereEncrypt } from "../../common/functions/utils";
-import useInput from "../../common/hooks/useInput";
 
 export function Component() {
   const [cryptoMode, setCryptoMode] = useState<"encrypt" | "decrypt">(

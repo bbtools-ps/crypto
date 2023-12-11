@@ -1,5 +1,5 @@
+import { getCurrentYear } from "@/common/functions/utils";
 import { Link, Typography } from "@mui/material";
-import { getCurrentYear } from "../../../functions/utils";
 
 interface IFooterProps {
   copyrightLabel: string;

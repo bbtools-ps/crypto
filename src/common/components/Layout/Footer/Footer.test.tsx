@@ -1,6 +1,6 @@
 import { render, screen } from "@testing-library/react";
 import { vi } from "vitest";
-import Copyright from "./Footer";
+import Footer from "./Footer";
 
 describe("<Footer/>", () => {
   beforeEach(() => {
@@ -13,7 +13,7 @@ describe("<Footer/>", () => {
     const mockDate = new Date(2022, 0, 1);
     vi.setSystemTime(mockDate);
     const testLabel = "test";
-    render(<Copyright copyrightLabel={testLabel} />);
+    render(<Footer copyrightLabel={testLabel} />);
 
     expect(screen.getByText(testLabel)).toBeInTheDocument();
     expect(screen.getByText(/2022/i)).toBeInTheDocument();

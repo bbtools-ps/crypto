@@ -1,10 +1,10 @@
+import InputOutput from "@/common/components/InputOutput/InputOutput";
+import PageDescription from "@/common/components/PageDescription/PageDescription";
+import { Pages } from "@/common/constants/constants";
+import { caesarEncryptDecrypt } from "@/common/functions/utils";
+import useInput from "@/common/hooks/useInput";
+import useNumericInput from "@/common/hooks/useNumericInput";
 import { Box, TextField, useMediaQuery } from "@mui/material";
-import InputOutput from "../../common/components/InputOutput/InputOutput";
-import PageDescription from "../../common/components/PageDescription/PageDescription";
-import { Pages } from "../../common/constants/constants";
-import { caesarEncryptDecrypt } from "../../common/functions/utils";
-import useInput from "../../common/hooks/useInput";
-import useNumericInput from "../../common/hooks/useNumericInput";
 
 export function Component() {
   const {
