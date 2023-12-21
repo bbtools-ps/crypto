@@ -1,13 +1,13 @@
 import { createTheme, LinkProps } from "@mui/material";
 import { createContext, useEffect, useMemo, useState } from "react";
 import LinkBehavior from "../components/LinkBehavior/LinkBehavior";
-import useBrowserTheme from "./useBrowserTheme";
+import { useBrowserTheme } from "./useBrowserTheme";
 
 type IColorMode = "light" | "dark";
 
 export const ColorModeContext = createContext({ toggleColorMode: () => {} });
 
-const useColorTheme = () => {
+export const useColorTheme = () => {
   const [mode, setMode] = useState<IColorMode>(
     (localStorage.getItem("theme") as IColorMode) || "light"
   );
@@ -57,5 +57,3 @@ const useColorTheme = () => {
 
   return { colorMode, theme };
 };
-
-export default useColorTheme;

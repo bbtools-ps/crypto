@@ -1,4 +1,4 @@
-import { CryptoModes } from "@/common/constants/constants";
+import { CryptoModes } from "@/constants";
 import {
   FormControl,
   FormControlLabel,

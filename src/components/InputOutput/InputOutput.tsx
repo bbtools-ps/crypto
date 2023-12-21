@@ -1,4 +1,4 @@
-import useCopyText from "@/common/hooks/useCopyText";
+import { useCopyText } from "@/hooks";
 import {
   Box,
   Button,

@@ -1,4 +1,4 @@
-import { Pages } from "@/common/constants/constants";
+import { Pages } from "@/constants";
 import { Menu as MenuIcon, VpnKey as VpnKeyIcon } from "@mui/icons-material/";
 import {
   AppBar,

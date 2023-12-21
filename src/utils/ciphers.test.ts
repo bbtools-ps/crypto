@@ -1,28 +1,8 @@
-import { vi } from "vitest";
 import {
   caesarEncryptDecrypt,
-  getCurrentYear,
   vigenereDecrypt,
   vigenereEncrypt,
-} from "./utils";
-
-describe("getCurrentYear()", () => {
-  beforeEach(() => {
-    vi.useFakeTimers();
-  });
-  afterEach(() => {
-    vi.useRealTimers();
-  });
-
-  it("should return the current year", () => {
-    const mockDate = new Date(2022, 0, 1);
-    vi.setSystemTime(mockDate);
-
-    const result = getCurrentYear();
-
-    expect(result).toBe(2022);
-  });
-});
+} from "./ciphers";
 
 describe("caesarEncryptDecrypt()", () => {
   it("should translate the string using Caesar cipher", () => {

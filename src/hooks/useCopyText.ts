@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const useCopyText = ({
+export const useCopyText = ({
   delay = 2000,
   elementRef,
 }: {
@@ -24,5 +24,3 @@ const useCopyText = ({
 
   return { isCopied, handleCopy };
 };
-
-export default useCopyText;

@@ -7,7 +7,7 @@ interface IUseNumericInput {
   step?: number;
 }
 
-const useNumericInput = ({
+export const useNumericInput = ({
   minValue = 0,
   maxValue = 100,
   value: initialValue,
@@ -100,5 +100,3 @@ const useNumericInput = ({
     handleReset,
   };
 };
-
-export default useNumericInput;

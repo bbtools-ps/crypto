@@ -1,4 +1,4 @@
-import { Alphabet, LetterCombinationsAmount } from "../constants/constants";
+import { Alphabet, LetterCombinationsAmount } from "../constants";
 
 const generateVigenereDictionary = (key: string, str: string) => {
   if (!key) return Alphabet;
@@ -58,9 +58,4 @@ export const emojiEncryptDecrypt = (
         : data[letter] || letter
     )
     .join("");
-};
-
-export const getCurrentYear = () => {
-  const date = new Date();
-  return date.getFullYear();
 };

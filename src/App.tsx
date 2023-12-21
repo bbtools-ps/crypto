@@ -1,6 +1,6 @@
 import { ThemeProvider } from "@mui/material";
 import { RouterProvider, createHashRouter } from "react-router-dom";
-import useColorTheme, { ColorModeContext } from "./common/hooks/useColorTheme";
+import { ColorModeContext, useColorTheme } from "./hooks";
 import RootLayout from "./screens/RootLayout";
 import ErrorPage from "./screens/error-page";
 

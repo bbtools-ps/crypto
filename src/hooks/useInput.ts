@@ -4,7 +4,7 @@ interface IUseInput {
   encryptDecrypt: (payload: string) => string;
 }
 
-const useInput = ({ encryptDecrypt }: IUseInput) => {
+export const useInput = ({ encryptDecrypt }: IUseInput) => {
   const [value, setValue] = useState<string>("");
   const [translatedValue, setTranslatedValue] = useState<string>("");
 
@@ -32,5 +32,3 @@ const useInput = ({ encryptDecrypt }: IUseInput) => {
     handleReset,
   };
 };
-
-export default useInput;

@@ -1,9 +1,9 @@
-import CryptoMode from "@/common/components/CryptoMode/CryptoMode";
-import InputOutput from "@/common/components/InputOutput/InputOutput";
-import PageDescription from "@/common/components/PageDescription/PageDescription";
-import { CryptoModes, Pages } from "@/common/constants/constants";
-import { vigenereDecrypt, vigenereEncrypt } from "@/common/functions/utils";
-import useInput from "@/common/hooks/useInput";
+import CryptoMode from "@/components/CryptoMode/CryptoMode";
+import InputOutput from "@/components/InputOutput/InputOutput";
+import PageDescription from "@/components/PageDescription/PageDescription";
+import { CryptoModes, Pages } from "@/constants";
+import { useInput } from "@/hooks";
+import { vigenereDecrypt, vigenereEncrypt } from "@/utils";
 import { Box, TextField, useMediaQuery } from "@mui/material";
 import { useState } from "react";
 
