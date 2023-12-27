@@ -34,7 +34,7 @@ const router = createHashRouter([
   },
 ]);
 
-const App = () => {
+export default function App() {
   const { colorMode, theme } = useColorTheme();
 
   return (
@@ -44,6 +44,4 @@ const App = () => {
       </ThemeProvider>
     </ColorModeContext.Provider>
   );
-};
-
-export default App;
+}

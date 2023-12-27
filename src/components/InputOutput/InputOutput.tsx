@@ -20,12 +20,12 @@ interface IInputOutputProps {
   onReset: () => void;
 }
 
-const InputOutput: React.FC<IInputOutputProps> = ({
+export default function InputOutput({
   inputValue,
   outputValue,
   onInputChange,
   onReset,
-}) => {
+}: IInputOutputProps) {
   const isDesktop = useMediaQuery("(min-width:600px)");
   const ref = useRef<HTMLInputElement>(null);
   const { handleCopy, isCopied } = useCopyText({ elementRef: ref });
@@ -92,6 +92,4 @@ const InputOutput: React.FC<IInputOutputProps> = ({
       </Box>
     </>
   );
-};
-
-export default InputOutput;
+}

@@ -5,7 +5,7 @@ interface IFooterProps {
   copyrightLabel: string;
 }
 
-const Footer: React.FC<IFooterProps> = ({ copyrightLabel }) => {
+export default function Footer({ copyrightLabel }: IFooterProps) {
   return (
     <Typography>
       © {getCurrentYear()}.
@@ -14,6 +14,4 @@ const Footer: React.FC<IFooterProps> = ({ copyrightLabel }) => {
       </Link>
     </Typography>
   );
-};
-
-export default Footer;
+}

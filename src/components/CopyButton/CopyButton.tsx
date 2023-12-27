@@ -6,13 +6,11 @@ interface ICopyButtonProps {
   onClick: () => void;
 }
 
-const CopyButton: React.FC<ICopyButtonProps> = ({ isCopied, onClick }) => {
+export default function CopyButton({ isCopied, onClick }: ICopyButtonProps) {
   return (
     <Button onClick={onClick} disabled={isCopied}>
       {!isCopied && <ContentCopy sx={{ marginRight: 1 }} />}
       {!isCopied ? "Copy to clipboard" : "Copied!"}
     </Button>
   );
-};
-
-export default CopyButton;
+}

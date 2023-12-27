@@ -1,7 +1,7 @@
 import { Box, Link, Typography } from "@mui/material";
 import { isRouteErrorResponse, useRouteError } from "react-router-dom";
 
-const ErrorPage = () => {
+export default function ErrorPage() {
   const error = useRouteError();
 
   return (
@@ -30,6 +30,4 @@ const ErrorPage = () => {
       </Box>
     </Box>
   );
-};
-
-export default ErrorPage;
+}

@@ -15,7 +15,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import ThemeSwither from "../ThemeSwitcher/ThemeSwitcher";
 
-const HeaderNav = () => {
+export default function HeaderNav() {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const [anchorElNav, setAnchorElNav] = useState<null | HTMLElement>(null);
   const navigate = useNavigate();
@@ -168,6 +168,4 @@ const HeaderNav = () => {
       </Container>
     </AppBar>
   );
-};
-
-export default HeaderNav;
+}

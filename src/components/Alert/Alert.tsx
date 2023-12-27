@@ -4,7 +4,7 @@ interface IAlertProps {
   message: string;
 }
 
-const Alert: React.FC<IAlertProps> = ({ message }) => {
+export default function Alert({ message }: IAlertProps) {
   return (
     <Box
       sx={{
@@ -18,6 +18,4 @@ const Alert: React.FC<IAlertProps> = ({ message }) => {
       <AlertBox severity="error">{message}</AlertBox>
     </Box>
   );
-};
-
-export default Alert;
+}

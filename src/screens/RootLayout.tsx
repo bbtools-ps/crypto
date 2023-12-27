@@ -4,7 +4,7 @@ import { Box } from "@mui/material";
 import { Outlet } from "react-router-dom";
 import classes from "./RootLayot.module.css";
 
-const RootLayout = () => {
+export default function RootLayout() {
   return (
     <Box
       sx={{
@@ -27,6 +27,4 @@ const RootLayout = () => {
       </footer>
     </Box>
   );
-};
-
-export default RootLayout;
+}

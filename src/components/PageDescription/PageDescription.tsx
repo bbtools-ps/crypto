@@ -6,11 +6,11 @@ interface IPageDescriptionProps {
   icon: string;
 }
 
-const PageDescription: React.FC<IPageDescriptionProps> = ({
+export default function PageDescription({
   title,
   description,
   icon,
-}) => {
+}: IPageDescriptionProps) {
   return (
     <Box marginBottom={3} alignSelf="center">
       <Typography variant="h4" textAlign="center">
@@ -21,6 +21,4 @@ const PageDescription: React.FC<IPageDescriptionProps> = ({
       </Typography>
     </Box>
   );
-};
-
-export default PageDescription;
+}

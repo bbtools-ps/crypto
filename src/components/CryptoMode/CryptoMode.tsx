@@ -12,7 +12,7 @@ interface ICryptoModeProps {
   onChange: (payload: (typeof CryptoModes)[number]["value"]) => void;
 }
 
-const CryptoMode: React.FC<ICryptoModeProps> = ({ value, onChange }) => {
+export default function CryptoMode({ value, onChange }: ICryptoModeProps) {
   return (
     <FormControl>
       <FormLabel id="demo-radio-buttons-group-label">Mode</FormLabel>
@@ -37,6 +37,4 @@ const CryptoMode: React.FC<ICryptoModeProps> = ({ value, onChange }) => {
       </RadioGroup>
     </FormControl>
   );
-};
-
-export default CryptoMode;
+}
