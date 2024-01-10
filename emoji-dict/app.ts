@@ -1,5 +1,5 @@
 import { readFile, writeFile } from "fs/promises";
-import { ExtendedAlphabet, LetterCombinationsAmount } from "../src/constants";
+import { ExtendedAlphabet, LetterCombinationsAmount } from "./constants";
 
 /**NodeJS app for generating new dictionary
  * Steps:

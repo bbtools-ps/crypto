@@ -57,7 +57,7 @@ var __spreadArray = (this && this.__spreadArray) || function (to, from, pack) {
 };
 exports.__esModule = true;
 var promises_1 = require("fs/promises");
-var constants_1 = require("../src/constants");
+var constants_1 = require("./constants");
 /**NodeJS app for generating new dictionary
  * Steps:
  * 1. Read "full-emoji-list.json" file.
