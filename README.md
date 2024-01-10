@@ -36,7 +36,9 @@ To start the tests:
 
 ## Emoji cipher
 
-To generate a new dictionary go to **emoji-dict** folder and run the "generateDictionary" file using Node.
+To generate a new dictionary:
+
+`npm run generate`
 
 ## Live demo
 
