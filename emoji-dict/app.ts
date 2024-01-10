@@ -20,66 +20,73 @@ import { ExtendedAlphabet, LetterCombinationsAmount } from "./constants";
     return randomList.splice(0, amount);
   };
 
-  const chunkMaxLength = <T>(
-    arr: T[],
-    chunkSize: number,
-    maxLength: number
-  ) => {
-    return Array.from({ length: maxLength }, () => arr.splice(0, chunkSize));
-  };
+  const chunkMaxLength = <T>(arr: T[], chunkSize: number, maxLength: number) =>
+    Array.from({ length: maxLength }, () => arr.splice(0, chunkSize));
 
-  const response = await readFile("./full-emoji-list.json", "utf8");
-  const newData = Object.entries(JSON.parse(response)).flat(99) as unknown as {
-    code: string;
-    emoji: string;
-  }[];
+  try {
+    const response = await readFile("./full-emoji-list.json", "utf8");
+    const newData = Object.entries(JSON.parse(response)).flat(
+      99
+    ) as unknown as {
+      code: string;
+      emoji: string;
+    }[];
 
-  const emojis = newData
-    .filter((item) => {
-      return item.code && item.code.split(" ").length === 1 && item.emoji;
-    })
-    .map(({ code, emoji }) => {
-      const firstCodeItem = code.split(" ")[0];
-      return {
-        code: `&#x${firstCodeItem.replace("U+", "")};`,
-        emoji,
-      };
-    });
+    const emojis = newData
+      .filter((item) => {
+        return item.code && item.code.split(" ").length === 1 && item.emoji;
+      })
+      .map(({ code, emoji }) => {
+        const firstCodeItem = code.split(" ")[0];
+        return {
+          code: `&#x${firstCodeItem.replace("U+", "")};`,
+          emoji,
+        };
+      });
 
-  const randomEmojis = getRandomItems(
-    emojis,
-    ExtendedAlphabet.length * LetterCombinationsAmount
-  );
-
-  const emojisAlphabet = chunkMaxLength(
-    [...randomEmojis],
-    LetterCombinationsAmount,
-    ExtendedAlphabet.length
-  )
-    .filter((item) => item.length)
-    .map((item, index) =>
-      item.map((item) => ({ ...item, value: ExtendedAlphabet[index] }))
+    const randomEmojis = getRandomItems(
+      emojis,
+      ExtendedAlphabet.length * LetterCombinationsAmount
     );
 
-  // Check if both arrays (emojis + alphabet) have the same length before continuing
-  if (ExtendedAlphabet.length !== emojisAlphabet.length) {
-    console.log("Array lengths (emojis + alphabet) must be the same!");
-    return;
+    const emojisAlphabet = chunkMaxLength(
+      [...randomEmojis],
+      LetterCombinationsAmount,
+      ExtendedAlphabet.length
+    )
+      .filter((item) => item.length)
+      .map((item, index) =>
+        item.map((item) => ({ ...item, value: ExtendedAlphabet[index] }))
+      );
+
+    // Check if both arrays (emojis + alphabet) have the same length before continuing
+    if (ExtendedAlphabet.length !== emojisAlphabet.length) {
+      console.log("Array lengths (emojis + alphabet) must be the same!");
+      return;
+    }
+
+    const alphabetEmojisArr = Array.from(ExtendedAlphabet).map(
+      (item, index) => ({
+        [item]: [
+          ...[...randomEmojis].splice(
+            index * LetterCombinationsAmount,
+            LetterCombinationsAmount
+          ),
+        ],
+      })
+    );
+    const emojisAlphabetArr = emojisAlphabet
+      .map((item) => item.map(({ emoji, value }) => ({ [emoji]: value })))
+      .flat(99);
+
+    const newObj = Object.assign(
+      {},
+      ...alphabetEmojisArr,
+      ...emojisAlphabetArr
+    );
+
+    await writeFile("./dict.json", JSON.stringify(newObj));
+  } catch (error) {
+    console.error(error);
   }
-
-  const alphabetEmojisArr = Array.from(ExtendedAlphabet).map((item, index) => ({
-    [item]: [
-      ...[...randomEmojis].splice(
-        index * LetterCombinationsAmount,
-        LetterCombinationsAmount
-      ),
-    ],
-  }));
-  const emojisAlphabetArr = emojisAlphabet
-    .map((item) => item.map(({ emoji, value }) => ({ [emoji]: value })))
-    .flat(99);
-
-  const newObj = Object.assign({}, ...alphabetEmojisArr, ...emojisAlphabetArr);
-
-  await writeFile("./dict.json", JSON.stringify(newObj));
 })();
