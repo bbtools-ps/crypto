@@ -15,7 +15,8 @@
     "start": "vite",
     "build": "tsc && vitest run --reporter=verbose && vite build",
     "preview": "vite preview",
-    "test": "vitest --reporter=verbose"
+    "test": "vitest --reporter=verbose",
+    "generate": "cd emoji-dict && npx tsc app.ts && node app.js"
   },
   "browserslist": {
     "production": [

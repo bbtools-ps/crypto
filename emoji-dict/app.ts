@@ -1,8 +1,5 @@
-import {
-  ExtendedAlphabet,
-  LetterCombinationsAmount,
-} from "../src/common/constants/constants";
-const { readFile, writeFile } = require("fs/promises");
+import { readFile, writeFile } from "fs/promises";
+import { ExtendedAlphabet, LetterCombinationsAmount } from "../src/constants";
 
 /**NodeJS app for generating new dictionary
  * Steps:
@@ -14,7 +11,7 @@ const { readFile, writeFile } = require("fs/promises");
  * "🇬🇮":"A","🎼":"A","🥄":"A","📡":"A","🌲":"A"
  */
 (async function () {
-  const getRandomItems = (arr, amount) => {
+  const getRandomItems = <T>(arr: T[], amount: number) => {
     const randomList = [...arr];
     for (let i = randomList.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
@@ -23,12 +20,19 @@ const { readFile, writeFile } = require("fs/promises");
     return randomList.splice(0, amount);
   };
 
-  const chunkMaxLength = (arr, chunkSize, maxLength) => {
+  const chunkMaxLength = <T>(
+    arr: T[],
+    chunkSize: number,
+    maxLength: number
+  ) => {
     return Array.from({ length: maxLength }, () => arr.splice(0, chunkSize));
   };
 
   const response = await readFile("./full-emoji-list.json", "utf8");
-  const newData = Object.entries(JSON.parse(response)).flat(99);
+  const newData = Object.entries(JSON.parse(response)).flat(99) as unknown as {
+    code: string;
+    emoji: string;
+  }[];
 
   const emojis = newData
     .filter((item) => {
@@ -63,7 +67,7 @@ const { readFile, writeFile } = require("fs/promises");
     return;
   }
 
-  const alphabetEmojisArr = [...ExtendedAlphabet].map((item, index) => ({
+  const alphabetEmojisArr = Array.from(ExtendedAlphabet).map((item, index) => ({
     [item]: [
       ...[...randomEmojis].splice(
         index * LetterCombinationsAmount,
@@ -72,8 +76,8 @@ const { readFile, writeFile } = require("fs/promises");
     ],
   }));
   const emojisAlphabetArr = emojisAlphabet
-    .flat(99)
-    .map(({ emoji, value }) => ({ [emoji]: value }));
+    .map((item) => item.map(({ emoji, value }) => ({ [emoji]: value })))
+    .flat(99);
 
   const newObj = Object.assign({}, ...alphabetEmojisArr, ...emojisAlphabetArr);
 
