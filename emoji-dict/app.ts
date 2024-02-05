@@ -1,5 +1,5 @@
 import { readFile, writeFile } from "fs/promises";
-import { ExtendedAlphabet, LetterCombinationsAmount } from "./constants";
+import { EXTENDED_ALPHABET, LETTER_COMBINATIONS_AMOUNT } from "./constants";
 
 /**NodeJS app for generating new dictionary
  * Steps:
@@ -46,31 +46,31 @@ import { ExtendedAlphabet, LetterCombinationsAmount } from "./constants";
 
     const randomEmojis = getRandomItems(
       emojis,
-      ExtendedAlphabet.length * LetterCombinationsAmount
+      EXTENDED_ALPHABET.length * LETTER_COMBINATIONS_AMOUNT
     );
 
     const emojisAlphabet = chunkMaxLength(
       [...randomEmojis],
-      LetterCombinationsAmount,
-      ExtendedAlphabet.length
+      LETTER_COMBINATIONS_AMOUNT,
+      EXTENDED_ALPHABET.length
     )
       .filter((item) => item.length)
       .map((item, index) =>
-        item.map((item) => ({ ...item, value: ExtendedAlphabet[index] }))
+        item.map((item) => ({ ...item, value: EXTENDED_ALPHABET[index] }))
       );
 
     // Check if both arrays (emojis + alphabet) have the same length before continuing
-    if (ExtendedAlphabet.length !== emojisAlphabet.length) {
+    if (EXTENDED_ALPHABET.length !== emojisAlphabet.length) {
       console.log("Array lengths (emojis + alphabet) must be the same!");
       return;
     }
 
-    const alphabetEmojisArr = Array.from(ExtendedAlphabet).map(
+    const alphabetEmojisArr = Array.from(EXTENDED_ALPHABET).map(
       (item, index) => ({
         [item]: [
           ...[...randomEmojis].splice(
-            index * LetterCombinationsAmount,
-            LetterCombinationsAmount
+            index * LETTER_COMBINATIONS_AMOUNT,
+            LETTER_COMBINATIONS_AMOUNT
           ),
         ],
       })

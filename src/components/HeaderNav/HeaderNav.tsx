@@ -1,4 +1,4 @@
-import { Pages } from "@/constants";
+import { PAGES } from "@/constants";
 import { Menu as MenuIcon, VpnKey as VpnKeyIcon } from "@mui/icons-material/";
 import {
   AppBar,
@@ -71,7 +71,7 @@ export default function HeaderNav() {
                 display: { xs: "block", md: "none" },
               }}
             >
-              {Pages.Ciphers.map((item) => (
+              {PAGES.ciphers.map((item) => (
                 <MenuItem
                   key={item.title}
                   onClick={() => {
@@ -82,7 +82,7 @@ export default function HeaderNav() {
                   <Typography textAlign="center">{item.title}</Typography>
                 </MenuItem>
               ))}
-              {Object.keys(Pages)
+              {Object.keys(PAGES)
                 .filter((item) => item.toLowerCase() !== "ciphers")
                 .map((page) => (
                   <MenuItem
@@ -128,7 +128,7 @@ export default function HeaderNav() {
               color="inherit"
               data-cy="ciphers-dropdown-menu"
             >
-              {Object.keys(Pages)[0]}
+              {Object.keys(PAGES)[0]}
             </Button>
             <Menu
               id="basic-menu"
@@ -139,7 +139,7 @@ export default function HeaderNav() {
                 "aria-labelledby": "basic-button",
               }}
             >
-              {Pages.Ciphers.map((item) => (
+              {PAGES.ciphers.map((item) => (
                 <MenuItem
                   key={item.title}
                   onClick={() => {
@@ -158,7 +158,7 @@ export default function HeaderNav() {
               color="inherit"
               data-cy="about-btn"
             >
-              {Object.keys(Pages)[1]}
+              {Object.keys(PAGES)[1]}
             </Button>
           </Box>
           <Box sx={{ flexGrow: 0 }}>

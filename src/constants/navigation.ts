@@ -1,5 +1,5 @@
-export const Pages = {
-  Ciphers: [
+export const PAGES = {
+  ciphers: [
     {
       title: "Caesar",
       path: "/caesar-cipher",
@@ -20,5 +20,5 @@ export const Pages = {
       description: "Encrypt/decrypt text using emojis.",
     },
   ],
-  About: { path: "/about" },
+  about: { path: "/about" },
 };

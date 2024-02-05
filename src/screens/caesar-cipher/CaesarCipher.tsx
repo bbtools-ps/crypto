@@ -1,6 +1,6 @@
 import InputOutput from "@/components/InputOutput/InputOutput";
 import PageDescription from "@/components/PageDescription/PageDescription";
-import { Pages } from "@/constants";
+import { PAGES } from "@/constants";
 import { useInput, useNumericInput } from "@/hooks";
 import { caesarEncryptDecrypt } from "@/utils";
 import { Box, TextField, useMediaQuery } from "@mui/material";
@@ -28,9 +28,9 @@ export function Component() {
   return (
     <>
       <PageDescription
-        title={Pages.Ciphers[0].title}
-        description={Pages.Ciphers[0].description}
-        icon={Pages.Ciphers[0].icon}
+        title={PAGES.ciphers[0].title}
+        description={PAGES.ciphers[0].description}
+        icon={PAGES.ciphers[0].icon}
       />
       <Box sx={{ marginBottom: 2 }}>
         <TextField

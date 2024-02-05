@@ -11,7 +11,7 @@ import {
 import { useRef } from "react";
 import CopyButton from "../CopyButton/CopyButton";
 
-interface IInputOutputProps {
+interface IProps {
   inputValue: string;
   outputValue: string;
   onInputChange: (
@@ -25,7 +25,7 @@ export default function InputOutput({
   outputValue,
   onInputChange,
   onReset,
-}: IInputOutputProps) {
+}: IProps) {
   const isDesktop = useMediaQuery("(min-width:600px)");
   const ref = useRef<HTMLInputElement>(null);
   const { handleCopy, isCopied } = useCopyText({ elementRef: ref });

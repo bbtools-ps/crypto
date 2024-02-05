@@ -1,10 +1,10 @@
 import { Alert as AlertBox, Box } from "@mui/material";
 
-interface IAlertProps {
+interface IProps {
   message: string;
 }
 
-export default function Alert({ message }: IAlertProps) {
+export default function Alert({ message }: IProps) {
   return (
     <Box
       sx={{

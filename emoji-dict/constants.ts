@@ -1,4 +1,4 @@
-const OtherCharacters = ",.!? ()0123456789";
-export const Alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
-export const ExtendedAlphabet = Alphabet + OtherCharacters;
-export const LetterCombinationsAmount = 5;
+const OTHER_CHARACTERS = ",.!? ()0123456789";
+export const ALPHABET = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+export const EXTENDED_ALPHABET = ALPHABET + OTHER_CHARACTERS;
+export const LETTER_COMBINATIONS_AMOUNT = 5;
