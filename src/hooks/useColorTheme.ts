@@ -3,13 +3,13 @@ import { createContext, useEffect, useMemo, useState } from "react";
 import LinkBehavior from "../components/LinkBehavior/LinkBehavior";
 import { useBrowserTheme } from "./useBrowserTheme";
 
-type IColorMode = "light" | "dark";
+type ColorMode = "light" | "dark";
 
 export const ColorModeContext = createContext({ toggleColorMode: () => {} });
 
 export const useColorTheme = () => {
-  const [mode, setMode] = useState<IColorMode>(
-    (localStorage.getItem("theme") as IColorMode) || "light"
+  const [mode, setMode] = useState<ColorMode>(
+    (localStorage.getItem("theme") as ColorMode) || "light"
   );
   const colorMode = useMemo(
     () => ({
