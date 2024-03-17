@@ -13,7 +13,7 @@ import {
 } from "@mui/material";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import ThemeSwither from "../ThemeSwitcher/ThemeSwitcher";
+import ThemeSwitcher from "../ThemeSwitcher/ThemeSwitcher";
 
 export default function HeaderNav() {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
@@ -162,7 +162,7 @@ export default function HeaderNav() {
             </Button>
           </Box>
           <Box sx={{ flexGrow: 0 }}>
-            <ThemeSwither />
+            <ThemeSwitcher />
           </Box>
         </Toolbar>
       </Container>
