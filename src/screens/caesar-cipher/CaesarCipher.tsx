@@ -23,7 +23,7 @@ export function Component() {
   } = useInput({
     encryptDecrypt: (value) => caesarEncryptDecrypt(Number(shiftValue), value),
   });
-  const isDesktop = useMediaQuery("(min-width:600px)");
+  const isDesktop = useMediaQuery("(min-width:37.5em)");
 
   return (
     <>

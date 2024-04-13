@@ -26,7 +26,7 @@ export default function InputOutput({
   onInputChange,
   onReset,
 }: IProps) {
-  const isDesktop = useMediaQuery("(min-width:600px)");
+  const isDesktop = useMediaQuery("(min-width:37.5em)");
   const ref = useRef<HTMLInputElement>(null);
   const { handleCopy, isCopied } = useCopyText({ elementRef: ref });
 

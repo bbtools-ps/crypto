@@ -24,7 +24,7 @@ export function Component() {
         ? vigenereEncrypt(secretKey, value)
         : vigenereDecrypt(secretKey, value),
   });
-  const isDesktop = useMediaQuery("(min-width:600px)");
+  const isDesktop = useMediaQuery("(min-width:37.5em)");
 
   return (
     <>
