@@ -8,7 +8,7 @@ interface IProps {
 export default function Footer({ copyrightLabel }: IProps) {
   return (
     <Typography>
-      © {getCurrentYear()}.
+      &copy; {getCurrentYear()}.
       <Link href="https://bogdan-bogdanovic.com/" sx={{ ml: 1 }}>
         {copyrightLabel}
       </Link>
