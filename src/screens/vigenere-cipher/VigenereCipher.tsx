@@ -1,15 +1,15 @@
-import CryptoMode from "@/common/components/CryptoMode/CryptoMode";
-import InputOutput from "@/common/components/InputOutput/InputOutput";
-import PageDescription from "@/common/components/PageDescription/PageDescription";
-import { CryptoModes, Pages } from "@/common/constants/constants";
-import { vigenereDecrypt, vigenereEncrypt } from "@/common/functions/utils";
-import useInput from "@/common/hooks/useInput";
+import CryptoMode from "@/components/CryptoMode/CryptoMode";
+import InputOutput from "@/components/InputOutput/InputOutput";
+import PageDescription from "@/components/PageDescription/PageDescription";
+import { CRYPTO_MODES, PAGES } from "@/constants";
+import { useInput } from "@/hooks";
+import { vigenereDecrypt, vigenereEncrypt } from "@/utils";
 import { Box, TextField, useMediaQuery } from "@mui/material";
 import { useState } from "react";
 
 export function Component() {
   const [cryptoMode, setCryptoMode] = useState<"encrypt" | "decrypt">(
-    CryptoModes[0].value
+    CRYPTO_MODES[0].value
   );
   const [secretKey, setSecretKey] = useState<string>("");
   const {
@@ -24,14 +24,14 @@ export function Component() {
         ? vigenereEncrypt(secretKey, value)
         : vigenereDecrypt(secretKey, value),
   });
-  const isDesktop = useMediaQuery("(min-width:600px)");
+  const isDesktop = useMediaQuery("(min-width:37.5em)");
 
   return (
     <>
       <PageDescription
-        title={Pages.Ciphers[1].title}
-        description={Pages.Ciphers[1].description}
-        icon={Pages.Ciphers[1].icon}
+        title={PAGES.ciphers[1].title}
+        description={PAGES.ciphers[1].description}
+        icon={PAGES.ciphers[1].icon}
       />
       <Box sx={{ marginBottom: 2 }}>
         <CryptoMode
@@ -67,7 +67,7 @@ export function Component() {
         onInputChange={handleChange}
         onReset={() => {
           setSecretKey("");
-          setCryptoMode(CryptoModes[0].value);
+          setCryptoMode(CRYPTO_MODES[0].value);
           handleReset();
         }}
       />

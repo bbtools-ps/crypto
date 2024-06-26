@@ -1,9 +1,8 @@
-import InputOutput from "@/common/components/InputOutput/InputOutput";
-import PageDescription from "@/common/components/PageDescription/PageDescription";
-import { Pages } from "@/common/constants/constants";
-import { caesarEncryptDecrypt } from "@/common/functions/utils";
-import useInput from "@/common/hooks/useInput";
-import useNumericInput from "@/common/hooks/useNumericInput";
+import InputOutput from "@/components/InputOutput/InputOutput";
+import PageDescription from "@/components/PageDescription/PageDescription";
+import { PAGES } from "@/constants";
+import { useInput, useNumericInput } from "@/hooks";
+import { caesarEncryptDecrypt } from "@/utils";
 import { Box, TextField, useMediaQuery } from "@mui/material";
 
 export function Component() {
@@ -24,14 +23,14 @@ export function Component() {
   } = useInput({
     encryptDecrypt: (value) => caesarEncryptDecrypt(Number(shiftValue), value),
   });
-  const isDesktop = useMediaQuery("(min-width:600px)");
+  const isDesktop = useMediaQuery("(min-width:37.5em)");
 
   return (
     <>
       <PageDescription
-        title={Pages.Ciphers[0].title}
-        description={Pages.Ciphers[0].description}
-        icon={Pages.Ciphers[0].icon}
+        title={PAGES.ciphers[0].title}
+        description={PAGES.ciphers[0].description}
+        icon={PAGES.ciphers[0].icon}
       />
       <Box sx={{ marginBottom: 2 }}>
         <TextField

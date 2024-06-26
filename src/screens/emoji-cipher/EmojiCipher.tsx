@@ -1,11 +1,10 @@
-import Alert from "@/common/components/Alert/Alert";
-import InputOutput from "@/common/components/InputOutput/InputOutput";
-import Loading from "@/common/components/Loading/Loading";
-import PageDescription from "@/common/components/PageDescription/PageDescription";
-import { Pages } from "@/common/constants/constants";
-import { emojiEncryptDecrypt } from "@/common/functions/utils";
-import useFetch from "@/common/hooks/useFetch";
-import useInput from "@/common/hooks/useInput";
+import Alert from "@/components/Alert/Alert";
+import InputOutput from "@/components/InputOutput/InputOutput";
+import Loading from "@/components/Loading/Loading";
+import PageDescription from "@/components/PageDescription/PageDescription";
+import { PAGES } from "@/constants";
+import { useFetch, useInput } from "@/hooks";
+import { emojiEncryptDecrypt } from "@/utils";
 
 export function Component() {
   const { data, error, isLoading } = useFetch(
@@ -23,9 +22,9 @@ export function Component() {
       {!isLoading && data && (
         <>
           <PageDescription
-            title={Pages.Ciphers[2].title}
-            description={Pages.Ciphers[2].description}
-            icon={Pages.Ciphers[2].icon}
+            title={PAGES.ciphers[2].title}
+            description={PAGES.ciphers[2].description}
+            icon={PAGES.ciphers[2].icon}
           />
           <InputOutput
             inputValue={value}

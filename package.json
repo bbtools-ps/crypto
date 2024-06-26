@@ -16,6 +16,7 @@
     "build": "tsc && vitest run --reporter=verbose && vite build",
     "preview": "vite preview",
     "test": "vitest --reporter=verbose",
+    "generate": "cd emoji-dict && npx tsc && npx copyfiles full-emoji-list.json dist && cd dist && node app.js",
     "format": "prettier --write '**/*.{js,ts,tsx,jsx}'"
   },
   "browserslist": {
@@ -39,6 +40,7 @@
     "@types/react": "^18.0.28",
     "@types/react-dom": "^18.0.11",
     "@vitejs/plugin-react": "^3.1.0",
+    "copyfiles": "^2.4.1",
     "cypress": "^13.3.0",
     "eslint": "^8.35.0",
     "eslint-config-react-app": "^7.0.1",
