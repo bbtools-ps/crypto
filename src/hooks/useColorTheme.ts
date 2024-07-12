@@ -1,4 +1,4 @@
-import { createTheme, LinkProps } from "@mui/material";
+import { createTheme, type LinkProps } from "@mui/material";
 import { createContext, useEffect, useMemo, useState } from "react";
 import LinkBehavior from "../components/LinkBehavior/LinkBehavior";
 import { useBrowserTheme } from "./useBrowserTheme";
