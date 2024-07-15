@@ -1,6 +1,6 @@
+import { caesarEncryptDecrypt } from "@/utils/ciphers";
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import { caesarEncryptDecrypt } from "../../utils/ciphers";
 import { Component as CaesarCipher } from "./CaesarCipher";
 
 describe("<CaesarCipher/>", () => {
