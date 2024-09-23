@@ -20,7 +20,8 @@
     "test:e2e": "concurrently \"vite\" \"npx cypress run\"",
     "generate": "cd emoji-dict && npx tsc && npx copyfiles full-emoji-list.json dist && cd dist && node app.js",
     "format": "prettier --write '**/*.{js,ts,tsx,jsx}'",
-    "fix": "eslint --fix src"
+    "fix": "eslint --fix src",
+    "preinstall": "npx only-allow pnpm"
   },
   "browserslist": {
     "production": [

@@ -11,6 +11,7 @@ Ciphers:
 
 This project uses:
 
+- [PNPM](https://pnpm.io/)
 - [React.js](https://reactjs.org/)
 - [TypeScript](https://www.typescriptlang.org/)
 - [Node.js](https://nodejs.org/en/)
@@ -20,19 +21,19 @@ This project uses:
 
 To install all dependencies:
 
-`npm install`
+`pnpm install`
 
 To start the project in the local development mode:
 
-`npm run dev`
+`pnpm dev`
 
 To make the build:
 
-`npm run build`
+`pnpm build`
 
 To start the tests:
 
-`npm run test`
+`pnpm test`
 
 ## Emoji cipher
 
