@@ -39,7 +39,7 @@ To start the tests:
 
 To generate a new dictionary:
 
-`npm run generate`
+`pnpm generate`
 
 ## Live demo
 
