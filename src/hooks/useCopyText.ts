@@ -17,7 +17,7 @@ export const useCopyText = ({
       setTimeout(() => {
         setIsCopied(false);
       }, delay);
-    } catch (error) {
+    } finally {
       setIsCopied(false);
     }
   };

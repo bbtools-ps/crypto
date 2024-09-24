@@ -20,7 +20,7 @@ export const useNumericInput = ({
     step?: number,
     direction?: "UP" | "DOWN"
   ) => {
-    let currentValue = Number(value) ?? value;
+    let currentValue = Number(value) || value;
 
     if (
       typeof currentValue !== "number" ||
