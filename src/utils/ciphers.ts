@@ -51,7 +51,7 @@ export const caesarEncryptDecrypt = (shiftValue: number, str: string) => {
 
 export const emojiEncryptDecrypt = (
   str: string,
-  data: { [key: string]: { code: string; emoji: string }[] }
+  data: Record<string, { code: string; emoji: string }[]>
 ) => {
   return Array.from(str)
     .map((letter) =>
