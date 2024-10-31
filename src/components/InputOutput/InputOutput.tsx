@@ -1,4 +1,3 @@
-import { useDebounce } from "@/hooks";
 import {
   Box,
   Button,
@@ -8,10 +7,8 @@ import {
   Typography,
   useMediaQuery,
 } from "@mui/material";
-import { useRef, useState } from "react";
+import { useRef } from "react";
 import CopyButton from "../CopyButton/CopyButton";
-
-const TIMEOUT = 2000;
 
 interface IProps {
   inputValue: string;
@@ -30,23 +27,10 @@ export default function InputOutput({
 }: IProps) {
   const isDesktop = useMediaQuery("(min-width:37.5em)");
   const ref = useRef<HTMLInputElement>(null);
-  const [isCopied, setIsCopied] = useState(false);
-
-  const debounce = useDebounce(TIMEOUT);
 
   const handleCopy = async () => {
     const value = ref.current?.textContent || "";
-
-    try {
-      await navigator.clipboard.writeText(value);
-      setIsCopied(true);
-    } catch (error) {
-      console.error(error);
-    } finally {
-      debounce(() => {
-        setIsCopied(false);
-      });
-    }
+    await navigator.clipboard.writeText(value);
   };
 
   return (
@@ -98,7 +82,7 @@ export default function InputOutput({
                 ref={ref}
               />
               <Grid item alignSelf="center">
-                <CopyButton onClick={handleCopy} isCopied={isCopied} />
+                <CopyButton onClick={handleCopy} />
               </Grid>
             </Grid>
           </Card>
