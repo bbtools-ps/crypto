@@ -15,11 +15,11 @@ describe("<PageDescription/>", () => {
     );
 
     expect(
-      screen.getByRole("heading", { name: new RegExp(testTitle, "ig") })
+      screen.getByRole("heading", { name: new RegExp(testTitle, "i") })
     ).toBeInTheDocument();
     expect(
-      screen.getByText(new RegExp(testDescription, "ig"))
+      screen.getByText(new RegExp(testDescription, "i"))
     ).toBeInTheDocument();
-    expect(screen.getByText(new RegExp(testIcon, "ig"))).toBeInTheDocument();
+    expect(screen.getByText(new RegExp(testIcon, "i"))).toBeInTheDocument();
   });
 });

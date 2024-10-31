@@ -1,6 +1,6 @@
+import { vigenereEncrypt } from "@/utils/ciphers";
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import { vigenereEncrypt } from "../../utils/ciphers";
 import { Component as VigenereCipher } from "./VigenereCipher";
 
 describe("<VigenereCipher/>", () => {

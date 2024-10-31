@@ -8,31 +8,37 @@ const generateVigenereDictionary = (key: string, str: string) => {
   const wholeKey = key
     .repeat(Math.ceil(str.length / key.length))
     .slice(0, str.length);
-  let dictionary = [];
+  const dictionary = [];
+
   for (const letter of Array.from(wholeKey)) {
     dictionary.push(
       ALPHABET.slice(ALPHABET.indexOf(letter), ALPHABET.length) +
         ALPHABET.slice(0, ALPHABET.indexOf(letter))
     );
   }
+
   return dictionary;
 };
 
 export const vigenereEncrypt = (key: string, str: string) => {
   const dictionary = generateVigenereDictionary(key, str);
-  let result = [];
+  const result = [];
+
   for (let i = 0; i < str.length; i++) {
     result.push(dictionary[i][ALPHABET.indexOf(str[i])] || str[i]);
   }
+
   return result.join("");
 };
 
 export const vigenereDecrypt = (key: string, str: string) => {
   const dictionary = generateVigenereDictionary(key, str);
-  let result = [];
+  const result = [];
+
   for (let i = 0; i < str.length; i++) {
     result.push(ALPHABET[dictionary[i].indexOf(str[i])] || str[i]);
   }
+
   return result.join("");
 };
 

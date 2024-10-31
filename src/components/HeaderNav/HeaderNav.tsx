@@ -121,9 +121,9 @@ export default function HeaderNav() {
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
             <Button
               id="basic-button"
-              aria-controls={!!anchorEl ? "basic-menu" : undefined}
+              aria-controls={anchorEl ? "basic-menu" : undefined}
               aria-haspopup="true"
-              aria-expanded={!!anchorEl ? "true" : undefined}
+              aria-expanded={anchorEl ? "true" : undefined}
               onClick={handleOpenDropdownMenu}
               color="inherit"
               data-cy="ciphers-dropdown-menu"
