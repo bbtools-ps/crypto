@@ -1,5 +1,5 @@
 import { useDebounce } from "@/hooks";
-import { ContentCopy } from "@mui/icons-material";
+import ContentCopy from "@mui/icons-material/ContentCopy";
 import { Button } from "@mui/material";
 import { useState } from "react";
 
@@ -26,22 +26,31 @@ export default function CopyButton({ onClick }: IProps) {
       setCopyRequest({ isCopied: false, hasError: true });
     } finally {
       debounce(() => {
-        setCopyRequest((prevState) => ({ ...prevState, isCopied: false }));
+        setCopyRequest({ isCopied: false, hasError: false });
       });
     }
   };
 
   return (
-    <Button onClick={handleCopy} disabled={copyRequest.isCopied}>
+    <Button
+      onClick={handleCopy}
+      disabled={copyRequest.isCopied}
+      color={
+        copyRequest.isCopied
+          ? "success"
+          : copyRequest.hasError
+            ? "error"
+            : undefined
+      }
+    >
       {copyRequest.isCopied ? (
-        "Copied!"
+        <span>Copied!</span>
       ) : (
         <>
           <ContentCopy sx={{ marginRight: 1 }} />
-          <span>Copy to clipboard</span>
+          <span>{copyRequest.hasError ? "Error" : "Copy to clipboard"}</span>
         </>
       )}
-      {copyRequest.hasError && "Error"}
     </Button>
   );
 }
