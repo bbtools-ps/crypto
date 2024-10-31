@@ -1,4 +1,4 @@
-import { useCopyText } from "@/hooks";
+import { useDebounce } from "@/hooks";
 import {
   Box,
   Button,
@@ -8,8 +8,10 @@ import {
   Typography,
   useMediaQuery,
 } from "@mui/material";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import CopyButton from "../CopyButton/CopyButton";
+
+const TIMEOUT = 2000;
 
 interface IProps {
   inputValue: string;
@@ -28,7 +30,26 @@ export default function InputOutput({
 }: IProps) {
   const isDesktop = useMediaQuery("(min-width:37.5em)");
   const ref = useRef<HTMLInputElement>(null);
-  const { handleCopy, isCopied } = useCopyText({ elementRef: ref });
+  const [isCopied, setIsCopied] = useState(false);
+
+  const debounce = useDebounce(TIMEOUT);
+
+  const handleCopy = async () => {
+    const value = ref.current?.textContent || "";
+
+    try {
+      await navigator.clipboard.writeText(value);
+      setIsCopied(true);
+
+      debounce(() => {
+        setIsCopied(false);
+      });
+    } catch (error) {
+      console.error(error);
+    } finally {
+      setIsCopied(false);
+    }
+  };
 
   return (
     <>
