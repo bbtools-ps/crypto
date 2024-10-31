@@ -5,8 +5,8 @@ interface IUseInput {
 }
 
 export const useInput = ({ encryptDecrypt }: IUseInput) => {
-  const [value, setValue] = useState<string>("");
-  const [translatedValue, setTranslatedValue] = useState<string>("");
+  const [value, setValue] = useState("");
+  const [translatedValue, setTranslatedValue] = useState("");
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>

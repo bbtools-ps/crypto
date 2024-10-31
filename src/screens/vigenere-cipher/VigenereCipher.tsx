@@ -11,7 +11,7 @@ export function Component() {
   const [cryptoMode, setCryptoMode] = useState<"encrypt" | "decrypt">(
     CRYPTO_MODES[0].value
   );
-  const [secretKey, setSecretKey] = useState<string>("");
+  const [secretKey, setSecretKey] = useState("");
   const {
     value: inputValue,
     translatedValue,
