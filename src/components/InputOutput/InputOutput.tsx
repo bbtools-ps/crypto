@@ -40,14 +40,12 @@ export default function InputOutput({
     try {
       await navigator.clipboard.writeText(value);
       setIsCopied(true);
-
-      debounce(() => {
-        setIsCopied(false);
-      });
     } catch (error) {
       console.error(error);
     } finally {
-      setIsCopied(false);
+      debounce(() => {
+        setIsCopied(false);
+      });
     }
   };
 
