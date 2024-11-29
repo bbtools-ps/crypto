@@ -7,6 +7,7 @@ import {
   Typography,
   useMediaQuery,
 } from "@mui/material";
+import DOMPurify from "dompurify";
 import { useRef } from "react";
 import CopyButton from "../CopyButton/CopyButton";
 
@@ -66,11 +67,11 @@ export default function InputOutput({
               <Typography
                 variant="body1"
                 dangerouslySetInnerHTML={{
-                  __html: `<span
+                  __html: DOMPurify.sanitize(`<span
                 aria-labelledby="outputValue"
                 role="textbox"
                 aria-readonly
-              >${outputValue}</span>`,
+              >${outputValue}</span>`),
                 }}
                 sx={{
                   minHeight: "3rem",
