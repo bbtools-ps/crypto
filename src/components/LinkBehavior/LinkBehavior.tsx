@@ -2,7 +2,7 @@ import React from "react";
 import {
   Link as RouterLink,
   type LinkProps as RouterLinkProps,
-} from "react-router-dom";
+} from "react-router";
 
 const LinkBehavior = React.forwardRef<
   HTMLAnchorElement,

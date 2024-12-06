@@ -1,7 +1,7 @@
 import HeaderNav from "@/components/HeaderNav/HeaderNav";
 import Footer from "@/components/Layout/Footer/Footer";
 import { Box } from "@mui/material";
-import { Outlet } from "react-router-dom";
+import { Outlet } from "react-router";
 import classes from "./RootLayot.module.css";
 
 export default function RootLayout() {
