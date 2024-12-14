@@ -18,6 +18,8 @@ export const useFetch = <T>(url: string) => {
 
     (async () => {
       try {
+        setResult((prevState) => ({ ...prevState, isLoading: true }));
+
         const response = await fetch(url);
 
         if (!response.ok) {
@@ -27,15 +29,15 @@ export const useFetch = <T>(url: string) => {
         const data = (await response.json()) as T;
 
         if (isCurrent) {
-          setResult({ isLoading: false, data, error: null });
+          setResult((prevState) => ({ ...prevState, isLoading: false, data }));
         }
       } catch (error) {
         if (isCurrent) {
-          setResult({
+          setResult((prevState) => ({
+            ...prevState,
             isLoading: false,
-            data: null,
             error: error instanceof Error ? error.message : String(error),
-          });
+          }));
         }
       }
     })();
