@@ -7,9 +7,11 @@ import {
   RadioGroup,
 } from "@mui/material";
 
+type CryptoModeType = (typeof CRYPTO_MODES)[number]["value"];
+
 interface IProps {
-  value: (typeof CRYPTO_MODES)[number]["value"];
-  onChange: (payload: (typeof CRYPTO_MODES)[number]["value"]) => void;
+  value: CryptoModeType;
+  onChange: (payload: CryptoModeType) => void;
 }
 
 export default function CryptoMode({ value, onChange }: IProps) {
@@ -19,11 +21,7 @@ export default function CryptoMode({ value, onChange }: IProps) {
       <RadioGroup
         aria-labelledby="demo-radio-buttons-group-label"
         value={value}
-        onChange={(e) =>
-          onChange(
-            e.currentTarget.value as (typeof CRYPTO_MODES)[number]["value"]
-          )
-        }
+        onChange={(e) => onChange(e.currentTarget.value as CryptoModeType)}
         name="radio-buttons-group"
       >
         {CRYPTO_MODES.map((item, index) => (
