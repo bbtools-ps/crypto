@@ -7,9 +7,12 @@ import { useFetch, useInput } from "@/hooks";
 import { emojiEncryptDecrypt } from "@/utils";
 
 export function Component() {
-  const { data, error, isLoading } = useFetch(
+  const { data, error, isLoading } = useFetch<
+    Record<string, { code: string; emoji: string }[]>
+  >(
     "https://raw.githubusercontent.com/bbtools-ps/emoji-cipher/main/emoji-dict/dict.json"
   );
+
   const { value, translatedValue, handleChange, handleReset } = useInput({
     encryptDecrypt: (value) => emojiEncryptDecrypt(value, data),
   });

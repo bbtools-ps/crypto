@@ -1,27 +1,48 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { useEffect, useState } from "react";
 
-export const useFetch = (url: string) => {
-  const [result, setResult] = useState<{
-    isLoading: boolean;
-    data: any;
-    error: any;
-  }>({ isLoading: true, data: null, error: null });
+interface FetchResult<T> {
+  isLoading: boolean;
+  data: T | null;
+  error: string | null;
+}
+
+export const useFetch = <T>(url: string) => {
+  const [result, setResult] = useState<FetchResult<T>>({
+    isLoading: true,
+    data: null,
+    error: null,
+  });
 
   useEffect(() => {
-    const fetchData = async () => {
+    let isCurrent = true;
+
+    (async () => {
       try {
         const response = await fetch(url);
-        if (!response.ok)
-          throw new Error(`Can't with fetch data! (${response.status})`);
-        const json = await response.json();
-        setResult({ isLoading: false, data: json, error: null });
-      } catch (error: any) {
-        setResult({ isLoading: false, data: null, error: error.message });
-      }
-    };
 
-    fetchData();
+        if (!response.ok) {
+          throw new Error(`Can't fetch data! (${response.status})`);
+        }
+
+        const data = (await response.json()) as T;
+
+        if (isCurrent) {
+          setResult({ isLoading: false, data, error: null });
+        }
+      } catch (error) {
+        if (isCurrent) {
+          setResult({
+            isLoading: false,
+            data: null,
+            error: error instanceof Error ? error.message : String(error),
+          });
+        }
+      }
+    })();
+
+    return () => {
+      isCurrent = false;
+    };
   }, [url]);
 
   return result;
