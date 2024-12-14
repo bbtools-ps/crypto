@@ -1,14 +1,14 @@
 import { useEffect, useState } from "react";
 
 interface FetchResult<T> {
-  isLoading: boolean;
+  isFetching: boolean;
   data: T | null;
   error: string | null;
 }
 
 export const useFetch = <T>(url: string) => {
   const [result, setResult] = useState<FetchResult<T>>({
-    isLoading: true,
+    isFetching: true,
     data: null,
     error: null,
   });
@@ -18,7 +18,7 @@ export const useFetch = <T>(url: string) => {
 
     (async () => {
       try {
-        setResult((prevState) => ({ ...prevState, isLoading: true }));
+        setResult({ isFetching: true, data: null, error: null });
 
         const response = await fetch(url);
 
@@ -29,13 +29,13 @@ export const useFetch = <T>(url: string) => {
         const data = (await response.json()) as T;
 
         if (isCurrent) {
-          setResult((prevState) => ({ ...prevState, isLoading: false, data }));
+          setResult((prevState) => ({ ...prevState, isFetching: false, data }));
         }
       } catch (error) {
         if (isCurrent) {
           setResult((prevState) => ({
             ...prevState,
-            isLoading: false,
+            isFetching: false,
             error: error instanceof Error ? error.message : String(error),
           }));
         }

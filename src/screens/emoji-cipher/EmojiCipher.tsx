@@ -7,7 +7,7 @@ import { useFetch, useInput } from "@/hooks";
 import { emojiEncryptDecrypt } from "@/utils";
 
 export function Component() {
-  const { data, error, isLoading } = useFetch<
+  const { data, error, isFetching } = useFetch<
     Record<string, { code: string; emoji: string }[]>
   >(
     "https://raw.githubusercontent.com/bbtools-ps/emoji-cipher/main/emoji-dict/dict.json"
@@ -20,9 +20,9 @@ export function Component() {
   return (
     <>
       {/* Status: Pending */}
-      {isLoading && !data && <Loading />}
+      {isFetching && <Loading />}
       {/* Status: Fulfilled */}
-      {!isLoading && data && (
+      {data && (
         <>
           <PageDescription
             title={PAGES.ciphers[2].title}
@@ -38,7 +38,7 @@ export function Component() {
         </>
       )}
       {/* Status: Rejected */}
-      {!isLoading && error && <Alert message={error} />}
+      {error && <Alert message={error} />}
     </>
   );
 }
