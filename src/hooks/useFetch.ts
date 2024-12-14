@@ -17,9 +17,9 @@ export const useFetch = <T>(url: string) => {
     let isCurrent = true;
 
     (async () => {
-      try {
-        setResult({ isFetching: true, data: null, error: null });
+      setResult((prevState) => ({ ...prevState, isFetching: true }));
 
+      try {
         const response = await fetch(url);
 
         if (!response.ok) {
