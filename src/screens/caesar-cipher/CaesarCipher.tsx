@@ -28,14 +28,14 @@ export function Component() {
   return (
     <>
       <PageDescription
-        title={PAGES.ciphers[0].title}
+        title={PAGES.ciphers[0].label}
         description={PAGES.ciphers[0].description}
         icon={PAGES.ciphers[0].icon}
       />
       <Box sx={{ marginBottom: 2 }}>
         <TextField
           value={shiftValue}
-          type={"text"}
+          type="text"
           onChange={shiftValueChangeHandler}
           onBlur={(e) => {
             const value = shiftValueBlurHandler(e);

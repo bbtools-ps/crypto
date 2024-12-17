@@ -25,7 +25,7 @@ export function Component() {
       {data && (
         <>
           <PageDescription
-            title={PAGES.ciphers[2].title}
+            title={PAGES.ciphers[2].label}
             description={PAGES.ciphers[2].description}
             icon={PAGES.ciphers[2].icon}
           />

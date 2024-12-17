@@ -29,7 +29,7 @@ export function Component() {
   return (
     <>
       <PageDescription
-        title={PAGES.ciphers[1].title}
+        title={PAGES.ciphers[1].label}
         description={PAGES.ciphers[1].description}
         icon={PAGES.ciphers[1].icon}
       />
