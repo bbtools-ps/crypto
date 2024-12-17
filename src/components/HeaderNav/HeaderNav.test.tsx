@@ -11,9 +11,9 @@ describe("<HeaderNav/>", () => {
 
   it("should render the main menu with the Logo, Ciphers, About and the Theme switcher button", () => {
     render(<HeaderNav />, { wrapper: BrowserRouter });
-    const btnLogo = screen.getByRole("button", { name: /logo/i });
+    const btnLogo = screen.getByRole("link", { name: /logo/i });
     const btnCiphers = screen.getByRole("button", { name: /ciphers/i });
-    const btnAbout = screen.getByRole("button", { name: /about/i });
+    const btnAbout = screen.getByRole("link", { name: /about/i });
     const btnTheme = screen.getByRole("button", { name: /theme switch/i });
 
     expect(btnLogo).toBeInTheDocument();
