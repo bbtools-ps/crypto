@@ -1,0 +1,36 @@
+.link {
+  text-decoration: none;
+  color: inherit;
+  font-size: 0.9rem;
+  font-family: "Roboto", sans-serif;
+}
+
+.menu-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  color: inherit;
+  padding: 0.7rem 0.5rem;
+  font-size: 0.9rem;
+  font-family: "Roboto", sans-serif;
+  transition: all 0.3s;
+}
+
+.menu-link:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+.active {
+  font-weight: bold;
+}
+
+.logo-text {
+  font-size: 1.5rem;
+}
+
+@media screen and (max-width: 48em) {
+  .link {
+    font-size: 1rem;
+  }
+}

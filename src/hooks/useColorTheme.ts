@@ -1,6 +1,6 @@
 import { createTheme, type LinkProps } from "@mui/material";
 import { createContext, useEffect, useMemo, useState } from "react";
-import LinkBehavior from "../components/LinkBehavior/LinkBehavior";
+import Link from "../components/Links/Link";
 import { useBrowserTheme } from "./useBrowserTheme";
 
 type ColorMode = "light" | "dark";
@@ -29,12 +29,12 @@ export const useColorTheme = () => {
         components: {
           MuiLink: {
             defaultProps: {
-              component: LinkBehavior,
+              component: Link,
             } as LinkProps,
           },
           MuiButtonBase: {
             defaultProps: {
-              LinkComponent: LinkBehavior,
+              LinkComponent: Link,
             },
           },
         },

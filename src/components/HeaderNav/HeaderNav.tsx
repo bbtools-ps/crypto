@@ -9,11 +9,12 @@ import {
   Menu,
   MenuItem,
   Toolbar,
-  Typography,
 } from "@mui/material";
 import { useState } from "react";
 import { useNavigate } from "react-router";
+import NavLink from "../Links/NavLink";
 import ThemeSwitcher from "../ThemeSwitcher/ThemeSwitcher";
+import classes from "./HeaderNav.module.css";
 
 export default function HeaderNav() {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
@@ -42,7 +43,15 @@ export default function HeaderNav() {
     <AppBar position="fixed">
       <Container>
         <Toolbar disableGutters>
-          <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
+          {/* MOBILE VERSION */}
+          <Box
+            sx={{
+              display: {
+                xs: "flex",
+                md: "none",
+              },
+            }}
+          >
             <IconButton
               size="large"
               aria-label="Main menu"
@@ -72,52 +81,53 @@ export default function HeaderNav() {
               }}
             >
               {PAGES.ciphers.map((item) => (
-                <MenuItem
-                  key={item.title}
-                  onClick={() => {
-                    navigate(item.path);
-                    handleCloseNavMenu();
-                  }}
-                >
-                  <Typography textAlign="center">{item.title}</Typography>
+                <MenuItem key={item.path} onClick={handleCloseNavMenu}>
+                  <NavLink
+                    href={item.path}
+                    className={({ isActive }) =>
+                      isActive
+                        ? `${classes.active} ${classes.link}`
+                        : classes.link
+                    }
+                  >
+                    {item.label}
+                  </NavLink>
                 </MenuItem>
               ))}
-              {Object.keys(PAGES)
-                .filter((item) => item.toLowerCase() !== "ciphers")
-                .map((page) => (
-                  <MenuItem
-                    key={page}
-                    onClick={() => {
-                      navigate("/about");
-                      handleCloseNavMenu();
-                    }}
-                  >
-                    <Typography textAlign="center">{page}</Typography>
-                  </MenuItem>
-                ))}
+              <MenuItem key={PAGES.about.path} onClick={handleCloseNavMenu}>
+                <NavLink
+                  href={PAGES.about.path}
+                  className={({ isActive }) =>
+                    isActive
+                      ? `${classes.active} ${classes.link}`
+                      : classes.link
+                  }
+                >
+                  {PAGES.about.label}
+                </NavLink>
+              </MenuItem>
             </Menu>
           </Box>
           {/* Logo */}
           <Box
             sx={{
-              flexGrow: 1,
               display: { md: "flex" },
+              justifyContent: { md: "start", xs: "center" },
+              flexGrow: 1,
             }}
           >
-            <Button
+            <NavLink
               color="inherit"
-              sx={{ display: "flex", gap: 1 }}
-              onClick={() => navigate("/")}
+              href="/"
               aria-label="Logo"
               data-cy="home-btn"
+              className={classes["menu-link"]}
             >
-              <VpnKeyIcon />
-              <Typography variant="h6">
-                <strong>Crypto</strong>
-              </Typography>
-            </Button>
+              <VpnKeyIcon sx={{ mr: 1 }} />
+              <strong className={classes["logo-text"]}>Crypto</strong>
+            </NavLink>
           </Box>
-          {/* Navigation */}
+          {/* DESKTOP VERSION */}
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
             <Button
               id="basic-button"
@@ -141,25 +151,38 @@ export default function HeaderNav() {
             >
               {PAGES.ciphers.map((item) => (
                 <MenuItem
-                  key={item.title}
+                  key={item.path}
                   onClick={() => {
                     navigate(item.path);
                     handleCloseDropdownMenu();
                   }}
                   sx={{ display: "block" }}
-                  data-cy={`${item.title.toLowerCase()}-btn`}
+                  data-cy={`${item.label.toLowerCase()}-btn`}
                 >
-                  {item.title}
+                  <NavLink
+                    href={item.path}
+                    className={({ isActive }) =>
+                      isActive
+                        ? `${classes.active} ${classes.link}`
+                        : classes.link
+                    }
+                  >
+                    {item.label}
+                  </NavLink>
                 </MenuItem>
               ))}
             </Menu>
-            <Button
-              onClick={() => navigate("/about")}
-              color="inherit"
+            <NavLink
+              href="/about"
+              className={({ isActive }) =>
+                isActive ? `${classes.active} ${classes.link}` : classes.link
+              }
               data-cy="about-btn"
             >
-              {Object.keys(PAGES)[1]}
-            </Button>
+              <span className={classes["menu-link"]}>
+                {PAGES.about.label.toUpperCase()}
+              </span>
+            </NavLink>
           </Box>
           <Box sx={{ flexGrow: 0 }}>
             <ThemeSwitcher />
