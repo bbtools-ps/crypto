@@ -9,14 +9,16 @@ import classes from "./NavLink.module.css";
 const NavLink = React.forwardRef<
   HTMLAnchorElement,
   Omit<RouterLinkProps, "to"> & { href: RouterLinkProps["to"] }
->(function NavLink({ href, className, ...rest }, ref) {
+>(function NavLink({ href, className, children, ...rest }, ref) {
   return (
     <RouterNavLink
       ref={ref}
       to={href}
       className={({ isActive }) => clsx(className, isActive && classes.active)}
       {...rest}
-    />
+    >
+      {children}
+    </RouterNavLink>
   );
 });
 

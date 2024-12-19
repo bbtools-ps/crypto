@@ -7,7 +7,7 @@ import { vigenereDecrypt, vigenereEncrypt } from "@/utils";
 import { Box, TextField, useMediaQuery } from "@mui/material";
 import { useState } from "react";
 
-export function Component() {
+export default function VigenereCipher() {
   const [cryptoMode, setCryptoMode] = useState<"encrypt" | "decrypt">(
     CRYPTO_MODES[0].value
   );
@@ -74,5 +74,3 @@ export function Component() {
     </>
   );
 }
-
-Component.displayName = "VigenereCipherPage";

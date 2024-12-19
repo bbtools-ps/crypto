@@ -20,9 +20,10 @@
       "@/*": ["src/*"]
     },
     "outDir": "dist",
-    "types": ["vitest/globals"]
+    "types": ["vitest/globals"],
+    "rootDirs": [".", "./.react-router/types"]
   },
-  "include": ["src"],
+  "include": ["src", ".react-router/types/**/*"],
   "exclude": ["node_modules", "cypress", "cypress.config.ts"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

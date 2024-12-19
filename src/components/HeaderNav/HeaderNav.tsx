@@ -4,6 +4,7 @@ import {
   AppBar,
   Box,
   Button,
+  CircularProgress,
   Container,
   IconButton,
   Menu,
@@ -79,13 +80,28 @@ export default function HeaderNav() {
               }}
             >
               {PAGES.ciphers.map((item) => (
-                <MenuItem key={item.path} onClick={handleCloseNavMenu}>
+                <MenuItem
+                  key={item.path}
+                  onClick={handleCloseNavMenu}
+                  sx={{ p: 0, minHeight: "unset" }}
+                >
                   <NavLink href={item.path} className={classes.link}>
-                    {item.label}
+                    {({ isPending }) => (
+                      <>
+                        {isPending && (
+                          <CircularProgress size="1rem" sx={{ mr: 1 }} />
+                        )}
+                        <span>{item.label}</span>
+                      </>
+                    )}
                   </NavLink>
                 </MenuItem>
               ))}
-              <MenuItem key={PAGES.about.path} onClick={handleCloseNavMenu}>
+              <MenuItem
+                key={PAGES.about.path}
+                onClick={handleCloseNavMenu}
+                sx={{ p: 0, minHeight: "unset" }}
+              >
                 <NavLink href={PAGES.about.path} className={classes.link}>
                   {PAGES.about.label}
                 </NavLink>
@@ -137,11 +153,18 @@ export default function HeaderNav() {
                 <MenuItem
                   key={item.path}
                   onClick={handleCloseDropdownMenu}
-                  sx={{ display: "block" }}
+                  sx={{ display: "block", p: 0, minHeight: "unset" }}
                   data-cy={`${item.label.toLowerCase()}-btn`}
                 >
                   <NavLink href={item.path} className={classes.link}>
-                    {item.label}
+                    {({ isPending }) => (
+                      <>
+                        {isPending && (
+                          <CircularProgress size="1rem" sx={{ mr: 1 }} />
+                        )}
+                        <span>{item.label}</span>
+                      </>
+                    )}
                   </NavLink>
                 </MenuItem>
               ))}

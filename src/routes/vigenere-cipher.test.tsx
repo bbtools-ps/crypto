@@ -1,7 +1,7 @@
 import { vigenereEncrypt } from "@/utils/ciphers";
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import { Component as VigenereCipher } from "./VigenereCipher";
+import VigenereCipher from "./vigenere-cipher";
 
 describe("<VigenereCipher/>", () => {
   it("should render the heading with the text 'Vigenère', short description, modes for 'Encrypt' and 'Decrypt', 'Secret key', 'Input', 'Output' text fields, 'Copy', and 'Reset' buttons", () => {

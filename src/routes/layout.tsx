@@ -1,10 +1,10 @@
+import Footer from "@/components/Footer/Footer";
 import HeaderNav from "@/components/HeaderNav/HeaderNav";
-import Footer from "@/components/Layout/Footer/Footer";
 import { Box } from "@mui/material";
 import { Outlet } from "react-router";
-import classes from "./RootLayot.module.css";
+import classes from "./layout.module.css";
 
-export default function RootLayout() {
+export default function Layout() {
   return (
     <Box
       sx={{
@@ -15,7 +15,8 @@ export default function RootLayout() {
         justifyContent: "flex-start",
         bgcolor: "background.default",
         color: "text.primary",
-        flex: 1,
+        height: "100%",
+        overflow: "auto",
       }}
     >
       <HeaderNav />

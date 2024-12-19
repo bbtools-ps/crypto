@@ -5,7 +5,7 @@ import { useInput, useNumericInput } from "@/hooks";
 import { caesarEncryptDecrypt } from "@/utils";
 import { Box, TextField, useMediaQuery } from "@mui/material";
 
-export function Component() {
+export default function CaesarCipher() {
   const {
     value: shiftValue,
     handleChange: shiftValueChangeHandler,
@@ -62,5 +62,3 @@ export function Component() {
     </>
   );
 }
-
-Component.displayName = "CaesarCipherPage";

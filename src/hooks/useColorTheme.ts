@@ -26,6 +26,26 @@ export const useColorTheme = () => {
         palette: {
           mode,
         },
+        typography: {
+          h1: {
+            fontSize: "2.5rem",
+            "@media (min-width:37.5em)": {
+              fontSize: "3rem",
+            },
+            "@media (min-width:56.25em)": {
+              fontSize: "4.5rem",
+            },
+          },
+          h2: {
+            fontSize: "2rem",
+            "@media (min-width:37.5em)": {
+              fontSize: "2.5rem",
+            },
+            "@media (min-width:56.25em)": {
+              fontSize: "3rem",
+            },
+          },
+        },
         components: {
           MuiLink: {
             defaultProps: {

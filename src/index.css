@@ -27,3 +27,18 @@ body {
   display: flex;
   flex-direction: column;
 }
+
+.error-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-family: "Roboto", sans-serif;
+  height: 100%;
+  width: 100%;
+  overflow: auto;
+}
+
+.error-container h1 {
+  font-size: 3rem;
+}

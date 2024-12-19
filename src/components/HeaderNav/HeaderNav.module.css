@@ -4,8 +4,10 @@
   font-size: 0.9rem;
   font-family: "Roboto", Arial, Helvetica, sans-serif;
   font-weight: 500;
+  flex: 1;
+  padding: 0.7rem 1.2rem;
+  display: inline-block;
   width: 100%;
-  height: 100%;
 }
 
 .logo-text {
@@ -15,5 +17,6 @@
 @media screen and (max-width: 48em) {
   .link {
     font-size: 1rem;
+    padding: 0.5rem 1rem;
   }
 }

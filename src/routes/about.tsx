@@ -1,6 +1,6 @@
 import { Typography } from "@mui/material";
 
-export function Component() {
+export default function About() {
   return (
     <>
       <Typography variant="h4" textAlign="center">
@@ -15,5 +15,3 @@ export function Component() {
     </>
   );
 }
-
-Component.displayName = "AboutPage";

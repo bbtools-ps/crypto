@@ -23,3 +23,5 @@ yarn-debug.log*
 yarn-error.log*
 
 emoji-dict/dist
+
+.react-router/
