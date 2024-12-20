@@ -23,26 +23,17 @@ export default function EmojiCipher({ loaderData }: Route.ComponentProps) {
 
   return (
     <>
-      {/* Status: Pending */}
-      {/* {isFetching && <Loading />} */}
-      {/* Status: Fulfilled */}
-      {data && (
-        <>
-          <PageDescription
-            title={PAGES.ciphers[2].label}
-            description={PAGES.ciphers[2].description}
-            icon={PAGES.ciphers[2].icon}
-          />
-          <InputOutput
-            inputValue={value}
-            outputValue={translatedValue}
-            onInputChange={handleChange}
-            onReset={handleReset}
-          />
-        </>
-      )}
-      {/* Status: Rejected */}
-      {/* {error && <Alert message={error} />} */}
+      <PageDescription
+        title={PAGES.ciphers[2].label}
+        description={PAGES.ciphers[2].description}
+        icon={PAGES.ciphers[2].icon}
+      />
+      <InputOutput
+        inputValue={value}
+        outputValue={translatedValue}
+        onInputChange={handleChange}
+        onReset={handleReset}
+      />
     </>
   );
 }

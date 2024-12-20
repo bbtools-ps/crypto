@@ -41,10 +41,16 @@ export default function CaesarCipher() {
             const value = shiftValueBlurHandler(e);
             handleSetTranslatedValue(caesarEncryptDecrypt(value, inputValue));
           }}
-          inputProps={{
-            onKeyDown: (e) => shiftValueKeyDownHandler(e),
-            onWheel: (e) => shiftValueWheelHandler(e),
-            inputMode: "numeric",
+          slotProps={{
+            htmlInput: {
+              onKeyDown: (
+                e: React.KeyboardEvent<HTMLInputElement | HTMLTextAreaElement>
+              ) => shiftValueKeyDownHandler(e),
+              onWheel: (
+                e: React.WheelEvent<HTMLInputElement | HTMLTextAreaElement>
+              ) => shiftValueWheelHandler(e),
+              inputMode: "numeric",
+            },
           }}
           fullWidth={!isDesktop}
           label="Shift value"
