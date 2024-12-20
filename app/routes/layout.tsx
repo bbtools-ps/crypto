@@ -1,28 +1,28 @@
-import Footer from '~/components/Footer/Footer';
-import HeaderNav from '~/components/HeaderNav/HeaderNav';
-import { Box } from '@mui/material';
-import { Outlet } from 'react-router';
-import classes from './layout.module.css';
-import ThemeProvider from '~/components/ThemeProvider';
+import Footer from "~/components/Footer/Footer";
+import HeaderNav from "~/components/HeaderNav/HeaderNav";
+import { Box } from "@mui/material";
+import { Outlet } from "react-router";
+import classes from "./layout.module.css";
+import ThemeProvider from "~/components/ThemeProvider";
 
 export default function Layout() {
   return (
     <ThemeProvider>
       <Box
         sx={{
-          display: 'flex',
-          width: '100%',
-          flexDirection: 'column',
-          alignItems: 'center',
-          justifyContent: 'flex-start',
-          bgcolor: 'background.default',
-          color: 'text.primary',
-          height: '100%',
-          overflow: 'auto',
+          display: "flex",
+          width: "100%",
+          flexDirection: "column",
+          alignItems: "center",
+          justifyContent: "flex-start",
+          bgcolor: "background.default",
+          color: "text.primary",
+          height: "100%",
+          overflow: "auto",
         }}
       >
         <HeaderNav />
-        <main className={classes['main-content']}>
+        <main className={classes["main-content"]}>
           <Outlet />
         </main>
         <footer className={classes.footer}>
