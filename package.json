@@ -6,7 +6,8 @@
     "build": "cross-env NODE_ENV=production react-router build --emptyOutDir",
     "dev": "react-router dev",
     "start": "cross-env NODE_ENV=production react-router-serve ./build/server/index.js",
-    "typecheck": "react-router typegen && tsc"
+    "typecheck": "react-router typegen && tsc",
+    "format": "prettier --write '**/*.{js,ts,tsx,jsx}'"
   },
   "dependencies": {
     "@emotion/react": "^11.14.0",
@@ -34,6 +35,8 @@
     "cross-env": "^7.0.3",
     "jsdom": "^25.0.1",
     "postcss": "^8.4.49",
+    "prettier": "^3.4.2",
+    "prettier-plugin-tailwindcss": "^0.6.9",
     "tailwindcss": "^3.4.16",
     "typescript": "^5.7.2",
     "vite": "^5.4.11",
