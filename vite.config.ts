@@ -4,6 +4,7 @@ import path from 'path';
 import tailwindcss from 'tailwindcss';
 import { defineConfig } from 'vite';
 import tsconfigPaths from 'vite-tsconfig-paths';
+import netlifyPlugin from '@netlify/vite-plugin-react-router';
 
 export default defineConfig({
   css: {
@@ -11,7 +12,7 @@ export default defineConfig({
       plugins: [tailwindcss, autoprefixer],
     },
   },
-  plugins: [reactRouter(), tsconfigPaths()],
+  plugins: [reactRouter(), tsconfigPaths(), netlifyPlugin()],
   resolve: {
     alias: {
       '~': path.resolve(__dirname, 'app'),
