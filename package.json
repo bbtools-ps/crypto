@@ -7,7 +7,9 @@
     "dev": "react-router dev",
     "start": "cross-env NODE_ENV=production react-router-serve ./build/server/index.js",
     "typecheck": "react-router typegen && tsc",
-    "format": "prettier --write '**/*.{js,ts,tsx,jsx}'"
+    "format": "prettier --write '**/*.{js,ts,tsx,jsx}'",
+    "test": "vitest --reporter=verbose",
+    "generate": "cd emoji-dict && npx tsc && npx copyfiles full-emoji-list.json dist && cd dist && node app.js"
   },
   "dependencies": {
     "@emotion/react": "^11.14.0",
