@@ -1,9 +1,9 @@
-import InputOutput from '~/components/InputOutput/InputOutput';
-import PageDescription from '~/components/PageDescription/PageDescription';
-import { PAGES } from '~/constants';
-import { useInput, useNumericInput } from '~/hooks';
-import { caesarEncryptDecrypt } from '~/utils';
-import { Box, TextField, useMediaQuery } from '@mui/material';
+import InputOutput from "~/components/InputOutput/InputOutput";
+import PageDescription from "~/components/PageDescription/PageDescription";
+import { PAGES } from "~/constants";
+import { useInput, useNumericInput } from "~/hooks";
+import { caesarEncryptDecrypt } from "~/utils";
+import { Box, TextField, useMediaQuery } from "@mui/material";
 
 export default function CaesarCipher() {
   const {
@@ -23,11 +23,15 @@ export default function CaesarCipher() {
   } = useInput({
     encryptDecrypt: (value) => caesarEncryptDecrypt(Number(shiftValue), value),
   });
-  const isDesktop = useMediaQuery('(min-width:37.5em)');
+  const isDesktop = useMediaQuery("(min-width:37.5em)");
 
   return (
     <>
-      <PageDescription title={PAGES.ciphers[0].label} description={PAGES.ciphers[0].description} icon={PAGES.ciphers[0].icon} />
+      <PageDescription
+        title={PAGES.ciphers[0].label}
+        description={PAGES.ciphers[0].description}
+        icon={PAGES.ciphers[0].icon}
+      />
       <Box sx={{ marginBottom: 2 }}>
         <TextField
           value={shiftValue}
@@ -40,7 +44,7 @@ export default function CaesarCipher() {
           inputProps={{
             onKeyDown: (e) => shiftValueKeyDownHandler(e),
             onWheel: (e) => shiftValueWheelHandler(e),
-            inputMode: 'numeric',
+            inputMode: "numeric",
           }}
           fullWidth={!isDesktop}
           label="Shift value"

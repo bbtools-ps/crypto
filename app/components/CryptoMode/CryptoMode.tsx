@@ -1,7 +1,13 @@
-import { CRYPTO_MODES } from '~/constants';
-import { FormControl, FormControlLabel, FormLabel, Radio, RadioGroup } from '@mui/material';
+import { CRYPTO_MODES } from "~/constants";
+import {
+  FormControl,
+  FormControlLabel,
+  FormLabel,
+  Radio,
+  RadioGroup,
+} from "@mui/material";
 
-type CryptoModeType = (typeof CRYPTO_MODES)[number]['value'];
+type CryptoModeType = (typeof CRYPTO_MODES)[number]["value"];
 
 interface IProps {
   value: CryptoModeType;
@@ -19,7 +25,12 @@ export default function CryptoMode({ value, onChange }: IProps) {
         name="radio-buttons-group"
       >
         {CRYPTO_MODES.map((item, index) => (
-          <FormControlLabel key={index} value={item.value} control={<Radio />} label={item.label} />
+          <FormControlLabel
+            key={index}
+            value={item.value}
+            control={<Radio />}
+            label={item.label}
+          />
         ))}
       </RadioGroup>
     </FormControl>

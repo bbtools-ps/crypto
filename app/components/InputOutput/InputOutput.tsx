@@ -1,27 +1,49 @@
-import { Box, Button, Card, Grid, TextField, Typography, useMediaQuery } from '@mui/material';
-import DOMPurify from 'dompurify';
-import { useRef } from 'react';
-import CopyButton from '../CopyButton/CopyButton';
+import {
+  Box,
+  Button,
+  Card,
+  Grid,
+  TextField,
+  Typography,
+  useMediaQuery,
+} from "@mui/material";
+import DOMPurify from "dompurify";
+import { useRef } from "react";
+import CopyButton from "../CopyButton/CopyButton";
 
 interface IProps {
   inputValue: string;
   outputValue: string;
-  onInputChange: (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
+  onInputChange: (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => void;
   onReset: () => void;
 }
 
-export default function InputOutput({ inputValue, outputValue, onInputChange, onReset }: IProps) {
-  const isDesktop = useMediaQuery('(min-width:37.5em)');
+export default function InputOutput({
+  inputValue,
+  outputValue,
+  onInputChange,
+  onReset,
+}: IProps) {
+  const isDesktop = useMediaQuery("(min-width:37.5em)");
   const ref = useRef<HTMLInputElement>(null);
 
   const handleCopy = async () => {
-    const value = ref.current?.textContent || '';
+    const value = ref.current?.textContent || "";
     await navigator.clipboard.writeText(value);
   };
 
   return (
     <>
-      <Grid direction={isDesktop ? 'row' : 'column'} justifyContent="center" alignItems="stretch" rowGap={1} columnGap={1} container>
+      <Grid
+        direction={isDesktop ? "row" : "column"}
+        justifyContent="center"
+        alignItems="stretch"
+        rowGap={1}
+        columnGap={1}
+        container
+      >
         <TextField
           label="Input"
           multiline
@@ -31,10 +53,15 @@ export default function InputOutput({ inputValue, outputValue, onInputChange, on
           onChange={(e) => onInputChange(e)}
           sx={isDesktop ? { flex: 1 } : undefined}
         />
-        <Box sx={{ flex: 1, width: !isDesktop ? '100%' : undefined }}>
-          <Card variant="outlined" sx={{ padding: '1rem', height: '100%' }}>
+        <Box sx={{ flex: 1, width: !isDesktop ? "100%" : undefined }}>
+          <Card variant="outlined" sx={{ padding: "1rem", height: "100%" }}>
             <Grid direction="column" container>
-              <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom id="outputValue">
+              <Typography
+                sx={{ fontSize: 14 }}
+                color="text.secondary"
+                gutterBottom
+                id="outputValue"
+              >
                 Output
               </Typography>
               <Typography
@@ -47,9 +74,9 @@ export default function InputOutput({ inputValue, outputValue, onInputChange, on
               >${outputValue}</span>`),
                 }}
                 sx={{
-                  minHeight: '3rem',
-                  padding: '.5rem',
-                  bgcolor: 'action.hover',
+                  minHeight: "3rem",
+                  padding: ".5rem",
+                  bgcolor: "action.hover",
                 }}
                 marginBottom={3}
                 className="outputText"

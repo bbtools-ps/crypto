@@ -1,6 +1,6 @@
-import { useDebounce } from '~/hooks';
-import { Button } from '@mui/material';
-import { useState } from 'react';
+import { useDebounce } from "~/hooks";
+import { Button } from "@mui/material";
+import { useState } from "react";
 
 const TIMEOUT = 2000;
 
@@ -34,13 +34,19 @@ export default function CopyButton({ onClick }: IProps) {
     <Button
       onClick={handleCopy}
       disabled={copyRequest.isCopied}
-      color={copyRequest.isCopied ? 'success' : copyRequest.hasError ? 'error' : undefined}
+      color={
+        copyRequest.isCopied
+          ? "success"
+          : copyRequest.hasError
+            ? "error"
+            : undefined
+      }
     >
       {copyRequest.isCopied ? (
         <span>Copied!</span>
       ) : (
         <>
-          <span>{copyRequest.hasError ? 'Error' : 'Copy to clipboard'}</span>
+          <span>{copyRequest.hasError ? "Error" : "Copy to clipboard"}</span>
         </>
       )}
     </Button>
