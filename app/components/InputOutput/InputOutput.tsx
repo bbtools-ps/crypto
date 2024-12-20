@@ -2,7 +2,7 @@ import {
   Box,
   Button,
   Card,
-  Grid,
+  Grid2 as Grid,
   TextField,
   Typography,
   useMediaQuery,
@@ -55,7 +55,7 @@ export default function InputOutput({
         />
         <Box sx={{ flex: 1, width: !isDesktop ? "100%" : undefined }}>
           <Card variant="outlined" sx={{ padding: "1rem", height: "100%" }}>
-            <Grid direction="column" container>
+            <Box>
               <Typography
                 sx={{ fontSize: 14 }}
                 color="text.secondary"
@@ -82,10 +82,10 @@ export default function InputOutput({
                 className="outputText"
                 ref={ref}
               />
-              <Grid item alignSelf="center">
-                {/* <CopyButton onClick={handleCopy} /> */}
-              </Grid>
-            </Grid>
+              <Box sx={{ display: "flex", justifyContent: "center" }}>
+                <CopyButton onClick={handleCopy} />
+              </Box>
+            </Box>
           </Card>
         </Box>
       </Grid>

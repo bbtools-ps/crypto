@@ -1,4 +1,3 @@
-import { PAGES } from "~/constants";
 import {
   AppBar,
   Box,
@@ -10,12 +9,13 @@ import {
   MenuItem,
   Toolbar,
 } from "@mui/material";
+import { KeyIcon, MenuIcon } from "lucide-react";
 import { useState } from "react";
+import { PAGES } from "~/constants";
+import Link from "../Links/Link";
 import NavLink from "../Links/NavLink";
 import ThemeSwitcher from "../ThemeSwitcher/ThemeSwitcher";
 import classes from "./HeaderNav.module.css";
-import { MenuIcon, KeyIcon } from "lucide-react";
-import Link from "../Links/Link";
 
 export default function HeaderNav() {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);

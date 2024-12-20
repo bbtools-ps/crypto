@@ -1,6 +1,6 @@
 import { render, screen } from "@testing-library/react";
+import { describe, expect, it } from "vitest";
 import ThemeSwither from "./ThemeSwitcher";
-import { describe, it, expect } from "vitest";
 
 describe("<ThemeSwitcher/>", () => {
   it("should render the theme switcher button", () => {

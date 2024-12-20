@@ -1,5 +1,5 @@
-import { ColorModeContext, useColorTheme } from "~/hooks";
 import { ThemeProvider as MUIThemeProvider } from "@emotion/react";
+import { ColorModeContext, useColorTheme } from "~/hooks";
 
 export default function ThemeProvider({
   children,

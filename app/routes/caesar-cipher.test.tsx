@@ -1,8 +1,8 @@
-import { caesarEncryptDecrypt } from "~/utils/ciphers";
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
+import { describe, expect, it } from "vitest";
+import { caesarEncryptDecrypt } from "~/utils/ciphers";
 import CaesarCipher from "./caesar-cipher";
-import { describe, it, expect } from "vitest";
 
 describe("<CaesarCipher/>", () => {
   it("should render the heading with the text 'Caesar', short description, 'Shift value', 'Input', 'Output' text fields, 'Copy', and 'Reset' buttons", () => {

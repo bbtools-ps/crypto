@@ -1,6 +1,6 @@
 import { render, screen } from "@testing-library/react";
+import { describe, expect, it } from "vitest";
 import About from "./about";
-import { describe, it, expect } from "vitest";
 
 describe("<About/>", () => {
   it("should render the heading with the text 'About' and the short description", () => {

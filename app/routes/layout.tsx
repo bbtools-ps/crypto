@@ -1,9 +1,9 @@
-import Footer from "~/components/Footer/Footer";
-import HeaderNav from "~/components/HeaderNav/HeaderNav";
 import { Box } from "@mui/material";
 import { Outlet } from "react-router";
-import classes from "./layout.module.css";
+import Footer from "~/components/Footer/Footer";
+import HeaderNav from "~/components/HeaderNav/HeaderNav";
 import ThemeProvider from "~/components/ThemeProvider";
+import classes from "./layout.module.css";
 
 export default function Layout() {
   return (

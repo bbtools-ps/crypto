@@ -1,8 +1,8 @@
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { BrowserRouter } from "react-router";
+import { afterEach, describe, expect, it } from "vitest";
 import HeaderNav from "./HeaderNav";
-import { describe, it, expect, afterEach } from "vitest";
 
 describe("<HeaderNav/>", () => {
   afterEach(() => {

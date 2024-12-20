@@ -1,5 +1,5 @@
-import { getCurrentYear } from "~/utils";
 import { Link, Typography } from "@mui/material";
+import { getCurrentYear } from "~/utils";
 
 interface IProps {
   copyrightLabel: string;

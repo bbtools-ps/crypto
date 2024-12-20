@@ -1,8 +1,7 @@
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import { vi } from "vitest";
+import { describe, expect, it, vi } from "vitest";
 import CryptoMode from "./CryptoMode";
-import { describe, it, expect } from "vitest";
 
 describe("<CryptoMode/>", () => {
   it("should render the label 'Mode', and the radio buttons with 'Encrypt' and 'Decrypt' options", () => {

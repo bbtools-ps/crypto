@@ -1,7 +1,7 @@
-import { ColorModeContext } from "~/hooks/useColorTheme";
 import { IconButton, useTheme } from "@mui/material";
+import { Moon, Sun } from "lucide-react";
 import { useContext } from "react";
-import { Sun, Moon } from "lucide-react";
+import { ColorModeContext } from "~/hooks/useColorTheme";
 
 export default function ThemeSwitcher() {
   const theme = useTheme();

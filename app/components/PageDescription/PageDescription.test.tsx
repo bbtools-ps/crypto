@@ -1,6 +1,6 @@
 import { render, screen } from "@testing-library/react";
+import { describe, expect, it } from "vitest";
 import PageDescription from "./PageDescription";
-import { describe, it, expect } from "vitest";
 
 describe("<PageDescription/>", () => {
   it("should render the heading that contains the title prop, and also the description and the icon props", () => {

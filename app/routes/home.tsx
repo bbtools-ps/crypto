@@ -1,5 +1,5 @@
-import Link from "~/components/Links/Link";
 import { Box, Card, CardContent, Container, Typography } from "@mui/material";
+import Link from "~/components/Links/Link";
 
 export default function Home() {
   return (

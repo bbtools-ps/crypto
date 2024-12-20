@@ -1,11 +1,11 @@
+import { Box, TextField, useMediaQuery } from "@mui/material";
+import { useState } from "react";
 import CryptoMode from "~/components/CryptoMode/CryptoMode";
 import InputOutput from "~/components/InputOutput/InputOutput";
 import PageDescription from "~/components/PageDescription/PageDescription";
 import { CRYPTO_MODES, PAGES } from "~/constants";
 import { useInput } from "~/hooks";
 import { vigenereDecrypt, vigenereEncrypt } from "~/utils";
-import { Box, TextField, useMediaQuery } from "@mui/material";
-import { useState } from "react";
 
 export default function VigenereCipher() {
   const [cryptoMode, setCryptoMode] = useState<"encrypt" | "decrypt">(
