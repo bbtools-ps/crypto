@@ -21,15 +21,21 @@ export default function Home() {
           <CardContent>
             <Typography variant="h2">Ciphers</Typography>
             <Typography>
-              <ul>
+              <ul className="flex gap-2 flex-col mt-4">
                 <li>
-                  <Link href="/caesar-cipher">Caesar Cipher</Link>
+                  <Link href="/caesar-cipher" className="underline underline-offset-2">
+                    Caesar Cipher
+                  </Link>
                 </li>
                 <li>
-                  <Link href="/emoji-cipher">Emoji Cipher</Link>
+                  <Link href="/emoji-cipher" className="underline underline-offset-2">
+                    Emoji Cipher
+                  </Link>
                 </li>
                 <li>
-                  <Link href="/vigenere-cipher">Vigenère Cipher</Link>
+                  <Link href="/vigenere-cipher" className="underline underline-offset-2">
+                    Vigenère Cipher
+                  </Link>
                 </li>
               </ul>
             </Typography>
