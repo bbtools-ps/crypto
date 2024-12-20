@@ -1,46 +1,100 @@
-# Crypto
+# Welcome to React Router!
 
-"Crypto" is a collection of ciphers. "Emoji cipher" is a personal invention and I'm so proud of it :)
-Rest of the ciphers were already invented so they are just implemented using modern JavaScript syntax.
+A modern, production-ready template for building full-stack React applications using React Router.
 
-Ciphers:
+[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/remix-run/react-router-templates/tree/main/default)
 
-- Caesar
-- Vigenère
-- Emoji
+## Features
 
-This project uses:
+- 🚀 Server-side rendering
+- ⚡️ Hot Module Replacement (HMR)
+- 📦 Asset bundling and optimization
+- 🔄 Data loading and mutations
+- 🔒 TypeScript by default
+- 🎉 TailwindCSS for styling
+- 📖 [React Router docs](https://reactrouter.com/)
 
-- [PNPM](https://pnpm.io/)
-- [React.js](https://reactjs.org/)
-- [TypeScript](https://www.typescriptlang.org/)
-- [Node.js](https://nodejs.org/en/)
-- [MUI](https://mui.com/)
+## Getting Started
 
-## Project setup
+### Installation
 
-To install all dependencies:
+Install the dependencies:
 
-`pnpm install`
+```bash
+npm install
+```
 
-To start the project in the local development mode:
+### Development
 
-`pnpm dev`
+Start the development server with HMR:
 
-To make the build:
+```bash
+npm run dev
+```
 
-`pnpm build`
+Your application will be available at `http://localhost:5173`.
 
-To start the tests:
+## Building for Production
 
-`pnpm test`
+Create a production build:
 
-## Emoji cipher
+```bash
+npm run build
+```
 
-To generate a new dictionary:
+## Deployment
 
-`pnpm generate`
+### Docker Deployment
 
-## Live demo
+This template includes three Dockerfiles optimized for different package managers:
 
-[Click here for the live demo](https://bbtools-crypto.netlify.app/)
+- `Dockerfile` - for npm
+- `Dockerfile.pnpm` - for pnpm
+- `Dockerfile.bun` - for bun
+
+To build and run using Docker:
+
+```bash
+# For npm
+docker build -t my-app .
+
+# For pnpm
+docker build -f Dockerfile.pnpm -t my-app .
+
+# For bun
+docker build -f Dockerfile.bun -t my-app .
+
+# Run the container
+docker run -p 3000:3000 my-app
+```
+
+The containerized application can be deployed to any platform that supports Docker, including:
+
+- AWS ECS
+- Google Cloud Run
+- Azure Container Apps
+- Digital Ocean App Platform
+- Fly.io
+- Railway
+
+### DIY Deployment
+
+If you're familiar with deploying Node applications, the built-in app server is production-ready.
+
+Make sure to deploy the output of `npm run build`
+
+```
+├── package.json
+├── package-lock.json (or pnpm-lock.yaml, or bun.lockb)
+├── build/
+│   ├── client/    # Static assets
+│   └── server/    # Server-side code
+```
+
+## Styling
+
+This template comes with [Tailwind CSS](https://tailwindcss.com/) already configured for a simple default starting experience. You can use whatever CSS framework you prefer.
+
+---
+
+Built with ❤️ using React Router.
