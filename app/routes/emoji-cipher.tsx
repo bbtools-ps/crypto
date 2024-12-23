@@ -7,9 +7,7 @@ import type { Route } from "../routes/+types/emoji-cipher";
 
 // eslint-disable-next-line react-refresh/only-export-components
 export async function clientLoader() {
-  const data = await fetch(
-    "https://raw.githubusercontent.com/bbtools-ps/emoji-cipher/main/emoji-dict/dict.json"
-  );
+  const data = await fetch("/dict.json");
   const dictionary = await data.json();
   return dictionary as Record<string, { code: string; emoji: string }[]>;
 }

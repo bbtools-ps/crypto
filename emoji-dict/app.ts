@@ -1,5 +1,5 @@
 import { readFile, writeFile } from "fs/promises";
-import { EXTENDED_ALPHABET, LETTER_COMBINATIONS_AMOUNT } from "./constants";
+import { EXTENDED_ALPHABET, LETTER_COMBINATIONS_AMOUNT } from "./constants.js";
 
 /**NodeJS app for generating new dictionary
  * Steps:
@@ -85,7 +85,7 @@ import { EXTENDED_ALPHABET, LETTER_COMBINATIONS_AMOUNT } from "./constants";
       ...emojisAlphabetArr
     );
 
-    await writeFile("./dict.json", JSON.stringify(newObj));
+    await writeFile("../../public/dict.json", JSON.stringify(newObj));
   } catch (error) {
     console.error(error);
   }
