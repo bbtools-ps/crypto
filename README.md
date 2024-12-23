@@ -1,18 +1,17 @@
-# Welcome to React Router!
+# Crypto
 
-A modern, production-ready template for building full-stack React applications using React Router.
-
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/remix-run/react-router-templates/tree/main/default)
+Crypto is a simple cryptography web app built with React, TypeScript, TailwindCSS and Material-UI (MUI).
 
 ## Features
 
-- 🚀 Server-side rendering
-- ⚡️ Hot Module Replacement (HMR)
-- 📦 Asset bundling and optimization
-- 🔄 Data loading and mutations
-- 🔒 TypeScript by default
-- 🎉 TailwindCSS for styling
-- 📖 [React Router docs](https://reactrouter.com/)
+- Single page application (SPA)
+- Supports multiple ciphers:
+  - Caesar cipher
+  - Vigenère cipher
+  - Emoji cipher
+- TypeScript for type safety
+- Unit tests with Vitest
+- Docker support for containerized deployment
 
 ## Getting Started
 
@@ -24,15 +23,13 @@ Install the dependencies:
 npm install
 ```
 
-### Development
+## Development
 
-Start the development server with HMR:
+Start the development server:
 
 ```bash
 npm run dev
 ```
-
-Your application will be available at `http://localhost:5173`.
 
 ## Building for Production
 
@@ -42,30 +39,37 @@ Create a production build:
 npm run build
 ```
 
+## Generating the dictionary for Emoji cipher
+
+To generate the emoji dictionary, run the following script:
+
+```bash
+npm run generate
+```
+
 ## Deployment
 
 ### Docker Deployment
 
-This template includes three Dockerfiles optimized for different package managers:
+This project includes Docker support for different package managers:
 
-- `Dockerfile` - for npm
-- `Dockerfile.pnpm` - for pnpm
-- `Dockerfile.bun` - for bun
-
-To build and run using Docker:
+- Dockerfile - for npm
+- Dockerfile.pnpm - for pnpm
+- Dockerfile.bun - for bun
+- To build and run using Docker:
 
 ```bash
 # For npm
-docker build -t my-app .
+docker build -t emoji-dict .
 
 # For pnpm
-docker build -f Dockerfile.pnpm -t my-app .
+docker build -f Dockerfile.pnpm -t emoji-dict .
 
 # For bun
-docker build -f Dockerfile.bun -t my-app .
+docker build -f Dockerfile.bun -t emoji-dict .
 
 # Run the container
-docker run -p 3000:3000 my-app
+docker run -p 3000:3000 emoji-dict
 ```
 
 The containerized application can be deployed to any platform that supports Docker, including:
@@ -76,25 +80,7 @@ The containerized application can be deployed to any platform that supports Dock
 - Digital Ocean App Platform
 - Fly.io
 - Railway
+- Styling
+- This project uses Tailwind CSS for styling.
 
-### DIY Deployment
-
-If you're familiar with deploying Node applications, the built-in app server is production-ready.
-
-Make sure to deploy the output of `npm run build`
-
-```
-├── package.json
-├── package-lock.json (or pnpm-lock.yaml, or bun.lockb)
-├── build/
-│   ├── client/    # Static assets
-│   └── server/    # Server-side code
-```
-
-## Styling
-
-This template comes with [Tailwind CSS](https://tailwindcss.com/) already configured for a simple default starting experience. You can use whatever CSS framework you prefer.
-
----
-
-Built with ❤️ using React Router.
+Built with ❤️ using NodeJS and TypeScript.
