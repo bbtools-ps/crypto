@@ -9,7 +9,7 @@ import {
   MenuItem,
   Toolbar,
 } from "@mui/material";
-import { KeyIcon, MenuIcon } from "lucide-react";
+import { MenuIcon } from "lucide-react";
 import { useState } from "react";
 import { PAGES } from "~/constants";
 import Link from "../Links/Link";
@@ -124,7 +124,16 @@ export default function HeaderNav() {
               data-cy="home-btn"
               LinkComponent={Link}
             >
-              <KeyIcon className="mr-2" />
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                height="24px"
+                viewBox="0 0 24 24"
+                width="24px"
+                className="mr-2 fill-current"
+              >
+                <path d="M0 0h24v24H0z" fill="none" />
+                <path d="M12.65 10C11.83 7.67 9.61 6 7 6c-3.31 0-6 2.69-6 6s2.69 6 6 6c2.61 0 4.83-1.67 5.65-4H17v4h4v-4h2v-4H12.65zM7 14c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2z" />
+              </svg>
               <strong className={classes["logo-text"]}>Crypto</strong>
             </Button>
           </Box>
