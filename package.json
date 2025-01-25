@@ -9,7 +9,8 @@
     "typecheck": "react-router typegen && tsc",
     "format": "prettier --write '**/*.{js,ts,tsx,jsx}'",
     "test": "vitest --reporter=verbose",
-    "generate": "cd emoji-dict && npx rimraf dist && npx tsc && npx copyfiles full-emoji-list.json dist && cd dist && node app.js  && cd .. && npx rimraf dist"
+    "generate": "cd emoji-dict && npx rimraf dist && npx tsc && npx copyfiles full-emoji-list.json dist && cd dist && node app.js  && cd .. && npx rimraf dist",
+    "preinstall": "npx only-allow npm"
   },
   "dependencies": {
     "@emotion/react": "^11.14.0",
