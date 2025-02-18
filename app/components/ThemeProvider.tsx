@@ -6,10 +6,10 @@ export default function ThemeProvider({
 }: {
   children: React.ReactNode;
 }) {
-  const { colorMode, theme } = useColorTheme();
+  const { toggleColorMode, theme } = useColorTheme();
 
   return (
-    <ColorModeContext.Provider value={colorMode}>
+    <ColorModeContext.Provider value={{ toggleColorMode }}>
       <MUIThemeProvider theme={theme}>{children}</MUIThemeProvider>
     </ColorModeContext.Provider>
   );

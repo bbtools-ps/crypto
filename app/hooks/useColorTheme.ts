@@ -1,25 +1,20 @@
 import { createTheme, type LinkProps } from "@mui/material";
-import { createContext, useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import Link from "../components/Links/Link";
 import { useBrowserTheme } from "./useBrowserTheme";
 
 type ColorMode = "light" | "dark";
 
-export const ColorModeContext = createContext({ toggleColorMode: () => {} });
-
 export const useColorTheme = () => {
   const [mode, setMode] = useState<ColorMode>(
     (localStorage.getItem("theme") as ColorMode) || "light"
   );
-  const colorMode = useMemo(
-    () => ({
-      toggleColorMode: () => {
-        localStorage.setItem("theme", mode === "light" ? "dark" : "light");
-        setMode((prevMode) => (prevMode === "light" ? "dark" : "light"));
-      },
-    }),
-    [mode]
-  );
+
+  const toggleColorMode = useCallback(() => {
+    localStorage.setItem("theme", mode === "light" ? "dark" : "light");
+    setMode((prevMode) => (prevMode === "light" ? "dark" : "light"));
+  }, [mode]);
+
   const theme = useMemo(
     () =>
       createTheme({
@@ -75,5 +70,5 @@ export const useColorTheme = () => {
     }
   }, [isDarkTheme]);
 
-  return { colorMode, theme };
+  return { toggleColorMode, theme };
 };
