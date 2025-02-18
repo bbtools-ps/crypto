@@ -11,7 +11,7 @@ export function useColorModeContext() {
 
   if (!ctx) {
     throw new Error(
-      "Dropdown related components must be wrapped by <ColorModeContext />"
+      "ColorMode related components must be wrapped by <ColorModeContext />"
     );
   }
 
