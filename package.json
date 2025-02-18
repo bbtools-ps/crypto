@@ -19,7 +19,6 @@
     "@mui/material": "^6.2.1",
     "@react-router/node": "^7.0.2",
     "@react-router/serve": "^7.0.2",
-    "@tailwindcss/vite": "^4.0.6",
     "dompurify": "^3.2.3",
     "isbot": "^5.1.17",
     "lucide-react": "^0.469.0",
@@ -30,6 +29,7 @@
   "devDependencies": {
     "@eslint/js": "^9.17.0",
     "@react-router/dev": "^7.0.2",
+    "@tailwindcss/vite": "^4.0.6",
     "@testing-library/jest-dom": "^6.6.3",
     "@testing-library/react": "^16.1.0",
     "@testing-library/user-event": "^14.5.2",
