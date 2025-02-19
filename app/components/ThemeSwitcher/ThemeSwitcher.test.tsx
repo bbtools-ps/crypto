@@ -1,12 +1,12 @@
 import { render, screen } from "@testing-library/react";
 import { describe, expect, it, vi } from "vitest";
-import { ColorModeContext } from "~/hooks";
+import { ThemeContext } from "~/hooks";
 import ThemeSwither from "./ThemeSwitcher";
 
 const Wrapper = ({ children }: { children: React.ReactNode }) => (
-  <ColorModeContext.Provider value={{ toggleColorMode: vi.fn() }}>
+  <ThemeContext.Provider value={{ toggleTheme: vi.fn() }}>
     {children}
-  </ColorModeContext.Provider>
+  </ThemeContext.Provider>
 );
 
 describe("<ThemeSwitcher/>", () => {

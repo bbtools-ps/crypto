@@ -2,14 +2,14 @@ import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { BrowserRouter } from "react-router";
 import { afterEach, describe, expect, it, vi } from "vitest";
-import { ColorModeContext } from "~/hooks";
+import { ThemeContext } from "~/hooks";
 import HeaderNav from "./HeaderNav";
 
 const Wrapper = ({ children }: { children: React.ReactNode }) => (
   <BrowserRouter>
-    <ColorModeContext.Provider value={{ toggleColorMode: vi.fn() }}>
+    <ThemeContext.Provider value={{ toggleTheme: vi.fn() }}>
       {children}
-    </ColorModeContext.Provider>
+    </ThemeContext.Provider>
   </BrowserRouter>
 );
 
