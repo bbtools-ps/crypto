@@ -32,17 +32,19 @@ import { EXTENDED_ALPHABET, LETTER_COMBINATIONS_AMOUNT } from "./constants.js";
       emoji: string;
     }[];
 
-    const emojis = newData
-      .filter((item) => {
-        return item.code && item.code.split(" ").length === 1 && item.emoji;
-      })
-      .map(({ code, emoji }) => {
-        const firstCodeItem = code.split(" ")[0];
-        return {
-          code: `&#x${firstCodeItem.replace("U+", "")};`,
-          emoji,
-        };
-      });
+    const emojis = newData.reduce<{ code: string; emoji: string }[]>(
+      (acc, item) => {
+        if (item.code && item.code.split(" ").length === 1 && item.emoji) {
+          const firstCodeItem = item.code.split(" ")[0];
+          acc.push({
+            code: `&#x${firstCodeItem.replace("U+", "")};`,
+            emoji: item.emoji,
+          });
+        }
+        return acc;
+      },
+      []
+    );
 
     const randomEmojis = getRandomItems(
       emojis,
@@ -53,11 +55,17 @@ import { EXTENDED_ALPHABET, LETTER_COMBINATIONS_AMOUNT } from "./constants.js";
       [...randomEmojis],
       LETTER_COMBINATIONS_AMOUNT,
       EXTENDED_ALPHABET.length
-    )
-      .filter((item) => item.length)
-      .map((item, index) =>
-        item.map((item) => ({ ...item, value: EXTENDED_ALPHABET[index] }))
-      );
+    ).reduce<{ code: string; emoji: string; value: string }[][]>(
+      (acc, item, index) => {
+        if (item.length) {
+          acc.push(
+            item.map((emoji) => ({ ...emoji, value: EXTENDED_ALPHABET[index] }))
+          );
+        }
+        return acc;
+      },
+      []
+    );
 
     // Check if both arrays (emojis + alphabet) have the same length before continuing
     if (EXTENDED_ALPHABET.length !== emojisAlphabet.length) {
