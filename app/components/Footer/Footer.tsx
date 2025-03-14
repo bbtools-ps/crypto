@@ -7,7 +7,7 @@ interface IProps {
 }
 
 export default function Footer({ copyrightLabel }: IProps) {
-  const [year] = useState(dayjs().format("YYYY"));
+  const [year] = useState(dayjs().year());
 
   return (
     <Typography>
