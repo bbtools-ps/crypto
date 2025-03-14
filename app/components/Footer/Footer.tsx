@@ -1,14 +1,17 @@
 import { Link, Typography } from "@mui/material";
-import { getCurrentYear } from "~/utils";
+import dayjs from "dayjs";
+import { useState } from "react";
 
 interface IProps {
   copyrightLabel: string;
 }
 
 export default function Footer({ copyrightLabel }: IProps) {
+  const [year] = useState(dayjs().format("YYYY"));
+
   return (
     <Typography>
-      &copy; {getCurrentYear()}.
+      &copy; {year}.
       <Link href="https://bogdan-bogdanovic.com/" sx={{ ml: 1 }}>
         {copyrightLabel}
       </Link>

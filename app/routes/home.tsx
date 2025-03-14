@@ -23,34 +23,32 @@ export default function Home() {
         <Card>
           <CardContent>
             <Typography variant="h2">Ciphers</Typography>
-            <Typography>
-              <ul className="mt-4 flex flex-col gap-2">
-                <li>
-                  <Link
-                    href="/caesar-cipher"
-                    className="underline underline-offset-2"
-                  >
-                    Caesar Cipher
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="/emoji-cipher"
-                    className="underline underline-offset-2"
-                  >
-                    Emoji Cipher
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="/vigenere-cipher"
-                    className="underline underline-offset-2"
-                  >
-                    Vigenère Cipher
-                  </Link>
-                </li>
-              </ul>
-            </Typography>
+            <ul className="mt-4 flex flex-col gap-2">
+              <li>
+                <Link
+                  href="/caesar-cipher"
+                  className="underline underline-offset-2"
+                >
+                  Caesar Cipher
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/emoji-cipher"
+                  className="underline underline-offset-2"
+                >
+                  Emoji Cipher
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/vigenere-cipher"
+                  className="underline underline-offset-2"
+                >
+                  Vigenère Cipher
+                </Link>
+              </li>
+            </ul>
           </CardContent>
         </Card>
       </Box>
