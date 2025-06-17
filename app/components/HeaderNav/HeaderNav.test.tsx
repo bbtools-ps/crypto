@@ -36,9 +36,10 @@ describe("<HeaderNav/>", () => {
   });
 
   it("should open the menu with options for picking the cipher when user clicks on 'Ciphers' button", async () => {
+    const user = userEvent.setup();
     render(<HeaderNav />, { wrapper: Wrapper });
 
-    await userEvent.click(screen.getByRole("button", { name: /ciphers/i }));
+    await user.click(screen.getByRole("button", { name: /ciphers/i }));
 
     expect(
       screen.getByRole("menuitem", { name: /caesar/i })
@@ -53,20 +54,22 @@ describe("<HeaderNav/>", () => {
   });
 
   it("should close the sub-menu when user clicks on option", async () => {
+    const user = userEvent.setup();
     render(<HeaderNav />, { wrapper: Wrapper });
 
-    await userEvent.click(screen.getByRole("button", { name: /ciphers/i }));
-    await userEvent.click(screen.getByRole("menuitem", { name: /caesar/i }));
+    await user.click(screen.getByRole("button", { name: /ciphers/i }));
+    await user.click(screen.getByRole("menuitem", { name: /caesar/i }));
 
     expect(() => screen.getByRole("menuitem", { name: /caesar/i })).toThrow();
   });
 
   it("should open the appropriate options when clicking on the hamburger menu on smaller screens", async () => {
+    const user = userEvent.setup();
     global.innerWidth = 375;
     global.dispatchEvent(new Event("resize"));
     render(<HeaderNav />, { wrapper: Wrapper });
 
-    await userEvent.click(screen.getByRole("button", { name: /menu/i }));
+    await user.click(screen.getByRole("button", { name: /menu/i }));
 
     expect(
       screen.getByRole("menuitem", { name: /caesar/i })
@@ -83,12 +86,13 @@ describe("<HeaderNav/>", () => {
   });
 
   it("should close the hamburger menu when user clicks on option", async () => {
+    const user = userEvent.setup();
     global.innerWidth = 375;
     global.dispatchEvent(new Event("resize"));
     render(<HeaderNav />, { wrapper: Wrapper });
 
-    await userEvent.click(screen.getByRole("button", { name: /menu/i }));
-    await userEvent.click(screen.getByRole("menuitem", { name: /caesar/i }));
+    await user.click(screen.getByRole("button", { name: /menu/i }));
+    await user.click(screen.getByRole("menuitem", { name: /caesar/i }));
 
     expect(() => screen.getByRole("menuitem", { name: /caesar/i })).toThrow();
   });

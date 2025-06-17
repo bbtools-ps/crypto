@@ -34,10 +34,11 @@ describe("<VigenereCipher/>", () => {
   });
 
   it("should change the checked radio button to 'Decrypt' when user clicks on it", async () => {
+    const user = userEvent.setup();
     render(<VigenereCipher />);
     const radioDecrypt = screen.getByRole("radio", { name: /decrypt/i });
 
-    await userEvent.click(radioDecrypt);
+    await user.click(radioDecrypt);
 
     expect(screen.getByRole("radio", { name: /encrypt/i })).not.toBeChecked();
     expect(radioDecrypt).toBeChecked();
@@ -50,11 +51,12 @@ describe("<VigenereCipher/>", () => {
   });
 
   it("should change the value for the 'Secret key' text field when user types something into it", async () => {
+    const user = userEvent.setup();
     const testValue = "test";
     render(<VigenereCipher />);
     const fieldSecret = screen.getByRole("textbox", { name: /secret/i });
 
-    await userEvent.type(fieldSecret, testValue);
+    await user.type(fieldSecret, testValue);
 
     expect(fieldSecret).toHaveValue(testValue);
   });
@@ -66,11 +68,12 @@ describe("<VigenereCipher/>", () => {
   });
 
   it("should change the value for the 'Input' text field when user types something into it", async () => {
+    const user = userEvent.setup();
     const testValue = "test";
     render(<VigenereCipher />);
     const fieldInput = screen.getByRole("textbox", { name: /input/i });
 
-    await userEvent.type(fieldInput, testValue);
+    await user.type(fieldInput, testValue);
 
     expect(fieldInput).toHaveValue(testValue);
   });
@@ -82,6 +85,7 @@ describe("<VigenereCipher/>", () => {
   });
 
   it("should encrypt the value from the 'Input' to the 'Output' text field", async () => {
+    const user = userEvent.setup();
     render(<VigenereCipher />);
     const testSecretKeyValue = "pizza";
     const testValue = "test";
@@ -89,13 +93,14 @@ describe("<VigenereCipher/>", () => {
     const fieldSecret = screen.getByRole("textbox", { name: /secret/i });
     const fieldInput = screen.getByRole("textbox", { name: /input/i });
 
-    await userEvent.type(fieldSecret, testSecretKeyValue);
-    await userEvent.type(fieldInput, testValue);
+    await user.type(fieldSecret, testSecretKeyValue);
+    await user.type(fieldInput, testValue);
 
     expect(screen.getByLabelText(/output/i)).toHaveTextContent(testResult);
   });
 
   it("should decrypt the value from the 'Input' to the 'Output' text field", async () => {
+    const user = userEvent.setup();
     render(<VigenereCipher />);
     const testSecretKeyValue = "pizza";
     const testResult = "test";
@@ -104,14 +109,15 @@ describe("<VigenereCipher/>", () => {
     const fieldInput = screen.getByRole("textbox", { name: /input/i });
     const radioDecrypt = screen.getByRole("radio", { name: /decrypt/i });
 
-    await userEvent.type(fieldSecret, testSecretKeyValue);
-    await userEvent.type(fieldInput, testResultEncrypt);
-    await userEvent.click(radioDecrypt);
+    await user.type(fieldSecret, testSecretKeyValue);
+    await user.type(fieldInput, testResultEncrypt);
+    await user.click(radioDecrypt);
 
     expect(screen.getByLabelText(/output/i)).toHaveTextContent(testResult);
   });
 
   it("should reset everything to default values when user clicks on the Reset button", async () => {
+    const user = userEvent.setup();
     render(<VigenereCipher />);
     const defaultSecretKeyValue = "";
     const defaultInputValue = "";
@@ -121,10 +127,10 @@ describe("<VigenereCipher/>", () => {
     const radioDecrypt = screen.getByRole("radio", { name: /decrypt/i });
     const btnReset = screen.getByRole("button", { name: /reset/i });
 
-    await userEvent.type(fieldSecret, "pizza");
-    await userEvent.type(fieldInput, "test");
-    await userEvent.click(radioDecrypt);
-    await userEvent.click(btnReset);
+    await user.type(fieldSecret, "pizza");
+    await user.type(fieldInput, "test");
+    await user.click(radioDecrypt);
+    await user.click(btnReset);
 
     expect(fieldSecret).toHaveValue(defaultSecretKeyValue);
     expect(fieldInput).toHaveValue(defaultInputValue);
