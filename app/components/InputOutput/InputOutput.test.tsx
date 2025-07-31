@@ -51,6 +51,7 @@ describe("<InputOutput/>", () => {
   });
 
   it("should call the 'onInputChange' function when typing into the 'Input' value", async () => {
+    const user = userEvent.setup();
     const testFn = vi.fn();
     const testValue = "test";
     render(
@@ -62,15 +63,13 @@ describe("<InputOutput/>", () => {
       />
     );
 
-    await userEvent.type(
-      screen.getByRole("textbox", { name: /input/i }),
-      testValue
-    );
+    await user.type(screen.getByRole("textbox", { name: /input/i }), testValue);
 
     expect(testFn).toHaveBeenCalled();
   });
 
   it("should call the 'onReset' function when clicking on the 'Reset' button", async () => {
+    const user = userEvent.setup();
     const testFn = vi.fn();
     render(
       <InputOutput
@@ -81,7 +80,7 @@ describe("<InputOutput/>", () => {
       />
     );
 
-    await userEvent.click(screen.getByRole("button", { name: /reset/i }));
+    await user.click(screen.getByRole("button", { name: /reset/i }));
 
     expect(testFn).toHaveBeenCalledTimes(1);
   });

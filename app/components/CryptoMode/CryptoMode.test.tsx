@@ -23,11 +23,12 @@ describe("<CryptoMode/>", () => {
   });
 
   it("should call the onChange function when clicking radio button", async () => {
+    const user = userEvent.setup();
     const testFn = vi.fn();
 
     render(<CryptoMode value="encrypt" onChange={testFn} />);
 
-    await userEvent.click(screen.getByRole("radio", { name: /decrypt/i }));
+    await user.click(screen.getByRole("radio", { name: /decrypt/i }));
 
     expect(testFn).toHaveBeenCalled();
   });
