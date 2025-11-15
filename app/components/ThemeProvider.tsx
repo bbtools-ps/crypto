@@ -67,6 +67,7 @@ export default function ThemeProvider({
     if (localStorage.getItem("theme")) return;
 
     if (isDarkTheme) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setMode("dark");
     } else {
       setMode("light");
