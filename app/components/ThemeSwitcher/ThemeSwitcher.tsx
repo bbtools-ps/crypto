@@ -1,11 +1,11 @@
 import { IconButton, useTheme } from "@mui/material";
 import { Moon, Sun } from "lucide-react";
 import { useEffect } from "react";
-import { useThemeContext } from "~/hooks";
+import { useColorTheme } from "~/hooks/useColorTheme";
 
 export default function ThemeSwitcher() {
   const theme = useTheme();
-  const { toggleTheme } = useThemeContext();
+  const { colorMode } = useColorTheme();
 
   useEffect(() => {
     if (theme.palette.mode === "dark") {
@@ -18,7 +18,7 @@ export default function ThemeSwitcher() {
   return (
     <IconButton
       sx={{ ml: 1 }}
-      onClick={toggleTheme}
+      onClick={colorMode.toggleColorMode}
       color="inherit"
       aria-label="Theme switch"
       data-cy="theme-switch-btn"
