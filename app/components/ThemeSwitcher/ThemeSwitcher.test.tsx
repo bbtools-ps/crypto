@@ -4,9 +4,7 @@ import { ColorModeContext } from "~/hooks/useColorMode";
 import ThemeSwither from "./ThemeSwitcher";
 
 const Wrapper = ({ children }: { children: React.ReactNode }) => (
-  <ColorModeContext.Provider
-    value={{ toggleColorMode: vi.fn(), mode: "light" }}
-  >
+  <ColorModeContext.Provider value={{ toggleColorMode: vi.fn() }}>
     {children}
   </ColorModeContext.Provider>
 );

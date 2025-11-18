@@ -7,9 +7,7 @@ import HeaderNav from "./HeaderNav";
 
 const Wrapper = ({ children }: { children: React.ReactNode }) => (
   <BrowserRouter>
-    <ColorModeContext.Provider
-      value={{ toggleColorMode: vi.fn(), mode: "light" }}
-    >
+    <ColorModeContext.Provider value={{ toggleColorMode: vi.fn() }}>
       {children}
     </ColorModeContext.Provider>
   </BrowserRouter>

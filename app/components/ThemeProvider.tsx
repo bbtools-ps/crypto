@@ -71,7 +71,7 @@ export default function ThemeProvider({
   );
 
   return (
-    <ColorModeContext.Provider value={{ toggleColorMode, mode }}>
+    <ColorModeContext.Provider value={{ toggleColorMode }}>
       <MUIThemeProvider theme={theme}>{children}</MUIThemeProvider>
     </ColorModeContext.Provider>
   );
