@@ -1,9 +1,10 @@
-import { IconButton } from "@mui/material";
+import { IconButton, useTheme } from "@mui/material";
 import { Moon, Sun } from "lucide-react";
-import { useColorMode } from "~/hooks/useColorTheme";
+import { useColorMode } from "~/hooks/useColorMode";
 
 export default function ThemeSwitcher() {
-  const { toggleColorMode, mode } = useColorMode();
+  const theme = useTheme();
+  const { toggleColorMode } = useColorMode();
 
   return (
     <IconButton
@@ -12,7 +13,7 @@ export default function ThemeSwitcher() {
       color="inherit"
       aria-label="Theme switch"
     >
-      {mode === "dark" ? <Moon /> : <Sun />}
+      {theme.palette.mode === "dark" ? <Moon /> : <Sun />}
     </IconButton>
   );
 }
