@@ -12,7 +12,8 @@
     "test": "vitest --reporter=verbose",
     "generate": "cd emoji-dict && npx rimraf dist && npx tsc && npx copyfiles full-emoji-list.json dist && cd dist && node app.js  && cd .. && npx rimraf dist",
     "preinstall": "npx only-allow npm",
-    "lint": "eslint app"
+    "lint": "eslint app",
+    "prepare": "husky"
   },
   "dependencies": {
     "@emotion/react": "^11.14.0",
@@ -45,7 +46,9 @@
     "eslint-plugin-react-hooks": "^7.0.1",
     "eslint-plugin-react-refresh": "^0.4.24",
     "globals": "^15.14.0",
+    "husky": "^9.1.7",
     "jsdom": "^25.0.1",
+    "lint-staged": "^16.2.6",
     "prettier": "^3.4.2",
     "prettier-plugin-tailwindcss": "^0.6.9",
     "rimraf": "^6.0.1",
