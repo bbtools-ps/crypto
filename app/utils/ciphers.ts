@@ -1,58 +1,35 @@
-import {
-  ALPHABET,
-  LETTER_COMBINATIONS_AMOUNT,
-} from "../../emoji-dict/constants";
-
-const generateVigenereDictionary = (key: string, str: string) => {
-  if (!key) return ALPHABET;
-  const wholeKey = key
-    .repeat(Math.ceil(str.length / key.length))
-    .slice(0, str.length);
-  const dictionary = [];
-
-  for (const letter of Array.from(wholeKey)) {
-    dictionary.push(
-      ALPHABET.slice(ALPHABET.indexOf(letter), ALPHABET.length) +
-        ALPHABET.slice(0, ALPHABET.indexOf(letter))
-    );
-  }
-
-  return dictionary;
-};
+import { LETTER_COMBINATIONS_AMOUNT } from "../../emoji-dict/constants";
 
 export const vigenereEncrypt = (key: string, str: string) => {
-  const dictionary = generateVigenereDictionary(key, str);
-  const result = [];
+  if (!key) return str;
 
-  for (let i = 0; i < str.length; i++) {
-    result.push(dictionary[i][ALPHABET.indexOf(str[i])] || str[i]);
-  }
-
-  return result.join("");
+  return str.replace(/[A-Za-z]/g, (char, index) => {
+    const code = char.charCodeAt(0);
+    const base = code >= 97 ? 97 : 65; // 'a' or 'A'
+    const keyChar = key[index % key.length];
+    const keyShift = keyChar.toLowerCase().charCodeAt(0) - 97;
+    return String.fromCharCode(((code - base + keyShift) % 26) + base);
+  });
 };
 
 export const vigenereDecrypt = (key: string, str: string) => {
-  const dictionary = generateVigenereDictionary(key, str);
-  const result = [];
+  if (!key) return str;
 
-  for (let i = 0; i < str.length; i++) {
-    result.push(ALPHABET[dictionary[i].indexOf(str[i])] || str[i]);
-  }
-
-  return result.join("");
+  return str.replace(/[A-Za-z]/g, (char, index) => {
+    const code = char.charCodeAt(0);
+    const base = code >= 97 ? 97 : 65; // 'a' or 'A'
+    const keyChar = key[index % key.length];
+    const keyShift = keyChar.toLowerCase().charCodeAt(0) - 97;
+    return String.fromCharCode(((code - base - keyShift + 26) % 26) + base);
+  });
 };
 
 export const caesarEncryptDecrypt = (shiftValue: number, str: string) => {
-  const input = ALPHABET;
-  const output =
-    ALPHABET.slice(shiftValue, 26) +
-    ALPHABET.slice(0, shiftValue) +
-    ALPHABET.slice(26 + shiftValue, 52) +
-    ALPHABET.slice(26, 52 - shiftValue);
-
-  return Array.from(str)
-    .map((letter) => output[input.indexOf(letter)] || letter)
-    .join("");
+  return str.replace(/[A-Za-z]/g, (char) => {
+    const code = char.charCodeAt(0);
+    const base = code >= 97 ? 97 : 65; // 'a' or 'A'
+    return String.fromCharCode(((code - base + shiftValue) % 26) + base);
+  });
 };
 
 export const emojiEncryptDecrypt = (
