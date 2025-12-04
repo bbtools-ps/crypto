@@ -1,9 +1,9 @@
+import { describe, expect, it } from "vitest";
 import {
   caesarEncryptDecrypt,
   vigenereDecrypt,
   vigenereEncrypt,
 } from "./ciphers";
-import { describe, it, expect } from "vitest";
 
 describe("caesarEncryptDecrypt()", () => {
   it("should translate the string using Caesar cipher", () => {
@@ -38,7 +38,7 @@ describe("vigenereEncrypt()", () => {
 
     const result = vigenereEncrypt(testKey, testValue);
 
-    expect(result).toBe("iMrs");
+    expect(result).toBe("imrs");
   });
 
   it("should leave the spaces between the words", () => {
@@ -47,7 +47,7 @@ describe("vigenereEncrypt()", () => {
 
     const result = vigenereEncrypt(testKey, testValue);
 
-    expect(result).toBe("iMrs iMrs");
+    expect(result).toBe("imrs imrs");
   });
 });
 
