@@ -6,4 +6,5 @@
   },
   "js/ts.preferences.importModuleSpecifier": "shortest",
   "editor.formatOnSave": true,
+  "snyk.advanced.autoSelectOrganization": false
 }
