@@ -1,5 +1,8 @@
 import { useState } from "react";
 
+/**
+ * Configuration options for the useNumericInput hook.
+ */
 interface IUseNumericInput {
   minValue?: number;
   maxValue?: number;
@@ -7,6 +10,24 @@ interface IUseNumericInput {
   step?: number;
 }
 
+/**
+ * A custom hook to manage a numeric input with range validation and multiple interaction methods.
+ * Supports keyboard arrows, mouse wheel, and manual entry with range enforcement.
+ *
+ * @param {IUseNumericInput} options - The configuration options for the numeric input.
+ *
+ * @returns {Object} Interaction handlers and current state.
+ * @property {string|number} value - The current value of the input.
+ * @property {Function} handleChange - Validates and updates the value on manual text entry.
+ * @property {Function} handleWheel - Increments/decrements the value on mouse wheel events.
+ * @property {Function} handleKeyDown - Increments/decrements the value on ArrowUp/ArrowDown key presses.
+ * @property {Function} handleBlur - Finalizes the value, ensuring it stays within range when focus is lost.
+ * @property {Function} handleReset - Resets the input value to its initial state.
+ *
+ * @example
+ * const numericInput = useNumericInput({ value: 10, minValue: 0, maxValue: 100, step: 1 });
+ * <input {...numericInput} />
+ */
 export const useNumericInput = ({
   minValue = 0,
   maxValue = 100,
@@ -15,6 +36,15 @@ export const useNumericInput = ({
 }: IUseNumericInput) => {
   const [value, setValue] = useState<string | number>(initialValue);
 
+  /**
+   * Helper function to ensure a value stays within the defined min/max range.
+   * Also handles incrementing/decrementing based on a step and direction.
+   *
+   * @param {string} value - The current string representation of the value.
+   * @param {number} [step] - Optional step size for adjustments.
+   * @param {"UP" | "DOWN"} [direction] - The adjustment direction.
+   * @returns {string|number} The validated value within range.
+   */
   const keepInRange = (
     value: string,
     step?: number,
