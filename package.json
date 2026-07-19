@@ -4,15 +4,14 @@
   "type": "module",
   "scripts": {
     "build": "react-router build",
-    "prebuild": "vitest run",
+    "prebuild": "npm run typecheck && oxlint --fix --deny-warnings && vitest run",
     "dev": "react-router dev",
     "start": "react-router-serve ./build/server/index.js",
     "typecheck": "react-router typegen && tsc",
-    "format": "prettier --write '**/*.{js,ts,tsx,jsx}'",
     "test": "vitest --reporter=verbose",
     "generate": "cd emoji-dict && npx rimraf dist && npx tsc && npx copyfiles full-emoji-list.json dist && cd dist && node app.js  && cd .. && npx rimraf dist",
-    "preinstall": "npx only-allow npm",
-    "lint": "eslint app",
+    "format": "oxfmt",
+    "lint": "oxlint",
     "prepare": "husky"
   },
   "dependencies": {
@@ -31,7 +30,6 @@
     "vite-plugin-babel": "^1.3.2"
   },
   "devDependencies": {
-    "@eslint/js": "^9.17.0",
     "@react-router/dev": "^7.0.2",
     "@tailwindcss/vite": "^4.0.6",
     "@testing-library/jest-dom": "^6.6.3",
@@ -42,19 +40,14 @@
     "@types/react-dom": "^19.0.1",
     "babel-plugin-react-compiler": "^1.0.0",
     "copyfiles": "^2.4.1",
-    "eslint": "^9.17.0",
-    "eslint-plugin-react-hooks": "^7.0.1",
-    "eslint-plugin-react-refresh": "^0.4.24",
-    "globals": "^15.14.0",
     "husky": "^9.1.7",
     "jsdom": "^25.0.1",
     "lint-staged": "^16.2.6",
-    "prettier": "^3.4.2",
-    "prettier-plugin-tailwindcss": "^0.6.9",
+    "oxfmt": "^0.58.0",
+    "oxlint": "^1.73.0",
     "rimraf": "^6.0.1",
     "tailwindcss": "^4.0.6",
     "typescript": "^5.7.2",
-    "typescript-eslint": "^8.18.2",
     "vite": "^7.0.6",
     "vitest": "^4.0.15"
   }

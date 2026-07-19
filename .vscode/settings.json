@@ -6,5 +6,6 @@
   },
   "js/ts.preferences.importModuleSpecifier": "shortest",
   "editor.formatOnSave": true,
-  "snyk.advanced.autoSelectOrganization": false
+  "snyk.advanced.autoSelectOrganization": false,
+  "editor.defaultFormatter": "oxc.oxc-vscode"
 }
