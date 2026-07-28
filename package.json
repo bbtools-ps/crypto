@@ -3,7 +3,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "prebuild": "tsc --noEmit && oxlint --deny-warnings && vitest run",
+    "prebuild": "react-router typegen && tsc && oxlint --deny-warnings && vitest run",
     "build": "react-router build",
     "dev": "react-router dev",
     "start": "react-router-serve ./build/server/index.js",
