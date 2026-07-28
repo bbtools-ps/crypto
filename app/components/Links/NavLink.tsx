@@ -4,7 +4,6 @@ import {
   NavLink as RouterNavLink,
   type NavLinkProps as RouterLinkProps,
 } from "react-router";
-import classes from "./NavLink.module.css";
 
 const NavLink = React.forwardRef<
   HTMLAnchorElement,
@@ -14,7 +13,9 @@ const NavLink = React.forwardRef<
     <RouterNavLink
       ref={ref}
       to={href}
-      className={({ isActive }) => clsx(className, isActive && classes.active)}
+      className={({ isActive }) =>
+        clsx(className, isActive && "font-bold! text-blue-500!")
+      }
       {...rest}
     >
       {children}
