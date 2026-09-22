@@ -10,7 +10,7 @@
     "typescript/consistent-type-imports": "error",
     "typescript/no-explicit-any": "error",
     "react/only-export-components": ["off", { "allowConstantExport": true }],
-    "react/react-compiler": "error",
     "jsx-a11y/prefer-tag-over-role": "off"
-  }
+  },
+  "categories": { "correctness": "error" }
 }
