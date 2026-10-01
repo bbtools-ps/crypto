@@ -5,7 +5,7 @@ import {
   Radio,
   RadioGroup,
 } from "@mui/material";
-import { CRYPTO_MODES } from "~/constants";
+import { CRYPTO_MODES } from "~/constants/cryptoModes";
 
 type CryptoModeType = (typeof CRYPTO_MODES)[number]["value"];
 

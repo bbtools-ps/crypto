@@ -11,7 +11,7 @@ import {
 } from "@mui/material";
 import { MenuIcon } from "lucide-react";
 import { useState } from "react";
-import { PAGES } from "~/constants";
+import { PAGES } from "~/constants/navigation";
 import Link from "../Links/Link";
 import NavLink from "../Links/NavLink";
 import ThemeSwitcher from "../ThemeSwitcher/ThemeSwitcher";

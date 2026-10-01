@@ -1,9 +1,10 @@
 import { Box, TextField, useMediaQuery } from "@mui/material";
 import InputOutput from "~/components/InputOutput/InputOutput";
 import PageDescription from "~/components/PageDescription/PageDescription";
-import { PAGES } from "~/constants";
-import { useInput, useNumericInput } from "~/hooks";
-import { caesarEncryptDecrypt } from "~/utils";
+import { PAGES } from "~/constants/navigation";
+import { useInput } from "~/hooks/useInput";
+import { useNumericInput } from "~/hooks/useNumericInput";
+import { caesarEncryptDecrypt } from "~/utils/ciphers";
 
 export default function CaesarCipher() {
   const {

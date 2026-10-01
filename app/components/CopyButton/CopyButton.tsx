@@ -1,6 +1,6 @@
 import { Button } from "@mui/material";
 import { useState } from "react";
-import { useDebounce } from "~/hooks";
+import { useDebounce } from "~/hooks/useDebounce";
 
 const TIMEOUT = 2000;
 

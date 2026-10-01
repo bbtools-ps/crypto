@@ -1,8 +1,8 @@
 import InputOutput from "~/components/InputOutput/InputOutput";
 import PageDescription from "~/components/PageDescription/PageDescription";
-import { PAGES } from "~/constants";
-import { useInput } from "~/hooks";
-import { emojiEncryptDecrypt } from "~/utils";
+import { PAGES } from "~/constants/navigation";
+import { useInput } from "~/hooks/useInput";
+import { emojiEncryptDecrypt } from "~/utils/ciphers";
 import type { Route } from "../routes/+types/emoji-cipher";
 
 // eslint-disable-next-line react-refresh/only-export-components

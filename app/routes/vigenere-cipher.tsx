@@ -3,9 +3,10 @@ import { useState } from "react";
 import CryptoMode from "~/components/CryptoMode/CryptoMode";
 import InputOutput from "~/components/InputOutput/InputOutput";
 import PageDescription from "~/components/PageDescription/PageDescription";
-import { CRYPTO_MODES, PAGES } from "~/constants";
-import { useInput } from "~/hooks";
-import { vigenereDecrypt, vigenereEncrypt } from "~/utils";
+import { CRYPTO_MODES } from "~/constants/cryptoModes";
+import { PAGES } from "~/constants/navigation";
+import { useInput } from "~/hooks/useInput";
+import { vigenereDecrypt, vigenereEncrypt } from "~/utils/ciphers";
 
 export default function VigenereCipher() {
   const [cryptoMode, setCryptoMode] = useState<"encrypt" | "decrypt">(
