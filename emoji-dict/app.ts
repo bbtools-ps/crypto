@@ -10,7 +10,7 @@ import { EXTENDED_ALPHABET, LETTER_COMBINATIONS_AMOUNT } from "./constants.js";
  * "A":[{"code":"&#x$1EC;","emoji":"🇬🇮"},{"code":"&#x$3BC;","emoji":"🎼"},{"code":"&#x$944;","emoji":"🥄"},{"code":"&#x$4E1;","emoji":"📡"},{"code":"&#x$332;","emoji":"🌲"}]
  * "🇬🇮":"A","🎼":"A","🥄":"A","📡":"A","🌲":"A"
  */
-(async function () {
+void (async function () {
   const getRandomItems = <T>(arr: T[], amount: number) => {
     const randomList = [...arr];
     for (let i = randomList.length - 1; i > 0; i--) {
